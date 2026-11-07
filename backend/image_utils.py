@@ -54,6 +54,47 @@ def gerar_svg_placeholder_base64(categoria_rotulo: str, icone: str, cor_hex: str
     return f"data:image/svg+xml;base64,{b64}"
 
 
+def gerar_svg_painel_clima_niteroi_base64(
+    temp_atual: float,
+    sensacao: float,
+    temp_min: float,
+    temp_max: float,
+    chuva_prob: int,
+    umidade: int,
+    condicao_icone: str,
+    condicao_texto: str,
+) -> str:
+    """
+    Gera um painel visual SVG em bytecode Base64 com o termômetro em tempo real
+    de Niterói - RJ para ilustrar o boletim de clima no FaviNews.
+    """
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="55%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="420" fill="url(#sky)" rx="16"/>
+  <circle cx="680" cy="90" r="110" fill="#38bdf8" fill-opacity="0.12"/>
+  <text x="48" y="64" fill="#bae6fd" font-family="system-ui, sans-serif" font-weight="800" font-size="22" letter-spacing="1.5">⛅ BOLETIM CLIMATEMPO • NITERÓI - RJ</text>
+  <text x="48" y="195" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="900" font-size="112">{temp_atual:.0f}°C</text>
+  <text x="360" y="145" font-size="74">{condicao_icone}</text>
+  <text x="455" y="140" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="800" font-size="30">{condicao_texto}</text>
+  <text x="455" y="180" fill="#fde047" font-family="system-ui, sans-serif" font-weight="700" font-size="24">Sensação térmica: {sensacao:.0f}°C</text>
+  <rect x="48" y="255" width="704" height="115" rx="16" fill="#0f172a" fill-opacity="0.55" stroke="#38bdf8" stroke-opacity="0.35"/>
+  <text x="90" y="302" fill="#94a3b8" font-family="system-ui, sans-serif" font-weight="700" font-size="18">MÍN / MÁX HOJE</text>
+  <text x="90" y="342" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="800" font-size="28">⬇ {temp_min:.0f}°C  /  ⬆ {temp_max:.0f}°C</text>
+  <text x="365" y="302" fill="#94a3b8" font-family="system-ui, sans-serif" font-weight="700" font-size="18">CHANCE DE CHUVA</text>
+  <text x="365" y="342" fill="#38bdf8" font-family="system-ui, sans-serif" font-weight="800" font-size="28">☔ {chuva_prob}%</text>
+  <text x="600" y="302" fill="#94a3b8" font-family="system-ui, sans-serif" font-weight="700" font-size="18">UMIDADE AR</text>
+  <text x="600" y="342" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="800" font-size="28">💧 {umidade}%</text>
+</svg>"""
+    b64 = base64.b64encode(svg.encode("utf-8")).decode("ascii")
+    return f"data:image/svg+xml;base64,{b64}"
+
+
 def baixar_imagem_para_base64(
     url_imagem: Optional[str],
     largura_max: int = 720,

@@ -9,6 +9,25 @@
   },
   "categorias": [
     {
+      "id": "Clima",
+      "rotulo": "Clima Niterói",
+      "icone": "⛅",
+      "cor": "#0284c7",
+      "subtopico_padrao": "Niteroi",
+      "fontes": [
+        {
+          "nome": "Climatempo (Niterói & RJ)",
+          "subtopico": "Niteroi",
+          "rss_url": "https://news.google.com/rss/search?q=site:climatempo.com.br+Niteroi+OR+%22Rio+de+Janeiro%22+OR+frente+fria+OR+calor+OR+chuva+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        },
+        {
+          "nome": "Previsão do Tempo Niterói & RJ",
+          "subtopico": "Niteroi",
+          "rss_url": "https://news.google.com/rss/search?q=Climatempo+OR+%22previsao+do+tempo%22+Niteroi+OR+%22Rio+de+Janeiro%22+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        }
+      ]
+    },
+    {
       "id": "Politica",
       "rotulo": "Política",
       "icone": "🏛️",

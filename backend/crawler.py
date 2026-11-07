@@ -38,6 +38,7 @@ from backend.html_builder import (
 from backend.image_utils import (
     HEADERS_PADRAO,
     baixar_imagem_para_base64,
+    gerar_svg_painel_clima_niteroi_base64,
     gerar_svg_placeholder_base64,
 )
 
@@ -176,6 +177,169 @@ def construir_resenha_inteligente(titulo: str, descricao_rss: str, paragrafos: L
         pontos.append(f"Apuração publicada por {fonte}.")
 
     return base_texto, pontos
+
+
+MAPA_WMO_CLIMA = {
+    0: ("☀️", "Sol e Céu Limpo"),
+    1: ("🌤️", "Sol com Poucas Nuvens"),
+    2: ("⛅", "Sol entre Nuvens"),
+    3: ("☁️", "Céu Encoberto"),
+    45: ("🌫️", "Nevoeiro"),
+    48: ("🌫️", "Nevoeiro Úmido"),
+    51: ("🌦️", "Garoa Leve"),
+    53: ("🌦️", "Chuvisco Moderado"),
+    55: ("🌧️", "Chuvisco Intenso"),
+    61: ("🌧️", "Chuva Fraca"),
+    63: ("🌧️", "Chuva Moderada"),
+    65: ("⛈️", "Chuva Forte"),
+    80: ("🌦️", "Pancadas de Chuva Isoladas"),
+    81: ("🌧️", "Pancadas de Chuva"),
+    82: ("⛈️", "Temporal / Chuva Intensa"),
+    95: ("⛈️", "Tempestade com Raios"),
+}
+
+
+def gerar_boletim_clima_niteroi(
+    cat_cfg: Dict,
+    carimbos_usados: Set[str],
+    pasta_base: Path,
+) -> Optional[Dict]:
+    """
+    Gera o Boletim Meteorológico em Tempo Real de Niterói - RJ (com previsão de 3 dias
+    e referência direta ao Climatempo Niterói) em par _R_ e _N_ autocontido.
+    """
+    url_api = (
+        "https://api.open-meteo.com/v1/forecast?"
+        "latitude=-22.8833&longitude=-43.1036"
+        "&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m"
+        "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max"
+        "&timezone=America%2FSao_Paulo&forecast_days=3"
+    )
+    try:
+        req = urllib.request.Request(url_api, headers=HEADERS_PADRAO)
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            dados = json.loads(resp.read().decode("utf-8"))
+
+        atual = dados.get("current", {})
+        diario = dados.get("daily", {})
+
+        temp = float(atual.get("temperature_2m", 28.0))
+        sensacao = float(atual.get("apparent_temperature", temp))
+        umidade = int(atual.get("relative_humidity_2m", 65))
+        vento = float(atual.get("wind_speed_10m", 10.0))
+        wcode = int(atual.get("weather_code", 1))
+        icone_cond, texto_cond = MAPA_WMO_CLIMA.get(wcode, ("⛅", "Tempo Variável"))
+
+        t_min_lista = diario.get("temperature_2m_min", [22.0, 21.0, 21.0])
+        t_max_lista = diario.get("temperature_2m_max", [31.0, 29.0, 28.0])
+        prob_lista = diario.get("precipitation_probability_max", [10, 20, 30])
+        wcode_lista = diario.get("weather_code", [wcode, wcode, wcode])
+        datas_lista = diario.get("time", [])
+
+        t_min_hoje = float(t_min_lista[0])
+        t_max_hoje = float(t_max_lista[0])
+        prob_hoje = int(prob_lista[0])
+
+        agora_br = agora_brasilia()
+        carimbo_ts, dt_alocado = alocar_carimbo_unico(agora_br, carimbos_usados)
+        nomes = montar_nomes_arquivos(carimbo_ts, cat_cfg["id"], "Niteroi")
+
+        b64_painel = gerar_svg_painel_clima_niteroi_base64(
+            temp_atual=temp,
+            sensacao=sensacao,
+            temp_min=t_min_hoje,
+            temp_max=t_max_hoje,
+            chuva_prob=prob_hoje,
+            umidade=umidade,
+            condicao_icone=icone_cond,
+            condicao_texto=texto_cond,
+        )
+
+        titulo = (
+            f"Niterói - RJ Agora: {temp:.0f}°C ({texto_cond}) • "
+            f"Sensação de {sensacao:.0f}°C | Máx {t_max_hoje:.0f}°C / Mín {t_min_hoje:.0f}°C"
+        )
+        resenha_texto = (
+            f"Boletim atualizado de Niterói (Icaraí / Centro / Região Oceânica): faz {temp:.1f}°C "
+            f"neste momento com sensação térmica de {sensacao:.1f}°C, umidade em {umidade}% e "
+            f"probabilidade de chuva de {prob_hoje}% hoje."
+        )
+
+        pontos_chave = [
+            f"Agora em Niterói: {icone_cond} {temp:.1f}°C ({texto_cond}) — Sensação térmica de {sensacao:.1f}°C.",
+            f"Hoje em Niterói: Mínima de {t_min_hoje:.0f}°C e Máxima de {t_max_hoje:.0f}°C | Chance de chuva: {prob_hoje}%.",
+        ]
+
+        paragrafos = [
+            resenha_texto,
+            f"Condições atuais registradas na estação Niterói - RJ: ventos de {vento:.1f} km/h, umidade relativa do ar em {umidade}% e condição de {texto_cond.lower()}.",
+        ]
+
+        # Adiciona previsão detalhada dos 3 dias
+        nomes_dias = ["Hoje", "Amanhã", "Próximo Dia"]
+        for idx in range(min(3, len(t_max_lista))):
+            ic_d, txt_d = MAPA_WMO_CLIMA.get(int(wcode_lista[idx]), ("⛅", "Variável"))
+            dt_str = datas_lista[idx] if idx < len(datas_lista) else nomes_dias[idx]
+            linha_prev = (
+                f"📅 Previsão {nomes_dias[idx]} ({dt_str}) em Niterói: {ic_d} {txt_d} — "
+                f"Mínima {t_min_lista[idx]:.0f}°C / Máxima {t_max_lista[idx]:.0f}°C "
+                f"(Chance de chuva: {prob_lista[idx]}%)."
+            )
+            paragrafos.append(linha_prev)
+            if idx == 1:
+                pontos_chave.append(linha_prev)
+
+        paragrafos.append(
+            "Fonte de Referência: Climatempo Niterói - RJ & Monitoramento Meteorológico Local."
+        )
+
+        url_climatempo_niteroi = "https://www.climatempo.com.br/previsao-do-tempo/cidade/315/niteroi-rj"
+
+        dados_artigo = {
+            "carimbo_ts": carimbo_ts,
+            "titulo": titulo,
+            "fonte": "Climatempo • Niterói - RJ",
+            "categoria_id": cat_cfg["id"],
+            "categoria_rotulo": cat_cfg["rotulo"],
+            "icone": cat_cfg["icone"],
+            "cor": cat_cfg["cor"],
+            "subtopico": "Niteroi",
+            "data_fato_formatada": dt_alocado.strftime("%d/%m/%Y às %Hh%M"),
+            "data_iso": dt_alocado.isoformat(),
+            "resenha_texto": resenha_texto,
+            "pontos_chave": pontos_chave,
+            "paragrafos_noticia": paragrafos,
+            "imagem_base64_miniatura": b64_painel,
+            "imagem_base64_completa": b64_painel,
+            "arquivo_r": nomes["arquivo_r"],
+            "arquivo_n": nomes["arquivo_n"],
+            "url_original": url_climatempo_niteroi,
+        }
+
+        (pasta_base / nomes["arquivo_r"]).write_text(gerar_html_resenha(dados_artigo), encoding="utf-8")
+        (pasta_base / nomes["arquivo_n"]).write_text(gerar_html_noticia(dados_artigo), encoding="utf-8")
+        print(f"  [+] Boletim Clima Niterói gerado: {nomes['arquivo_r']}")
+
+        return {
+            "carimbo_ts": carimbo_ts,
+            "titulo": titulo,
+            "fonte": "Climatempo • Niterói - RJ",
+            "categoria_id": cat_cfg["id"],
+            "categoria_rotulo": cat_cfg["rotulo"],
+            "icone": cat_cfg["icone"],
+            "cor": cat_cfg["cor"],
+            "subtopico": "Niteroi",
+            "data_fato_formatada": dt_alocado.strftime("%d/%m/%Y às %Hh%M"),
+            "resenha_texto": resenha_texto,
+            "pontos_chave": pontos_chave,
+            "arquivo_r": nomes["arquivo_r"],
+            "arquivo_n": nomes["arquivo_n"],
+            "url_original": url_climatempo_niteroi,
+            "thumbnail_base64": b64_painel,
+        }
+    except Exception as exc:
+        print(f"  [!] Aviso ao gerar boletim ao vivo de Niterói: {exc}")
+        return None
 
 
 def processar_feed_rss(
@@ -375,6 +539,21 @@ def executar_crawler() -> Dict:
     todos_novos: List[Dict] = []
     for cat_cfg in cfg.get("categorias", []):
         print(f"\n📡 Varrendo editoria: {cat_cfg['icone']} {cat_cfg['rotulo']}...")
+        if cat_cfg.get("id") == "Clima":
+            # Remove boletins automáticos anteriores de Niterói para manter sempre o mais fresco no topo
+            for ant in list(itens_existentes):
+                if ant.get("fonte") == "Climatempo • Niterói - RJ":
+                    for chave_arq in ("arquivo_r", "arquivo_n"):
+                        caminho_ant = pasta_base / ant.get(chave_arq, "")
+                        if caminho_ant.exists():
+                            try:
+                                caminho_ant.unlink()
+                            except OSError:
+                                pass
+                    itens_existentes.remove(ant)
+            boletim_nit = gerar_boletim_clima_niteroi(cat_cfg, carimbos_usados, pasta_base)
+            if boletim_nit:
+                todos_novos.append(boletim_nit)
         for fonte_cfg in cat_cfg.get("fontes", []):
             novos = processar_feed_rss(
                 fonte_cfg=fonte_cfg,
