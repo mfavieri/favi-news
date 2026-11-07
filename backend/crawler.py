@@ -505,6 +505,39 @@ def processar_feed_rss(
     return novos_itens_catalogo
 
 
+def atualizar_andamento_json(pasta_base: Path, estado_txt: str, mensagem: str, progresso_pct: int, extras: Optional[Dict] = None):
+    """
+    Atualiza imediatamente o `status_ciclo` dentro do `catalogo_3dias.json`
+    para que o Frontend mostre o andamento ao vivo passo a passo.
+    """
+    caminho_cat = pasta_base / "catalogo_3dias.json"
+    agora = agora_brasilia()
+    proximo = agora + timedelta(minutes=15)
+    try:
+        if caminho_cat.exists():
+            with open(caminho_cat, "r", encoding="utf-8") as f:
+                cat = json.load(f)
+        else:
+            cat = {"itens": [], "total_itens": 0, "janela_dias": 3}
+
+        sc = cat.get("status_ciclo", {})
+        sc.update({
+            "estado": estado_txt,
+            "verificado_em": agora.strftime("%d/%m/%Y %H:%M:%S"),
+            "hora_curta": agora.strftime("%H:%M"),
+            "proximo_giro": proximo.strftime("%H:%M"),
+            "progresso_pct": progresso_pct,
+            "mensagem": mensagem,
+        })
+        if extras:
+            sc.update(extras)
+        cat["status_ciclo"] = sc
+        with open(caminho_cat, "w", encoding="utf-8") as f:
+            json.dump(cat, f, ensure_ascii=False, indent=2)
+    except Exception:
+        pass
+
+
 def executar_crawler() -> Dict:
     """Executa um ciclo completo de coleta, geração de HTMLs, expurgo de 3 dias e catálogo."""
     caminho_cfg = RAIZ_PROJETO / "config" / "fontes.config.json"
@@ -555,7 +588,24 @@ def executar_crawler() -> Dict:
 
     todos_novos: List[Dict] = []
     fontes_verificadas = 0
-    for cat_cfg in cfg.get("categorias", []):
+    lista_categorias = cfg.get("categorias", [])
+    total_cats = max(1, len(lista_categorias))
+
+    atualizar_andamento_json(
+        pasta_base,
+        estado_txt="em_andamento",
+        mensagem=f"⏳ Iniciando giro das {agora_brasilia().strftime('%H:%M')} • preparando leitura de {total_cats} editorias...",
+        progresso_pct=5,
+    )
+
+    for idx_cat, cat_cfg in enumerate(lista_categorias, start=1):
+        pct = int((idx_cat - 0.5) / total_cats * 90)
+        atualizar_andamento_json(
+            pasta_base,
+            estado_txt="em_andamento",
+            mensagem=f"📡 [{idx_cat}/{total_cats}] Varrendo {cat_cfg['icone']} {cat_cfg['rotulo']} ({len(todos_novos)} novidade(s) até agora)...",
+            progresso_pct=pct,
+        )
         print(f"\n📡 Varrendo editoria: {cat_cfg['icone']} {cat_cfg['rotulo']}...")
         if cat_cfg.get("id") == "Clima":
             fontes_verificadas += 1
@@ -575,6 +625,12 @@ def executar_crawler() -> Dict:
                 todos_novos.append(boletim_nit)
         for fonte_cfg in cat_cfg.get("fontes", []):
             fontes_verificadas += 1
+            atualizar_andamento_json(
+                pasta_base,
+                estado_txt="em_andamento",
+                mensagem=f"📡 [{idx_cat}/{total_cats}] Lendo fonte: {fonte_cfg['nome']} ({cat_cfg['rotulo']})...",
+                progresso_pct=pct,
+            )
             novos = processar_feed_rss(
                 fonte_cfg=fonte_cfg,
                 cat_cfg=cat_cfg,

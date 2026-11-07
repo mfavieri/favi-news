@@ -8,6 +8,7 @@ const estado = {
   categoriasConfig: [],
   itensCatalogo: [],
   atualizadoEm: "",
+  ultimoHashItens: "",
   categoriaAtiva: "Todas",
   termoBusca: "",
   janelaDia: "todos", // 'todos' | 'hoje' | 'ontem'
@@ -69,33 +70,61 @@ function exibirSplashScreen(duracaoMinimaMs = 1550) {
 /**
  * Carrega as categorias configuráveis e o catálogo de 3 dias
  */
-async function carregarDadosBase() {
+async function carregarDadosBase(apenasStatus = false) {
   try {
-    const [respCfg, respCat] = await Promise.all([
-      fetch(`config/fontes.config.json?t=${Date.now()}`, { cache: "no-store" }),
+    const promessas = [
       fetch(`base_conhecimento/catalogo_3dias.json?t=${Date.now()}`, { cache: "no-store" })
-    ]);
+    ];
+    if (!apenasStatus || estado.categoriasConfig.length === 0) {
+      promessas.push(fetch(`config/fontes.config.json?t=${Date.now()}`, { cache: "no-store" }));
+    }
 
-    if (respCfg.ok) {
+    const [respCat, respCfg] = await Promise.all(promessas);
+
+    if (respCfg && respCfg.ok) {
       const cfg = await respCfg.json();
       estado.categoriasConfig = cfg.categorias || [];
     }
 
-    if (respCat.ok) {
+    if (respCat && respCat.ok) {
       const cat = await respCat.json();
-      estado.itensCatalogo = cat.itens || [];
-      estado.atualizadoEm = cat.atualizado_em || "Agora";
       const sc = cat.status_ciclo || {};
-      if (sc.hora_curta && sc.proximo_giro) {
+
+      // Atualiza o relógio do topo e o banner de andamento vindo do JSON
+      if (sc.estado === "em_andamento") {
+        elLabelAtualizado.textContent = `⏳ Varrendo (${sc.progresso_pct || 0}%)`;
+        elBtnCrawler.classList.add("girando");
+      } else if (sc.hora_curta && sc.proximo_giro) {
         elLabelAtualizado.textContent = `Giro: ${sc.hora_curta} (Próx: ${sc.proximo_giro})`;
+        elBtnCrawler.classList.remove("girando");
       } else {
-        elLabelAtualizado.textContent = `Atualizado: ${estado.atualizadoEm}`;
+        elLabelAtualizado.textContent = `Atualizado: ${cat.atualizado_em || "Agora"}`;
+        elBtnCrawler.classList.remove("girando");
       }
+
       if (elTextoStatusCiclo) {
         elTextoStatusCiclo.textContent =
           sc.mensagem ||
-          `Última verificação em ${estado.atualizadoEm} • ${estado.itensCatalogo.length} páginas ativas na base`;
+          `Última verificação em ${cat.atualizado_em} • ${(cat.itens || []).length} páginas ativas na base`;
       }
+
+      // Verifica se já passou o horário do próximo giro de 15 min (quando no servidor local)
+      if (cat.proximo_giro_iso && sc.estado !== "em_andamento") {
+        const dtProx = new Date(cat.proximo_giro_iso).getTime();
+        if (!isNaN(dtProx) && Date.now() > dtProx + 15000) {
+          fetch("/api/atualizar-agora", { method: "POST" }).catch(() => null);
+        }
+      }
+
+      const novoHash = `${cat.atualizado_em}_${(cat.itens || []).length}`;
+      if (!apenasStatus || novoHash !== estado.ultimoHashItens) {
+        estado.itensCatalogo = cat.itens || [];
+        estado.atualizadoEm = cat.atualizado_em || "Agora";
+        estado.ultimoHashItens = novoHash;
+        renderizarAbasCategorias();
+        renderizarListaNoticias();
+      }
+      return;
     } else {
       elLabelAtualizado.textContent = "Base aguardando 1º giro";
     }
@@ -104,8 +133,10 @@ async function carregarDadosBase() {
     elLabelAtualizado.textContent = "Modo Offline Ativo";
   }
 
-  renderizarAbasCategorias();
-  renderizarListaNoticias();
+  if (!apenasStatus) {
+    renderizarAbasCategorias();
+    renderizarListaNoticias();
+  }
 }
 
 /**
@@ -404,21 +435,24 @@ elBtnCrawler.addEventListener("click", async () => {
   }
 });
 
-// Registra Service Worker para PWA instalável no celular
+// Registra e força atualização imediata do Service Worker para não reter versão antiga
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js").catch(() => {});
+    navigator.serviceWorker
+      .register("./sw.js")
+      .then((reg) => reg.update())
+      .catch(() => {});
   });
 }
 
 // Inicialização com Splash Screen "Em 15 minutos tudo pode mudar !!"
 window.addEventListener("DOMContentLoaded", () => {
   exibirSplashScreen(1650);
-  carregarDadosBase();
+  carregarDadosBase(false);
 
-  // Atualiza automaticamente a tela a cada 60 segundos buscando novo catálogo
+  // Consulta o status_ciclo no JSON a cada 5 segundos para mostrar o andamento ao vivo
   setInterval(() => {
-    carregarDadosBase();
-  }, 60 * 1000);
+    carregarDadosBase(true);
+  }, 5 * 1000);
 });
 

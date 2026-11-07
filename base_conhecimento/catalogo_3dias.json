@@ -1,42 +1,42 @@
 {
-  "atualizado_em": "07/11/2026 14:58:41",
-  "atualizado_iso": "2026-11-07T14:58:41.501716",
-  "proximo_giro_em": "07/11/2026 15:13:41",
-  "proximo_giro_iso": "2026-11-07T15:13:41.501716",
+  "atualizado_em": "07/11/2026 15:01:04",
+  "atualizado_iso": "2026-11-07T15:01:04.440544",
+  "proximo_giro_em": "07/11/2026 15:16:04",
+  "proximo_giro_iso": "2026-11-07T15:16:04.440544",
   "janela_dias": 3,
   "total_itens": 174,
   "status_ciclo": {
     "estado": "concluido",
-    "verificado_em": "07/11/2026 14:58:41",
-    "hora_curta": "14:58",
-    "proximo_giro": "15:13",
-    "novas_paginas": 2,
+    "verificado_em": "07/11/2026 15:01:04",
+    "hora_curta": "15:01",
+    "proximo_giro": "15:16",
+    "novas_paginas": 0,
     "fontes_verificadas": 16,
     "expurgados_ciclo": 0,
     "total_ativas_3dias": 174,
-    "mensagem": "Giro 14:58 OK • +2 nova(s) página(s) coletada(s) • Próximo às 15:13"
+    "mensagem": "Giro 15:01 OK • sem novas páginas (16 fontes varridas) • Próximo às 15:16"
   },
   "itens": [
     {
-      "carimbo_ts": "20261107-145833",
-      "titulo": "Niterói - RJ Agora: 34°C (Sol com Poucas Nuvens) • Sensação de 40°C | Máx 34°C / Mín 22°C",
+      "carimbo_ts": "20261107-150057",
+      "titulo": "Niterói - RJ Agora: 33°C (Sol com Poucas Nuvens) • Sensação de 40°C | Máx 34°C / Mín 22°C",
       "fonte": "Climatempo • Niterói - RJ",
       "categoria_id": "Clima",
       "categoria_rotulo": "Clima Niterói",
       "icone": "⛅",
       "cor": "#0284c7",
       "subtopico": "Niteroi",
-      "data_fato_formatada": "07/11/2026 às 14h58",
-      "resenha_texto": "Boletim atualizado de Niterói (Icaraí / Centro / Região Oceânica): faz 33.6°C neste momento com sensação térmica de 40.5°C, umidade em 61% e probabilidade de chuva de 100% hoje.",
+      "data_fato_formatada": "07/11/2026 às 15h00",
+      "resenha_texto": "Boletim atualizado de Niterói (Icaraí / Centro / Região Oceânica): faz 33.4°C neste momento com sensação térmica de 39.9°C, umidade em 62% e probabilidade de chuva de 100% hoje.",
       "pontos_chave": [
-        "Agora em Niterói: 🌤️ 33.6°C (Sol com Poucas Nuvens) — Sensação térmica de 40.5°C.",
+        "Agora em Niterói: 🌤️ 33.4°C (Sol com Poucas Nuvens) — Sensação térmica de 39.9°C.",
         "Hoje em Niterói: Mínima de 22°C e Máxima de 34°C | Chance de chuva: 100%.",
         "📅 Previsão Amanhã (2026-11-08) em Niterói: 🌧️ Pancadas de Chuva — Mínima 19°C / Máxima 28°C (Chance de chuva: 100%)."
       ],
-      "arquivo_r": "20261107-145833_R_Clima_Niteroi.html",
-      "arquivo_n": "20261107-145833_N_Clima_Niteroi.html",
+      "arquivo_r": "20261107-150057_R_Clima_Niteroi.html",
+      "arquivo_n": "20261107-150057_N_Clima_Niteroi.html",
       "url_original": "https://www.climatempo.com.br/previsao-do-tempo/cidade/315/niteroi-rj",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI0OCIgeT0iNjQiIGZpbGw9IiNiYWU2ZmQiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxLjUiPuKbhSBCT0xFVElNIENMSU1BVEVNUE8g4oCiIE5JVEVSw5NJIC0gUko8L3RleHQ+CiAgPHRleHQgeD0iNDgiIHk9IjE5NSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIxMTIiPjM0wrBDPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMTQ1IiBmb250LXNpemU9Ijc0Ij7wn4yk77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQ1NSIgeT0iMTQwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjMwIj5Tb2wgY29tIFBvdWNhcyBOdXZlbnM8L3RleHQ+CiAgPHRleHQgeD0iNDU1IiB5PSIxODAiIGZpbGw9IiNmZGUwNDciIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjQiPlNlbnNhw6fDo28gdMOpcm1pY2E6IDQwwrBDPC90ZXh0PgogIDxyZWN0IHg9IjQ4IiB5PSIyNTUiIHdpZHRoPSI3MDQiIGhlaWdodD0iMTE1IiByeD0iMTYiIGZpbGw9IiMwZjE3MmEiIGZpbGwtb3BhY2l0eT0iMC41NSIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utb3BhY2l0eT0iMC4zNSIvPgogIDx0ZXh0IHg9IjkwIiB5PSIzMDIiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMTgiPk3DjU4gLyBNw4FYIEhPSkU8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjM0MiIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyOCI+4qyHIDIywrBDICAvICDirIYgMzTCsEM8L3RleHQ+CiAgPHRleHQgeD0iMzY1IiB5PSIzMDIiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMTgiPkNIQU5DRSBERSBDSFVWQTwvdGV4dD4KICA8dGV4dCB4PSIzNjUiIHk9IjM0MiIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyOCI+4piUIDEwMCU8L3RleHQ+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDIiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMTgiPlVNSURBREUgQVI8L3RleHQ+CiAgPHRleHQgeD0iNjAwIiB5PSIzNDIiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjgiPvCfkqcgNjElPC90ZXh0Pgo8L3N2Zz4="
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI0OCIgeT0iNjQiIGZpbGw9IiNiYWU2ZmQiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxLjUiPuKbhSBCT0xFVElNIENMSU1BVEVNUE8g4oCiIE5JVEVSw5NJIC0gUko8L3RleHQ+CiAgPHRleHQgeD0iNDgiIHk9IjE5NSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIxMTIiPjMzwrBDPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMTQ1IiBmb250LXNpemU9Ijc0Ij7wn4yk77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQ1NSIgeT0iMTQwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjMwIj5Tb2wgY29tIFBvdWNhcyBOdXZlbnM8L3RleHQ+CiAgPHRleHQgeD0iNDU1IiB5PSIxODAiIGZpbGw9IiNmZGUwNDciIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjQiPlNlbnNhw6fDo28gdMOpcm1pY2E6IDQwwrBDPC90ZXh0PgogIDxyZWN0IHg9IjQ4IiB5PSIyNTUiIHdpZHRoPSI3MDQiIGhlaWdodD0iMTE1IiByeD0iMTYiIGZpbGw9IiMwZjE3MmEiIGZpbGwtb3BhY2l0eT0iMC41NSIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utb3BhY2l0eT0iMC4zNSIvPgogIDx0ZXh0IHg9IjkwIiB5PSIzMDIiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMTgiPk3DjU4gLyBNw4FYIEhPSkU8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjM0MiIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyOCI+4qyHIDIywrBDICAvICDirIYgMzTCsEM8L3RleHQ+CiAgPHRleHQgeD0iMzY1IiB5PSIzMDIiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMTgiPkNIQU5DRSBERSBDSFVWQTwvdGV4dD4KICA8dGV4dCB4PSIzNjUiIHk9IjM0MiIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyOCI+4piUIDEwMCU8L3RleHQ+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDIiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMTgiPlVNSURBREUgQVI8L3RleHQ+CiAgPHRleHQgeD0iNjAwIiB5PSIzNDIiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjgiPvCfkqcgNjIlPC90ZXh0Pgo8L3N2Zz4="
     },
     {
       "carimbo_ts": "20261107-145757",

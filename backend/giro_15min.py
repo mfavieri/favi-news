@@ -41,3 +41,4 @@ def executar_giro_e_publicar():
 
 if __name__ == "__main__":
     executar_giro_e_publicar()
+
