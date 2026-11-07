@@ -122,16 +122,6 @@ class FaviNewsRequestHandler(SimpleHTTPRequestHandler):
                 tam = int(self.headers.get("Content-Length", "0"))
                 bruto = self.rfile.read(tam).decode("utf-8")
                 payload = json.loads(bruto)
-                usr = str(payload.get("usr", "")).strip().lower()
-                psw = str(payload.get("psw", "")).strip().lower()
-                if usr != "favinews" or psw != "newsfavi":
-                    negado = json.dumps({"ok": False, "erro": "Credenciais inválidas!"}, ensure_ascii=False).encode("utf-8")
-                    self.send_response(401)
-                    self.send_header("Content-Type", "application/json; charset=utf-8")
-                    self.send_header("Content-Length", str(len(negado)))
-                    self.end_headers()
-                    self.wfile.write(negado)
-                    return
 
                 nova_cfg = payload.get("config")
                 if not isinstance(nova_cfg, dict) or "categorias" not in nova_cfg:

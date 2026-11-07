@@ -186,28 +186,8 @@
       </div>
 
       <div class="config-body">
-        <!-- TELA 1: LOGIN RESTRITO -->
-        <div id="config-login-view" class="config-login-card">
-          <h3>🔒 Acesso Restrito ao Curador</h3>
-          <p style="color:#94a3b8;font-size:0.88rem;margin-bottom:14px;">
-            Autentique-se para calibrar abas, fontes, sazonalidades e filtros do Crawler.
-          </p>
-          <div class="cfg-field">
-            <label for="cfg-login-usr">Usuário (usr)</label>
-            <input type="text" id="cfg-login-usr" value="FaviNews" placeholder="FaviNews" autocomplete="username">
-          </div>
-          <div class="cfg-field">
-            <label for="cfg-login-psw">Senha (psw)</label>
-            <input type="password" id="cfg-login-psw" placeholder="NewsFavi" autocomplete="current-password">
-          </div>
-          <div id="cfg-login-erro" class="cfg-erro hidden">Credenciais inválidas! Verifique usuário e senha.</div>
-          <button id="btn-entrar-config" class="btn-cfg-primary" style="width:100%;margin-top:8px;">
-            🔓 Entrar no Configurador
-          </button>
-        </div>
-
-        <!-- TELA 2: ESTÚDIO DE CONFIGURAÇÃO -->
-        <div id="config-studio-view" class="config-studio hidden">
+        <!-- TELA DIRETA DO ESTÚDIO DE CONFIGURAÇÃO (SEM SENHA) -->
+        <div id="config-studio-view" class="config-studio">
           <!-- BLOCO A: INCLUIR NOVA FONTE / REGRA DE BUSCA -->
           <section class="cfg-section">
             <h4>➕ 1. Incluir Nova Fonte / Regra de Curadoria</h4>

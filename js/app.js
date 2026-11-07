@@ -626,15 +626,9 @@ function abrirModalConfigurador() {
   if (!elModalConfig) return;
   elModalConfig.classList.remove("hidden");
   document.body.style.overflow = "hidden";
-  if (configAutenticado) {
-    elConfigLoginView.classList.add("hidden");
-    elConfigStudioView.classList.remove("hidden");
-    renderizarEstudioConfig();
-  } else {
-    elConfigLoginView.classList.remove("hidden");
-    elConfigStudioView.classList.add("hidden");
-    if (elInputUsr) elInputUsr.focus();
-  }
+  if (elConfigLoginView) elConfigLoginView.classList.add("hidden");
+  if (elConfigStudioView) elConfigStudioView.classList.remove("hidden");
+  renderizarEstudioConfig();
 }
 
 function fecharModalConfigurador() {
