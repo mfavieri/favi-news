@@ -363,5 +363,10 @@ if ("serviceWorker" in navigator) {
 window.addEventListener("DOMContentLoaded", () => {
   exibirSplashScreen(1650);
   carregarDadosBase();
+
+  // Atualiza automaticamente a tela a cada 60 segundos buscando novo catálogo
+  setInterval(() => {
+    carregarDadosBase();
+  }, 60 * 1000);
 });
 

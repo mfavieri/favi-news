@@ -7,6 +7,9 @@ sob demanda pelo botão 🔄 da interface.
 
 import json
 import sys
+import threading
+import time
+from datetime import datetime
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 
@@ -15,8 +18,50 @@ if str(RAIZ_PROJETO) not in sys.path:
     sys.path.insert(0, str(RAIZ_PROJETO))
 
 from backend.crawler import executar_crawler
+from backend.drive_service import agora_brasilia, carregar_catalogo
 
 PORTA_PADRAO = 8090
+INTERVALO_SEGUNDOS = 15 * 60  # 15 minutos ("Em 15 minutos tudo pode mudar !!")
+_lock_crawler = threading.Lock()
+
+
+def rodar_crawler_seguro(origem: str = "agendador-15min") -> dict:
+    """Executa o crawler com lock para evitar dois giros simultâneos."""
+    if not _lock_crawler.acquire(blocking=False):
+        return {"status": "ja_em_execucao"}
+    try:
+        print(f"\n⏱️ [{origem}] Disparando atualização FaviNews...")
+        return executar_crawler()
+    finally:
+        _lock_crawler.release()
+
+
+def loop_agendador_15min():
+    """
+    Thread em background que verifica se o catálogo tem mais de 15 minutos
+    ao iniciar e depois executa o Crawler automaticamente a cada 15 minutos.
+    """
+    pasta_base = RAIZ_PROJETO / "base_conhecimento"
+    while True:
+        try:
+            cat = carregar_catalogo(pasta_base)
+            iso_str = cat.get("atualizado_iso", "")
+            precisa_rodar = True
+            if iso_str:
+                dt_ult = datetime.fromisoformat(iso_str)
+                segundos_passados = (agora_brasilia() - dt_ult).total_seconds()
+                if segundos_passados < INTERVALO_SEGUNDOS:
+                    precisa_rodar = False
+                    espera = max(10, int(INTERVALO_SEGUNDOS - segundos_passados))
+                    time.sleep(espera)
+                    continue
+
+            if precisa_rodar:
+                rodar_crawler_seguro("auto-15min")
+        except Exception as exc:
+            print(f"[!] Aviso no agendador de 15 min: {exc}")
+
+        time.sleep(30)
 
 
 class FaviNewsRequestHandler(SimpleHTTPRequestHandler):
@@ -33,7 +78,7 @@ class FaviNewsRequestHandler(SimpleHTTPRequestHandler):
     def do_POST(self):
         if self.path.startswith("/api/atualizar-agora"):
             try:
-                resumo = executar_crawler()
+                resumo = rodar_crawler_seguro("botao-manual")
                 corpo = json.dumps({"ok": True, "resumo": resumo}, ensure_ascii=False).encode("utf-8")
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -52,9 +97,14 @@ class FaviNewsRequestHandler(SimpleHTTPRequestHandler):
 
 
 def iniciar_servidor(porta: int = PORTA_PADRAO):
+    # Inicia a thread autônoma de 15 em 15 minutos em background
+    t_cron = threading.Thread(target=loop_agendador_15min, daemon=True)
+    t_cron.start()
+
     servidor = HTTPServer(("0.0.0.0", porta), FaviNewsRequestHandler)
     print("=================================================================")
     print(f"🚀 FaviNews PWA no ar em: http://localhost:{porta}")
+    print("⏱️  Relógio Interno de 15 minutos: ATIVO")
     print("🎙️  Slogan: 'Em 15 minutos tudo pode mudar !!'")
     print("=================================================================")
     try:
