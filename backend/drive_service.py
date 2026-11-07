@@ -57,34 +57,29 @@ def extrair_metadados_do_nome(nome_arquivo: str) -> Optional[Dict[str, str]]:
 
 def converter_sazonalidade_timedelta(sazonalidade_str: str, padrao_dias: int = 3) -> Optional[timedelta]:
     """
-    Converte o código de sazonalidade do Configurador em timedelta:
-      - 'ultimo_boletim' / 'ciclo' / '15m': None (efêmero de 1 ciclo — mantém apenas o último boletim)
-      - '6h': 6 horas
-      - '1d': 1 dia (24h)
-      - '3d': 3 dias (72h)
-      - '7d': 7 dias (168h)
+    Converte o código de sazonalidade parametrizado (<N>c Ciclos, <N>h Horas, <N>d Dias) em timedelta:
+      - '1c' / 'ultimo_boletim' / 'ciclo': None (efêmero de 1 ciclo — mantém apenas o último boletim)
+      - '<N>c' (com N > 1): N * 15 minutos
+      - '<N>h': N horas
+      - '<N>d': N dias
     """
     s = (sazonalidade_str or "").strip().lower()
-    if s in ("ultimo_boletim", "ciclo", "15m", "alerta"):
+    if s in ("1c", "ultimo_boletim", "ciclo", "15m", "alerta"):
         return None
-    if s == "6h":
-        return timedelta(hours=6)
-    if s in ("1d", "24h"):
-        return timedelta(days=1)
-    if s in ("3d", "72h"):
-        return timedelta(days=3)
-    if s in ("7d", "semana"):
-        return timedelta(days=7)
+    if s.endswith("c") and s[:-1].isdigit():
+        n_ciclos = max(1, int(s[:-1]))
+        return None if n_ciclos == 1 else timedelta(minutes=15 * n_ciclos)
+    if s.endswith("h") and s[:-1].isdigit():
+        return timedelta(hours=max(1, int(s[:-1])))
     if s.endswith("d") and s[:-1].isdigit():
-        return timedelta(days=int(s[:-1]))
+        return timedelta(days=max(1, int(s[:-1])))
     return timedelta(days=padrao_dias)
 
 
 def expurgar_alertas_ciclo(pasta_base: Path, categorias_cfg: Optional[List[Dict]] = None) -> List[str]:
     """
     Deleta TODOS os arquivos de Alerta (`_A_`) do ciclo anterior e todos os arquivos de
-    categorias com sazonalidade `ultimo_boletim` (como `Clima`, exceto o par de boletim reserva
-    que é substituído pelo novo boletim).
+    categorias com sazonalidade de 1 Ciclo (`1c` / `ultimo_boletim`).
     """
     removidos: List[str] = []
     if not pasta_base.exists():
@@ -93,7 +88,7 @@ def expurgar_alertas_ciclo(pasta_base: Path, categorias_cfg: Optional[List[Dict]
     cats_efemeras = {"Clima"}
     if categorias_cfg:
         for c in categorias_cfg:
-            if c.get("sazonalidade") in ("ultimo_boletim", "ciclo", "15m"):
+            if c.get("sazonalidade") in ("1c", "ultimo_boletim", "ciclo", "15m"):
                 cats_efemeras.add(c.get("id", ""))
 
     for arq in pasta_base.glob("*.html"):

@@ -917,4 +917,59 @@ body {
   border-top: 1px solid var(--border-color);
 }
 
+.cfg-saz-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cfg-saz-control select {
+  flex: 1;
+}
+
+.cfg-stepper {
+  display: inline-flex;
+  align-items: center;
+  background: #0f172a;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cfg-stepper input {
+  width: 48px;
+  text-align: center;
+  border: none !important;
+  background: transparent !important;
+  padding: 6px 2px !important;
+  font-weight: 800;
+  color: #38bdf8 !important;
+  -moz-appearance: textfield;
+}
+
+.cfg-stepper input::-webkit-outer-spin-button,
+.cfg-stepper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cfg-step-btn {
+  background: rgba(56, 189, 248, 0.14);
+  border: none;
+  color: #f8fafc;
+  width: 30px;
+  height: 32px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cfg-step-btn:hover {
+  background: rgba(56, 189, 248, 0.3);
+}
+
+
 

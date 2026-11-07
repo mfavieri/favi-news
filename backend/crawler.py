@@ -597,7 +597,7 @@ def processar_feed_rss(
     td_saz = converter_sazonalidade_timedelta(sazonalidade, padrao_dias=3)
     eh_fonte_alerta = (
         filtro_modo == "apenas_alertas"
-        or sazonalidade == "ultimo_boletim"
+        or sazonalidade in ("1c", "ultimo_boletim")
         or "alerta" in subtopico.lower()
     )
     if eh_fonte_alerta:
@@ -878,7 +878,7 @@ def executar_crawler() -> Dict:
     # 1.1 Expurga arquivos de categorias que foram removidas do fontes.config.json
     categorias_ativas = {c["id"] for c in lista_categorias}
     cats_ultimo_boletim = {
-        c["id"] for c in lista_categorias if c.get("sazonalidade") in ("ultimo_boletim", "ciclo", "15m")
+        c["id"] for c in lista_categorias if c.get("sazonalidade") in ("1c", "ultimo_boletim", "ciclo", "15m")
     }
     removidos_cat = 0
     for arq_html in pasta_base.glob("*.html"):

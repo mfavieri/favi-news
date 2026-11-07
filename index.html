@@ -212,14 +212,19 @@
                 <input type="url" id="cfg-fonte-url" placeholder="Ex: https://mittechreview.com.br/ ou https://enfoco.com.br/">
               </div>
               <div class="cfg-field">
-                <label for="cfg-fonte-sazonalidade">Sazonalidade (Tempo na Base)</label>
-                <select id="cfg-fonte-sazonalidade">
-                  <option value="ultimo_boletim">⚡ Último boletim (1 ciclo / 15 min — Efêmero)</option>
-                  <option value="6h">⏱️ 6 horas</option>
-                  <option value="1d">📅 1 dia (24 horas)</option>
-                  <option value="3d" selected>🗓️ 3 dias (72 horas)</option>
-                  <option value="7d">📚 7 dias (1 semana)</option>
-                </select>
+                <label for="cfg-fonte-saz-unid">Sazonalidade [Ciclos, Horas, Dias] &amp; Quantidade</label>
+                <div class="cfg-saz-control">
+                  <select id="cfg-fonte-saz-unid">
+                    <option value="c">Ciclos (15m)</option>
+                    <option value="h">Horas</option>
+                    <option value="d" selected>Dias</option>
+                  </select>
+                  <div class="cfg-stepper">
+                    <button type="button" class="cfg-step-btn" id="btn-saz-menos" title="Diminuir">−</button>
+                    <input type="number" id="cfg-fonte-saz-qtd" min="1" max="365" value="3">
+                    <button type="button" class="cfg-step-btn" id="btn-saz-mais" title="Aumentar">+</button>
+                  </div>
+                </div>
               </div>
               <div class="cfg-field">
                 <label for="cfg-fonte-filtro">Filtro (O que buscar na página)</label>

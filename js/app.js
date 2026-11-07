@@ -593,7 +593,10 @@ const elCfgNovaAbaIcone = document.getElementById("cfg-nova-aba-icone");
 const elCfgNovaAbaNome = document.getElementById("cfg-nova-aba-nome");
 const elCfgFonteNome = document.getElementById("cfg-fonte-nome");
 const elCfgFonteUrl = document.getElementById("cfg-fonte-url");
-const elCfgFonteSaz = document.getElementById("cfg-fonte-sazonalidade");
+const elCfgFonteSazUnid = document.getElementById("cfg-fonte-saz-unid");
+const elCfgFonteSazQtd = document.getElementById("cfg-fonte-saz-qtd");
+const elBtnSazMenos = document.getElementById("btn-saz-menos");
+const elBtnSazMais = document.getElementById("btn-saz-mais");
 const elCfgFonteFiltro = document.getElementById("cfg-fonte-filtro");
 const elCfgFonteRegras = document.getElementById("cfg-fonte-regras");
 const elBtnAddFonte = document.getElementById("btn-adicionar-fonte");
@@ -608,13 +611,37 @@ let configAutenticado = false;
 let credUsr = "";
 let credPsw = "";
 
-const ROTULOS_SAZ = {
-  ultimo_boletim: "⚡ Último boletim (1 ciclo)",
-  "6h": "⏱️ 6 horas",
-  "1d": "📅 1 dia",
-  "3d": "🗓️ 3 dias",
-  "7d": "📚 7 dias"
-};
+function decomporSazonalidade(sazStr) {
+  const s = String(sazStr || "3d").trim().toLowerCase();
+  if (s === "ultimo_boletim" || s === "ciclo" || s === "15m" || s === "1c") {
+    return { unid: "c", qtd: 1 };
+  }
+  const m = s.match(/^(\d+)([chd])$/);
+  if (m) {
+    return { unid: m[2], qtd: Math.max(1, Number(m[1])) };
+  }
+  return { unid: "d", qtd: 3 };
+}
+
+function formatarRotuloSazonalidade(sazStr) {
+  const { unid, qtd } = decomporSazonalidade(sazStr);
+  if (unid === "c") return `⚡ ${qtd} ${qtd === 1 ? "Ciclo (15m)" : "Ciclos"}`;
+  if (unid === "h") return `⏱️ ${qtd} ${qtd === 1 ? "Hora" : "Horas"}`;
+  return `📅 ${qtd} ${qtd === 1 ? "Dia" : "Dias"}`;
+}
+
+if (elBtnSazMenos && elCfgFonteSazQtd) {
+  elBtnSazMenos.addEventListener("click", () => {
+    const atual = Math.max(1, Number(elCfgFonteSazQtd.value || 1) - 1);
+    elCfgFonteSazQtd.value = atual;
+  });
+}
+if (elBtnSazMais && elCfgFonteSazQtd) {
+  elBtnSazMais.addEventListener("click", () => {
+    const atual = Math.max(1, Number(elCfgFonteSazQtd.value || 1) + 1);
+    elCfgFonteSazQtd.value = atual;
+  });
+}
 
 const ROTULOS_FILTRO = {
   primeira_pagina: "📰 Primeira página",
@@ -686,15 +713,16 @@ function renderizarEstudioConfig() {
     elCfgBlacklist.value = (regras.palavras_bloqueadas || []).join(", ");
   }
 
-  // Renderiza lista de abas com botões Subir/Descer, Sazonalidade da Aba e Fontes
+  // Renderiza lista de abas com botões Subir/Descer, Sazonalidade [Ciclos, Horas, Dias] + [-] [+] e Fontes
   if (elCfgListaAbas) {
     elCfgListaAbas.innerHTML = cats
       .map((cat, idx) => {
         const sazCat = cat.sazonalidade || "3d";
+        const { unid: uCat, qtd: qCat } = decomporSazonalidade(sazCat);
         const fontesHtml = (cat.fontes || [])
           .map((f, fIdx) => {
             const urlMostrada = f.site_url || f.rss_url || "";
-            const sazFonte = ROTULOS_SAZ[f.sazonalidade || sazCat] || f.sazonalidade || sazCat;
+            const sazFonte = formatarRotuloSazonalidade(f.sazonalidade || sazCat);
             const filtroFonte = ROTULOS_FILTRO[f.filtro || cat.filtro_padrao || "todo_conteudo"] || "Todo conteúdo";
             return `
               <div class="cfg-fonte-item">
@@ -720,16 +748,19 @@ function renderizarEstudioConfig() {
             <div class="cfg-aba-header">
               <div>
                 <strong style="font-size:0.95rem;color:#ffffff;">${cat.icone || "📰"} ${escaparHtml(cat.rotulo)}</strong>
-                <span class="cfg-tag">Sazonalidade: ${escaparHtml(ROTULOS_SAZ[sazCat] || sazCat)}</span>
+                <span class="cfg-tag">Sazonalidade: ${escaparHtml(formatarRotuloSazonalidade(sazCat))}</span>
               </div>
-              <div style="display:flex;gap:6px;align-items:center;">
-                <select class="cfg-btn-mini" data-saz-cat="${idx}" title="Alterar sazonalidade padrão da aba">
-                  <option value="ultimo_boletim" ${sazCat === "ultimo_boletim" ? "selected" : ""}>⚡ Último boletim (1 ciclo)</option>
-                  <option value="6h" ${sazCat === "6h" ? "selected" : ""}>⏱️ 6 horas</option>
-                  <option value="1d" ${sazCat === "1d" ? "selected" : ""}>📅 1 dia</option>
-                  <option value="3d" ${sazCat === "3d" ? "selected" : ""}>🗓️ 3 dias</option>
-                  <option value="7d" ${sazCat === "7d" ? "selected" : ""}>📚 7 dias</option>
+              <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+                <select class="cfg-btn-mini" data-saz-unid="${idx}" title="Unidade de Sazonalidade da Aba">
+                  <option value="c" ${uCat === "c" ? "selected" : ""}>Ciclos</option>
+                  <option value="h" ${uCat === "h" ? "selected" : ""}>Horas</option>
+                  <option value="d" ${uCat === "d" ? "selected" : ""}>Dias</option>
                 </select>
+                <div class="cfg-stepper">
+                  <button type="button" class="cfg-step-btn" data-saz-step="${idx}:-1" title="Diminuir">−</button>
+                  <input type="number" min="1" max="365" value="${qCat}" data-saz-qtd="${idx}">
+                  <button type="button" class="cfg-step-btn" data-saz-step="${idx}:1" title="Aumentar">+</button>
+                </div>
                 <button class="cfg-btn-mini" data-move-cat="${idx}:-1" ${idx === 0 ? "disabled" : ""} title="Subir Aba">⬆️</button>
                 <button class="cfg-btn-mini" data-move-cat="${idx}:1" ${idx === cats.length - 1 ? "disabled" : ""} title="Descer Aba">⬇️</button>
               </div>
@@ -757,14 +788,40 @@ function renderizarEstudioConfig() {
       });
     });
 
-    // Evento de alterar sazonalidade da aba
-    elCfgListaAbas.querySelectorAll("[data-saz-cat]").forEach((sel) => {
+    // Eventos de alterar unidade/quantidade da sazonalidade da aba
+    const atualizarSazCat = (idx, novaUnid, novaQtd) => {
+      if (!cats[idx]) return;
+      const qLimpa = Math.max(1, Number(novaQtd || 1));
+      const codigo = `${qLimpa}${novaUnid}`;
+      cats[idx].sazonalidade = codigo;
+      (cats[idx].fontes || []).forEach((f) => {
+        f.sazonalidade = codigo;
+      });
+      renderizarEstudioConfig();
+    };
+
+    elCfgListaAbas.querySelectorAll("[data-saz-unid]").forEach((sel) => {
       sel.addEventListener("change", () => {
-        const i = Number(sel.getAttribute("data-saz-cat"));
-        if (cats[i]) {
-          cats[i].sazonalidade = sel.value;
-          renderizarEstudioConfig();
-        }
+        const i = Number(sel.getAttribute("data-saz-unid"));
+        const { qtd } = decomporSazonalidade(cats[i]?.sazonalidade);
+        atualizarSazCat(i, sel.value, qtd);
+      });
+    });
+
+    elCfgListaAbas.querySelectorAll("[data-saz-step]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const [iStr, deltaStr] = btn.getAttribute("data-saz-step").split(":");
+        const i = Number(iStr);
+        const { unid, qtd } = decomporSazonalidade(cats[i]?.sazonalidade);
+        atualizarSazCat(i, unid, Math.max(1, qtd + Number(deltaStr)));
+      });
+    });
+
+    elCfgListaAbas.querySelectorAll("[data-saz-qtd]").forEach((inp) => {
+      inp.addEventListener("change", () => {
+        const i = Number(inp.getAttribute("data-saz-qtd"));
+        const { unid } = decomporSazonalidade(cats[i]?.sazonalidade);
+        atualizarSazCat(i, unid, Math.max(1, Number(inp.value || 1)));
       });
     });
 
@@ -797,7 +854,9 @@ if (elBtnAddFonte) {
       return;
     }
     const nome = (elCfgFonteNome?.value || url.replace(/^https?:\/\/(www\.)?/, "").split("/")[0]).trim();
-    const saz = elCfgFonteSaz?.value || "3d";
+    const unidSaz = elCfgFonteSazUnid?.value || "d";
+    const qtdSaz = Math.max(1, Number(elCfgFonteSazQtd?.value || 1));
+    const saz = `${qtdSaz}${unidSaz}`;
     const filtro = elCfgFonteFiltro?.value || "primeira_pagina";
     const regras = (elCfgFonteRegras?.value || "").trim();
 
