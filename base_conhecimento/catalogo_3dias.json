@@ -1,25 +1,25 @@
 {
-  "atualizado_em": "07/11/2026 19:13:25",
-  "atualizado_iso": "2026-11-07T19:13:25.119129",
-  "proximo_giro_em": "07/11/2026 19:28:25",
-  "proximo_giro_iso": "2026-11-07T19:28:25.119129",
+  "atualizado_em": "07/11/2026 19:21:15",
+  "atualizado_iso": "2026-11-07T19:21:15.556981",
+  "proximo_giro_em": "07/11/2026 19:36:15",
+  "proximo_giro_iso": "2026-11-07T19:36:15.556981",
   "janela_dias": 3,
-  "total_itens": 284,
+  "total_itens": 288,
   "status_ciclo": {
     "estado": "concluido",
-    "verificado_em": "07/11/2026 19:13:25",
-    "hora_curta": "19:13",
-    "proximo_giro": "19:28",
+    "verificado_em": "07/11/2026 19:21:15",
+    "hora_curta": "19:21",
+    "proximo_giro": "19:36",
     "novas_paginas": 8,
     "fontes_verificadas": 19,
-    "expurgados_ciclo": 2,
-    "total_ativas_3dias": 284,
-    "mensagem": "Giro 19:13 OK • +8 nova(s) página(s) coletada(s) • Próximo às 19:28"
+    "expurgados_ciclo": 0,
+    "total_ativas_3dias": 288,
+    "mensagem": "Giro 19:21 OK • +8 nova(s) página(s) coletada(s) • Próximo às 19:36"
   },
   "itens": [
     {
-      "carimbo_ts": "20261107-191315",
-      "titulo": "Niterói - RJ Agora: 26°C (Céu Encoberto • Sem Chuva (0 mm)) • Vento 3 km/h | Máx 33°C / Mín 22°C",
+      "carimbo_ts": "20261107-192105",
+      "titulo": "Niterói - RJ Agora: 26°C (Céu Encoberto • Sem Chuva (0 mm)) • Vento 4 km/h | Máx 33°C / Mín 22°C",
       "fonte": "Climatempo & Defesa Civil • Niterói - RJ",
       "categoria_id": "Clima",
       "categoria_rotulo": "Clima Niterói",
@@ -27,20 +27,20 @@
       "cor": "#0284c7",
       "subtopico": "Niteroi",
       "tipo_artefato": "R",
-      "data_fato_formatada": "07/11/2026 às 19h13",
-      "resenha_texto": "Estação Niterói registra agora 26°C (Céu Encoberto • Sem Chuva (0 mm)), sensação de 32°C, vento de 3 km/h e umidade de 91%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 3 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-07 23:59.",
+      "data_fato_formatada": "07/11/2026 às 19h21",
+      "resenha_texto": "Estação Niterói registra agora 26°C (Céu Encoberto • Sem Chuva (0 mm)), sensação de 31°C, vento de 4 km/h e umidade de 91%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 4 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-07 23:59.",
       "pontos_chave": [
-        "Agora na Estação Niterói: ☁️ 26°C (Céu Encoberto • Sem Chuva (0 mm)) — Vento 3 km/h, sensação 32°C e umidade 91%.",
+        "Agora na Estação Niterói: ☁️ 26°C (Céu Encoberto • Sem Chuva (0 mm)) — Vento 4 km/h, sensação 31°C e umidade 91%.",
         "Temperaturas Hoje em Niterói: Mínima de 22°C e Máxima de 33°C | Probabilidade residual de chuva: 100%.",
-        "ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 3 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-07 23:59.",
+        "ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 4 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-07 23:59.",
         "📅 Previsão Amanhã (2026-11-08) em Niterói: ⛈️ Tempestade com Raios — Mínima 19°C / Máxima 27°C (Chance de chuva: 100%)."
       ],
       "alerta_defesa_civil": "",
-      "arquivo_r": "20261107-191315_R_Clima_Niteroi.html",
-      "arquivo_n": "20261107-191315_N_Clima_Niteroi.html",
+      "arquivo_r": "20261107-192105_R_Clima_Niteroi.html",
+      "arquivo_n": "20261107-192105_N_Clima_Niteroi.html",
       "arquivo_a": "",
       "url_original": "https://www.climatempo.com.br/previsao-do-tempo/cidade/315/niteroi-rj",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yNsKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4piB77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5Dw6l1IEVuY29iZXJ0byDigKIgU2VtIENodXZhIDwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjE1OCIgZmlsbD0iI2ZkZTA0NyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiI+U2Vuc2HDp8OjbyB0w6lybWljYTogMzLCsEM8L3RleHQ+CiAgPHJlY3QgeD0iNDgiIHk9IjIzNiIgd2lkdGg9IjcwNCIgaGVpZ2h0PSIxMDQiIHJ4PSIxNiIgZmlsbD0iIzBmMTcyYSIgZmlsbC1vcGFjaXR5PSIwLjY4IiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS1vcGFjaXR5PSIwLjM1Ii8+CiAgPHRleHQgeD0iODYiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+TcONTiAvIE3DgVggSE9KRTwvdGV4dD4KICA8dGV4dCB4PSI4NiIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7irIcgMjLCsEMgIC8gIOKshiAzM8KwQzwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+Q0hBTkNFIERFIENIVVZBPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMzE0IiBmaWxsPSIjMzhiZGY4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7imJQgMTAwJTwvdGV4dD4KICA8dGV4dCB4PSI1OTUiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+VU1JREFERSBBUjwvdGV4dD4KICA8dGV4dCB4PSI1OTUiIHk9IjMxNCIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyNiI+8J+SpyA5MSU8L3RleHQ+Cjwvc3ZnPg=="
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yNsKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4piB77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5Dw6l1IEVuY29iZXJ0byDigKIgU2VtIENodXZhIDwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjE1OCIgZmlsbD0iI2ZkZTA0NyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiI+U2Vuc2HDp8OjbyB0w6lybWljYTogMzHCsEM8L3RleHQ+CiAgPHJlY3QgeD0iNDgiIHk9IjIzNiIgd2lkdGg9IjcwNCIgaGVpZ2h0PSIxMDQiIHJ4PSIxNiIgZmlsbD0iIzBmMTcyYSIgZmlsbC1vcGFjaXR5PSIwLjY4IiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS1vcGFjaXR5PSIwLjM1Ii8+CiAgPHRleHQgeD0iODYiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+TcONTiAvIE3DgVggSE9KRTwvdGV4dD4KICA8dGV4dCB4PSI4NiIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7irIcgMjLCsEMgIC8gIOKshiAzM8KwQzwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+Q0hBTkNFIERFIENIVVZBPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMzE0IiBmaWxsPSIjMzhiZGY4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7imJQgMTAwJTwvdGV4dD4KICA8dGV4dCB4PSI1OTUiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+VU1JREFERSBBUjwvdGV4dD4KICA8dGV4dCB4PSI1OTUiIHk9IjMxNCIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyNiI+8J+SpyA5MSU8L3RleHQ+Cjwvc3ZnPg=="
     },
     {
       "carimbo_ts": "20261107-185900",
@@ -63,6 +63,29 @@
       "arquivo_r": "20261107-185900_A_Clima_AlertaRJ.html",
       "arquivo_n": "20261107-185900_A_Clima_AlertaRJ.html",
       "url_original": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOMjZoYUdESUJLQVZaNkF6dk9KRjg5TWxtN3FrblZrdjJfWjkxWTdaQ0QwSUhMSF9BZHJCUWJOV0t2VXFlclllR1NaeDBUblR2MUtKT2VXYnNmaUMwSG1MRDh6cGs5N2F5cXBLblMwUHlrQUxnVk5EQl9lbElNdmx6alpJdk1qaXJ4SjBXT3dfZGRMNks4ZFlnZG10RVZnU0NVV3FQZ3lNZmRnNFltQlpxMXJPVm01VUJHNkE?oc=5",
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAyODRjNyIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPuKbhTwvdGV4dD4KICA8dGV4dCB4PSI1MCUiIHk9IjcyJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiIgbGV0dGVyLXNwYWNpbmc9IjEiPkZBVkkgTkVXUyDigKIgQ0xJTUEgTklURVLDk0k8L3RleHQ+Cjwvc3ZnPg=="
+    },
+    {
+      "carimbo_ts": "20261107-185700",
+      "titulo": "Estado em alerta: chuva intensa no Rio provoca estragos e alagamentos - www.conexaoes.com.br",
+      "fonte": "Alertas de Clima (MSN Clima & INMET RJ/Niterói)",
+      "categoria_id": "Clima",
+      "categoria_rotulo": "Clima Niterói",
+      "icone": "🚨",
+      "cor": "#ef4444",
+      "subtopico": "AlertaRJ",
+      "tipo_artefato": "A",
+      "data_fato_formatada": "07/11/2026 às 18h57",
+      "resenha_texto": "Estado em alerta: chuva intensa no Rio provoca estragos e alagamentos www.conexaoes.com.br",
+      "pontos_chave": [
+        "Fato Central: Estado em alerta: chuva intensa no Rio provoca estragos e alagamentos - www.conexaoes.com.br",
+        "Contexto: Estado em alerta: chuva intensa no Rio provoca estragos e alagamentos www.conexaoes.com.br",
+        "Apuração publicada por Alertas de Clima (MSN Clima & INMET RJ/Niterói)."
+      ],
+      "arquivo_a": "20261107-185700_A_Clima_AlertaRJ.html",
+      "arquivo_r": "20261107-185700_A_Clima_AlertaRJ.html",
+      "arquivo_n": "20261107-185700_A_Clima_AlertaRJ.html",
+      "url_original": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSDE0UmY4a2pueGNweVpUbXNkaHVxd0w4WXRMd0E4eTYwWjFtSWFtUXBYQUZUODR2VnJTV09WVmtQdkh2ZG5SdjJLWGZYWVg1b0dad1VFZXJRSGhBTURPZUpHNGtrSndJRlRGTXgzaXB2SWI1eVAwR2dYVHlMWVdRbklyUmo4UERFZzVMRldQdC1VWFQzV3BOZGZzRDFJSy1jMTJld01POU8?oc=5",
       "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAyODRjNyIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPuKbhTwvdGV4dD4KICA8dGV4dCB4PSI1MCUiIHk9IjcyJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiIgbGV0dGVyLXNwYWNpbmc9IjEiPkZBVkkgTkVXUyDigKIgQ0xJTUEgTklURVLDk0k8L3RleHQ+Cjwvc3ZnPg=="
     },
     {
@@ -173,29 +196,6 @@
       "arquivo_n": "20261107-182426_N_Economia_Mercados.html",
       "url_original": "https://www.infomoney.com.br/mundo/relacoes-exteriores-do-paraguai-diz-que-pais-sai-fortalecido-de-crise-do-ueno-bank/",
       "thumbnail_base64": "data:image/jpeg;base64,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"
-    },
-    {
-      "carimbo_ts": "20261107-180927",
-      "titulo": "Temporal no Rio: Defesa Civil emite alerta extremo para chuva forte, vento e raios - O GLOBO",
-      "fonte": "Alertas de Clima (MSN Clima & INMET RJ/Niterói)",
-      "categoria_id": "Clima",
-      "categoria_rotulo": "Clima Niterói",
-      "icone": "🚨",
-      "cor": "#ef4444",
-      "subtopico": "AlertaRJ",
-      "tipo_artefato": "A",
-      "data_fato_formatada": "07/11/2026 às 18h09",
-      "resenha_texto": "Temporal no Rio: Defesa Civil emite alerta extremo para chuva forte, vento e raios O GLOBO",
-      "pontos_chave": [
-        "Fato Central: Temporal no Rio: Defesa Civil emite alerta extremo para chuva forte, vento e raios - O GLOBO",
-        "Contexto: Temporal no Rio: Defesa Civil emite alerta extremo para chuva forte, vento e raios O GLOBO",
-        "Apuração publicada por Alertas de Clima (MSN Clima & INMET RJ/Niterói)."
-      ],
-      "arquivo_a": "20261107-180927_A_Clima_AlertaRJ.html",
-      "arquivo_r": "20261107-180927_A_Clima_AlertaRJ.html",
-      "arquivo_n": "20261107-180927_A_Clima_AlertaRJ.html",
-      "url_original": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOSlQxbHhLejBDN25SUUhfcDBIMlJLaF9RY29NNVd4SUczX0h5d1JxNFY0SVBObVI0SUw1SXNrcTl5YUxWMG1CQjJGR1N6OS1POVRjWXRQSjFqay01VklyeW4yTUV1VFhkWmEyYjVuN1N4WXJtT3NBQU84ZTVYOFd4M2oxVkkxbDdrdzJSR0lHMTFlckV1MTBGY2E0bnJhS0NxbG4yei1kMUtMRjBEdmxlcnpfWENzaTl4dXRCSTRrMm0wa3NodE5uZEk3LUVPM2PSAd4BQVVfeXFMT1dONWc0V0FnN3ptdXFmWWl5WWR5cGlseDF1bVoxTXRscEp2cy1IMy00VzVCWjZmemwxekZTSHRMZjVLcWpHQ25lY1prYUI2cG1ZaG55RjBvWEVlZWtQbHJIN1Zzd2NvTjYzOTJtWThsQ2J0SGQzQlQtSWdlWWlDbFNjbktWdk1SRFJaSkc3QWdxMFRoYTA4Z04xRWlmUXZ0YXRZVlZQMERLRDdwTFRINnpCX01ndGM0cjJVeUpFVzNzeHh6dm9WQ2Jfd0w3VHhxSks0bGdqcHZ4VzBzRWlR?oc=5",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAyODRjNyIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPuKbhTwvdGV4dD4KICA8dGV4dCB4PSI1MCUiIHk9IjcyJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiIgbGV0dGVyLXNwYWNpbmc9IjEiPkZBVkkgTkVXUyDigKIgQ0xJTUEgTklURVLDk0k8L3RleHQ+Cjwvc3ZnPg=="
     },
     {
       "carimbo_ts": "20261107-180459",
@@ -3054,6 +3054,28 @@
       "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
     },
     {
+      "carimbo_ts": "20261106-182939",
+      "titulo": "Pode isso? Lula mexe no Vale Refeição e Vale Alimentação; veja o que muda - contigo.com.br",
+      "fonte": "Fofocas, Famosos & Entretenimento",
+      "categoria_id": "Variedades",
+      "categoria_rotulo": "Variedades",
+      "icone": "🎭",
+      "cor": "#d946ef",
+      "subtopico": "Famosos",
+      "tipo_artefato": "RN",
+      "data_fato_formatada": "06/11/2026 às 18h29",
+      "resenha_texto": "Pode isso? Lula mexe no Vale Refeição e Vale Alimentação; veja o que muda contigo.com.br",
+      "pontos_chave": [
+        "Fato Central: Pode isso? Lula mexe no Vale Refeição e Vale Alimentação; veja o que muda - contigo.com.br",
+        "Contexto: Pode isso? Lula mexe no Vale Refeição e Vale Alimentação; veja o que muda contigo.com.br",
+        "Apuração publicada por Fofocas, Famosos & Entretenimento."
+      ],
+      "arquivo_r": "20261106-182939_R_Variedades_Famosos.html",
+      "arquivo_n": "20261106-182939_N_Variedades_Famosos.html",
+      "url_original": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQanM0dlkzaG9NdENwWlVBUGtGd1Vwa3dveE1GNWpmeXlaSEl3c3NXMmU2Z0RqMEtzTXV4M2xFQi1sWTAwZlkxU3IzcTBXX3FEUklORlBHUzUxdm1uaFlqaFV3TXdFQ1NSSVI5WWdNYkxqajFLUlZxRWN0c0pTTWMxX1V5YS1icl9yU3pGZlh1LVo3eDBFQ3otbWhOTnBFeVh1WXR5NzhPM1lxQjZkZnZueVdYOEFrN203M200?oc=5",
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
+    },
+    {
       "carimbo_ts": "20261106-182632",
       "titulo": "Balança comercial tem superávit de US$ 9,3 bilhões em outubro, alta de 39,4%",
       "fonte": "G1 Economia",
@@ -4168,6 +4190,28 @@
       "thumbnail_base64": "data:image/jpeg;base64,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"
     },
     {
+      "carimbo_ts": "20261106-084000",
+      "titulo": "Felca se pronuncia após roteiro de vídeo apontar marcação de choro - Portal do Holanda",
+      "fonte": "Fofocas, Famosos & Entretenimento",
+      "categoria_id": "Variedades",
+      "categoria_rotulo": "Variedades",
+      "icone": "🎭",
+      "cor": "#d946ef",
+      "subtopico": "Famosos",
+      "tipo_artefato": "RN",
+      "data_fato_formatada": "06/11/2026 às 08h40",
+      "resenha_texto": "Felca se pronuncia após roteiro de vídeo apontar marcação de choro Portal do Holanda",
+      "pontos_chave": [
+        "Fato Central: Felca se pronuncia após roteiro de vídeo apontar marcação de choro - Portal do Holanda",
+        "Contexto: Felca se pronuncia após roteiro de vídeo apontar marcação de choro Portal do Holanda",
+        "Apuração publicada por Fofocas, Famosos & Entretenimento."
+      ],
+      "arquivo_r": "20261106-084000_R_Variedades_Famosos.html",
+      "arquivo_n": "20261106-084000_N_Variedades_Famosos.html",
+      "url_original": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQcDQ2UURFNk1EYnFzaHJkYTI4ajVWSmEyVlBHZVRDdlFqdWlCZW9xQ1F2QnppUC0yLTNvYmVhbkYyRkdkT0RqTDdJNzh0NVExa1UtNlM3WTc4cHNsRkkybmFPZzBWTFQzR1U2QVpjZEd4YUhHLV9CRzRxM29pZmJoczV5Zjd5VFZhMlRXS3NVNGo4MlB6dDRCbmxYYUNqRTBWbHVMQVl4Mjk4S090bUtfeUp3?oc=5",
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
+    },
+    {
       "carimbo_ts": "20261106-083057",
       "titulo": "Ônibus para no Vão Central enquanto acessos à Ponte fluem bem em Niterói - Cidade de Niterói",
       "fonte": "COR-Rio & Trânsito RJ",
@@ -4421,6 +4465,28 @@
       "arquivo_n": "20261106-061720_N_Saude_BemEstar.html",
       "url_original": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPRnQzMmk2YlpvNy1mZnBTVV9hSmt6dk1sRDYxQlgxQ1dnN3dRRUZhaHFNUm1KTG1EMFA4UGtPekdSa0tCS2xVWVFhdU40aVpYbWhERy1Yc0VKbXY0RENPRUFuNlM4Wk5BTWExWC1BNVhvZFlDZUhKVEVkWkxSenk2Q2U0T3pycDZkQW1Wb3dPemJaeG1HR3BwcU5BeE1BZ0p2Qk9MU1NCWlp6UHpOREE?oc=5",
       "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2UxMWQ0OCIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfqbo8L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFNBw5pERTwvdGV4dD4KPC9zdmc+"
+    },
+    {
+      "carimbo_ts": "20261106-053000",
+      "titulo": "Ex-BBB Alberto Cowboy e Priscila Monroy terminam casamento - Portal do Holanda",
+      "fonte": "Fofocas, Famosos & Entretenimento",
+      "categoria_id": "Variedades",
+      "categoria_rotulo": "Variedades",
+      "icone": "🎭",
+      "cor": "#d946ef",
+      "subtopico": "Famosos",
+      "tipo_artefato": "RN",
+      "data_fato_formatada": "06/11/2026 às 05h30",
+      "resenha_texto": "Ex-BBB Alberto Cowboy e Priscila Monroy terminam casamento Portal do Holanda",
+      "pontos_chave": [
+        "Fato Central: Ex-BBB Alberto Cowboy e Priscila Monroy terminam casamento - Portal do Holanda",
+        "Contexto: Ex-BBB Alberto Cowboy e Priscila Monroy terminam casamento Portal do Holanda",
+        "Apuração publicada por Fofocas, Famosos & Entretenimento."
+      ],
+      "arquivo_r": "20261106-053000_R_Variedades_Famosos.html",
+      "arquivo_n": "20261106-053000_N_Variedades_Famosos.html",
+      "url_original": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQMkFoSzMtWUFpdlFHVk9zbERwMEpIWE9FUXlyMk5MdTV0YTliTFhkQU1ibXBOU0lES1FQeXV0NHJQOFhLVXU3Q0NHb01OZDRFMVRNa2xodU9oT1N0cXhoODhicTNHRElZODlDcGExZ05NVll6VnJVdFBZZHgtSjI0Q2xFRzl3OFNWOV83bXdXa3ljMjJmTGRJcTBkYWY4U29BLWl4aG80Yw?oc=5",
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
     },
     {
       "carimbo_ts": "20261106-050005",
@@ -5533,6 +5599,28 @@
       "arquivo_r": "20261105-084800_R_Variedades_GastronomiaFestas.html",
       "arquivo_n": "20261105-084800_N_Variedades_GastronomiaFestas.html",
       "url_original": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQTzQ0eFd4cWdtY19XNm5jVl8yVWxDZDZuejcwbUpCUlNpRzUyRG9pVE1BWFU0RFEza2kxWElKNTlOZkhDdmFxdUJlc2V1MUFnSDJvTmtBNW9nSUdzWDBIVjVtUEVzbEthQWlwMldYZEtvM1RKemdSbjdaU0luWWdya0hoWDdFUWNCVnRtUldlVmdzV0h1OVIwR3RQYk1GNWpwb0l0Vmg0dTRkal9pSW5OczZEOWRmT3RlMmNxaGRseFo5akxWRy05a1pldzNSa1BSVzZxQkRSandfTnhKbVN3cmh3bkxSV3pFSWfSAfgBQVVfeXFMTUJLLXVXaDNuOEVaanMwZ0hyUFNVcVhHZEpGX2JFQ0pVRmpIZmlCRWM2LWRMdVVTdk14ZFBJMEwtZzZISE5hekg2U3Q5SmJfVjR0U0FneF9KWURLald6VEpHWm9fbk9IakxtV2ZlQUJRLTVock5md3NSZmZDeVBaaXRvSnlVMHBaYnlfa0c4NnhaUVZwNmFDZm0tQ1FxNmJZU3lVRjZvc3FTUkNhSWM3RXBvSTlzeTZQQVlveWNQTEFFU2pNTFZWMGhBNU8xV3JTQkZQaEpESDBJNzFla01TZUc5OGM3X3JsQWVoejRaNlc2SW9naUh1eFg?oc=5",
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
+    },
+    {
+      "carimbo_ts": "20261105-083726",
+      "titulo": "Ex-apresentadora do ‘TV Fama’: Médico fala sobre a causa da morte de Janaína Barbosa - contigo.com.br",
+      "fonte": "Fofocas, Famosos & Entretenimento",
+      "categoria_id": "Variedades",
+      "categoria_rotulo": "Variedades",
+      "icone": "🎭",
+      "cor": "#d946ef",
+      "subtopico": "Famosos",
+      "tipo_artefato": "RN",
+      "data_fato_formatada": "05/11/2026 às 08h37",
+      "resenha_texto": "Ex-apresentadora do ‘TV Fama’: Médico fala sobre a causa da morte de Janaína Barbosa contigo.com.br",
+      "pontos_chave": [
+        "Fato Central: Ex-apresentadora do ‘TV Fama’: Médico fala sobre a causa da morte de Janaína Barbosa - contigo.com.br",
+        "Contexto: Ex-apresentadora do ‘TV Fama’: Médico fala sobre a causa da morte de Janaína Barbosa contigo.com.br",
+        "Apuração publicada por Fofocas, Famosos & Entretenimento."
+      ],
+      "arquivo_r": "20261105-083726_R_Variedades_Famosos.html",
+      "arquivo_n": "20261105-083726_N_Variedades_Famosos.html",
+      "url_original": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPeDV3cWNqSC1tUGNtcEhvY0N6ZzJ4RmVkc3V3R2F4NjdvMl9tTkduaU1ZQmhTMXdweUJHYUdZWEQyeE81dXFWTFdldmVwdjhEUmNEVzdJZTUwakJ6bWttVkxNZzN4Mkkwb2RXRGtPUklZLUNVU3VvZWV6N3lMNDM1SmxjYVdhWVhlS21NYWJYMS1mOXJISlhPSUpjWk1JWVRFZW9fdEYyUDJyM0lIUnA0ZEZ3LXZxXzZiR0hEN0VQcFRZRmR1d2c?oc=5",
       "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
     },
     {
