@@ -200,14 +200,46 @@ MAPA_WMO_CLIMA = {
 }
 
 
+def consultar_alertas_oficiais_rj() -> List[Dict]:
+    """
+    Consulta a API oficial de Avisos Meteorológicos Ativos do INMET (mesma fonte
+    dos alertas de Tempestade/Chuva do MSN Clima no Brasil) filtrando Rio de Janeiro / Niterói.
+    """
+    url_inmet = "https://apiprevmet3.inmet.gov.br/avisos/ativos"
+    alertas_rj: List[Dict] = []
+    try:
+        req = urllib.request.Request(url_inmet, headers=HEADERS_PADRAO)
+        with urllib.request.urlopen(req, timeout=7) as resp:
+            dados = json.loads(resp.read().decode("utf-8", errors="ignore"))
+        for a in dados.get("hoje", []):
+            estados_str = str(a.get("estados", "")) + " " + str(a.get("municipios", ""))
+            if "Rio de Janeiro" in estados_str or "Niterói" in estados_str or "RJ" in estados_str:
+                alertas_rj.append({
+                    "descricao": a.get("descricao", "Alerta Meteorológico"),
+                    "severidade": a.get("severidade", "Perigo Potencial"),
+                    "inicio": a.get("inicio", ""),
+                    "fim": a.get("fim", ""),
+                    "riscos": a.get("riscos", []),
+                    "instrucoes": a.get("instrucoes", []),
+                })
+        # Prioriza Tempestade / Chuvas Intensas / Vendaval no topo da lista
+        alertas_rj.sort(
+            key=lambda x: 0 if any(p in x["descricao"].lower() for p in ("tempestade", "chuva", "vendaval", "granizo")) else 1
+        )
+    except Exception:
+        pass
+    return alertas_rj
+
+
 def gerar_boletim_clima_niteroi(
     cat_cfg: Dict,
     carimbos_usados: Set[str],
     pasta_base: Path,
 ) -> Optional[Dict]:
     """
-    Gera o Boletim Meteorológico em Tempo Real de Niterói - RJ (com previsão de 3 dias
-    e referência direta ao Climatempo Niterói) em par _R_ e _N_ autocontido.
+    Gera o Boletim Meteorológico em Tempo Real de Niterói - RJ combinando:
+    1. Estação real de Niterói (wttr.in / METAR SBRJ) + Open-Meteo;
+    2. Alertas Meteorológicos Oficiais Ativos (INMET / MSN Clima RJ & Niterói).
     """
     url_api = (
         "https://api.open-meteo.com/v1/forecast?"
@@ -224,22 +256,57 @@ def gerar_boletim_clima_niteroi(
         atual = dados.get("current", {})
         diario = dados.get("daily", {})
 
-        temp = float(atual.get("temperature_2m", 28.0))
+        temp = float(atual.get("temperature_2m", 26.0))
         sensacao = float(atual.get("apparent_temperature", temp))
-        umidade = int(atual.get("relative_humidity_2m", 65))
-        vento = float(atual.get("wind_speed_10m", 10.0))
-        wcode = int(atual.get("weather_code", 1))
+        umidade = int(atual.get("relative_humidity_2m", 75))
+        vento = float(atual.get("wind_speed_10m", 14.0))
+        wcode = int(atual.get("weather_code", 2))
         icone_cond, texto_cond = MAPA_WMO_CLIMA.get(wcode, ("⛅", "Tempo Variável"))
+
+        # Sobrescreve com leitura da estação real de Niterói (METAR) para refletir chuva/nebulosidade real
+        try:
+            req_wttr = urllib.request.Request("https://wttr.in/Niteroi?format=j1&lang=pt", headers=HEADERS_PADRAO)
+            with urllib.request.urlopen(req_wttr, timeout=6) as r_w:
+                dw = json.loads(r_w.read().decode("utf-8", errors="ignore"))
+                cc = dw.get("current_condition", [{}])[0]
+                if cc.get("temp_C"):
+                    temp = float(cc["temp_C"])
+                if cc.get("FeelsLikeC"):
+                    sensacao = float(cc["FeelsLikeC"])
+                if cc.get("humidity"):
+                    umidade = int(cc["humidity"])
+                if cc.get("lang_pt") and cc["lang_pt"][0].get("value"):
+                    texto_cond = cc["lang_pt"][0]["value"].strip()
+        except Exception:
+            pass
+
+        # Consulta alertas oficiais ativos para Niterói / RJ (Tempestade, Chuvas, Ventos Costeiros)
+        alertas_ativos = consultar_alertas_oficiais_rj()
 
         t_min_lista = diario.get("temperature_2m_min", [22.0, 21.0, 21.0])
         t_max_lista = diario.get("temperature_2m_max", [31.0, 29.0, 28.0])
-        prob_lista = diario.get("precipitation_probability_max", [10, 20, 30])
+        prob_lista = diario.get("precipitation_probability_max", [60, 40, 30])
         wcode_lista = diario.get("weather_code", [wcode, wcode, wcode])
         datas_lista = diario.get("time", [])
 
         t_min_hoje = float(t_min_lista[0])
         t_max_hoje = float(t_max_lista[0])
         prob_hoje = int(prob_lista[0])
+
+        alerta_principal_str = ""
+        alerta_banner_svg = ""
+        if alertas_ativos:
+            a0 = alertas_ativos[0]
+            alerta_banner_svg = f"ALERTA {a0['descricao'].upper()} ({a0['severidade']}) EM NITERÓI/RJ"
+            risco_txt = a0["riscos"][0] if a0.get("riscos") else ""
+            alerta_principal_str = (
+                f"🚨 ALERTA OFICIAL ATIVO ({a0['descricao']} - {a0['severidade']}): "
+                f"Vigência de {a0['inicio']} até {a0['fim']}. {risco_txt}"
+            )
+            if "tempestade" in a0["descricao"].lower() or "chuva" in a0["descricao"].lower():
+                icone_cond = "⛈️"
+                texto_cond = f"Alerta de {a0['descricao']}"
+                prob_hoje = max(prob_hoje, 85)
 
         agora_br = agora_brasilia()
         carimbo_ts, dt_alocado = alocar_carimbo_unico(agora_br, carimbos_usados)
@@ -254,41 +321,39 @@ def gerar_boletim_clima_niteroi(
             umidade=umidade,
             condicao_icone=icone_cond,
             condicao_texto=texto_cond,
+            alerta_banner=alerta_banner_svg,
         )
 
-        # Detecta alertas severos de clima em Niterói (estilo MSN Clima)
-        alerta_msn = ""
-        if sensacao >= 36.0:
-            alerta_msn = f"⚠️ ALERTA DE CALOR: Sensação térmica de {sensacao:.0f}°C em Niterói! Hidrate-se e evite sol forte."
-        elif prob_hoje >= 60 or wcode in (65, 81, 82, 95):
-            alerta_msn = f"⚠️ ALERTA DE CHUVA/TEMPO SEVERO: {prob_hoje}% de probabilidade de chuva em Niterói hoje."
-        elif len(prob_lista) > 1 and int(prob_lista[1]) >= 65:
-            alerta_msn = f"⚠️ ALERTA DE VIRADA NO TEMPO: Previsão de {prob_lista[1]}% de chuva amanhã em Niterói."
-
-        prefixo_alerta = "⚠️ [ALERTA CLIMA] " if alerta_msn else ""
+        prefixo_alerta = f"⛈️ [ALERTA: {alertas_ativos[0]['descricao'].upper()}] " if alertas_ativos else ""
         titulo = (
             f"{prefixo_alerta}Niterói - RJ Agora: {temp:.0f}°C ({texto_cond}) • "
-            f"Sensação de {sensacao:.0f}°C | Máx {t_max_hoje:.0f}°C / Mín {t_min_hoje:.0f}°C"
+            f"Sensação {sensacao:.0f}°C | Máx {t_max_hoje:.0f}°C / Mín {t_min_hoje:.0f}°C"
         )
         resenha_texto = (
-            f"{alerta_msn + ' ' if alerta_msn else ''}"
-            f"Boletim atualizado de Niterói (Icaraí / Centro / Região Oceânica): faz {temp:.1f}°C "
-            f"neste momento com sensação térmica de {sensacao:.1f}°C, umidade em {umidade}% e "
-            f"probabilidade de chuva de {prob_hoje}% hoje."
+            f"{alerta_principal_str + ' | ' if alerta_principal_str else ''}"
+            f"Estação Niterói registra {temp:.0f}°C ({texto_cond}) com sensação de {sensacao:.0f}°C "
+            f"e umidade de {umidade}%."
         )
 
         pontos_chave = []
-        if alerta_msn:
-            pontos_chave.append(alerta_msn)
+        for al in alertas_ativos[:2]:
+            r_resumo = al["riscos"][0] if al.get("riscos") else ""
+            pontos_chave.append(
+                f"🚨 Alerta {al['descricao']} ({al['severidade']}): {r_resumo} (até {al['fim']})"
+            )
         pontos_chave.extend([
-            f"Agora em Niterói: {icone_cond} {temp:.1f}°C ({texto_cond}) — Sensação térmica de {sensacao:.1f}°C.",
-            f"Hoje em Niterói: Mínima de {t_min_hoje:.0f}°C e Máxima de {t_max_hoje:.0f}°C | Chance de chuva: {prob_hoje}%.",
+            f"Agora na Estação Niterói: {icone_cond} {temp:.0f}°C ({texto_cond}) — Sensação térmica de {sensacao:.0f}°C e umidade {umidade}%.",
+            f"Temperaturas Hoje em Niterói: Mínima de {t_min_hoje:.0f}°C e Máxima de {t_max_hoje:.0f}°C | Chuva: {prob_hoje}%.",
         ])
 
-        paragrafos = [
-            resenha_texto,
-            f"Condições atuais registradas na estação Niterói - RJ: ventos de {vento:.1f} km/h, umidade relativa do ar em {umidade}% e condição de {texto_cond.lower()}.",
-        ]
+        paragrafos = [resenha_texto]
+        for al in alertas_ativos:
+            riscos_juntos = " ".join(al.get("riscos", []))
+            instr_juntas = " ".join(al.get("instrucoes", []))
+            paragrafos.append(
+                f"⚠️ AVISO METEOROLÓGICO ATIVO — {al['descricao'].upper()} ({al['severidade']}): "
+                f"Início: {al['inicio']} | Fim: {al['fim']}. Riscos: {riscos_juntos} {instr_juntas}"
+            )
 
         # Adiciona previsão detalhada dos 3 dias
         nomes_dias = ["Hoje", "Amanhã", "Próximo Dia"]
