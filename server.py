@@ -6,6 +6,7 @@ sob demanda pelo botão 🔄 da interface.
 """
 
 import json
+import subprocess
 import sys
 import threading
 import time
@@ -25,13 +26,37 @@ INTERVALO_SEGUNDOS = 15 * 60  # 15 minutos ("Em 15 minutos tudo pode mudar !!")
 _lock_crawler = threading.Lock()
 
 
+def sincronizar_git_background():
+    """Envia o catalogo_3dias.json e novos HTMLs para o GitHub automaticamente após cada giro."""
+    try:
+        subprocess.run(["git", "add", "base_conhecimento/"], cwd=str(RAIZ_PROJETO), timeout=15)
+        diff = subprocess.run(["git", "diff", "--staged", "--quiet"], cwd=str(RAIZ_PROJETO), timeout=10)
+        if diff.returncode != 0:
+            hora = agora_brasilia().strftime("%H:%M")
+            subprocess.run(
+                ["git", "commit", "-m", f"chore(noticias): giro automatico 15min ({hora})"],
+                cwd=str(RAIZ_PROJETO),
+                timeout=20,
+            )
+            subprocess.run(
+                ["git", "push", "origin", "HEAD:main", "HEAD:frontend", "HEAD:backend"],
+                cwd=str(RAIZ_PROJETO),
+                timeout=45,
+            )
+            print(f"☁️ [Git Sync] Base sincronizada com GitHub Pages às {hora}!")
+    except Exception as exc:
+        print(f"[!] Aviso ao sincronizar Git: {exc}")
+
+
 def rodar_crawler_seguro(origem: str = "agendador-15min") -> dict:
     """Executa o crawler com lock para evitar dois giros simultâneos."""
     if not _lock_crawler.acquire(blocking=False):
         return {"status": "ja_em_execucao"}
     try:
         print(f"\n⏱️ [{origem}] Disparando atualização FaviNews...")
-        return executar_crawler()
+        res = executar_crawler()
+        threading.Thread(target=sincronizar_git_background, daemon=True).start()
+        return res
     finally:
         _lock_crawler.release()
 

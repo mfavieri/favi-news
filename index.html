@@ -100,6 +100,12 @@
        CONTEÚDO PRINCIPAL: MANCHETES E RESENHAS DO DIA
        ========================================================================= -->
   <main class="app-main">
+    <!-- Barra de Status do Ciclo de 15 Minutos (Alimentada pelo JSON) -->
+    <div id="barra-status-ciclo" class="cycle-status-banner">
+      <span class="pulse-dot"></span>
+      <span id="texto-status-ciclo">Verificando andamento do giro de 15 minutos no JSON...</span>
+    </div>
+
     <!-- Barra informativa de resumo do filtro atual -->
     <div class="filter-summary-bar">
       <span id="contador-resultados">Carregando base de conhecimento...</span>

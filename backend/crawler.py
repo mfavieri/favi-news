@@ -554,9 +554,11 @@ def executar_crawler() -> Dict:
     }
 
     todos_novos: List[Dict] = []
+    fontes_verificadas = 0
     for cat_cfg in cfg.get("categorias", []):
         print(f"\n📡 Varrendo editoria: {cat_cfg['icone']} {cat_cfg['rotulo']}...")
         if cat_cfg.get("id") == "Clima":
+            fontes_verificadas += 1
             # Remove boletins automáticos anteriores de Niterói para manter sempre o mais fresco no topo
             for ant in list(itens_existentes):
                 if ant.get("fonte") == "Climatempo • Niterói - RJ":
@@ -572,6 +574,7 @@ def executar_crawler() -> Dict:
             if boletim_nit:
                 todos_novos.append(boletim_nit)
         for fonte_cfg in cat_cfg.get("fontes", []):
+            fontes_verificadas += 1
             novos = processar_feed_rss(
                 fonte_cfg=fonte_cfg,
                 cat_cfg=cat_cfg,
@@ -583,9 +586,19 @@ def executar_crawler() -> Dict:
             )
             todos_novos.extend(novos)
 
-    # 3. Salva o catálogo atualizado de 3 dias
+    # Desconta 1 do boletim de clima para contar apenas matérias inéditas reais como "novas_paginas"
+    novas_materias_reais = max(0, len(todos_novos) - 1)
+
+    # 3. Salva o catálogo atualizado de 3 dias com status completo do giro
     catalogo_final = salvar_catalogo(
-        pasta_base, itens_existentes + todos_novos, dias_retencao=dias_retencao
+        pasta_base,
+        itens_existentes + todos_novos,
+        dias_retencao=dias_retencao,
+        info_ciclo={
+            "novas_paginas": novas_materias_reais,
+            "fontes_verificadas": fontes_verificadas,
+            "expurgados": len(expurgados) + removidos_cat,
+        },
     )
 
     # 4. Sincroniza com o Google Drive se habilitado/configurado

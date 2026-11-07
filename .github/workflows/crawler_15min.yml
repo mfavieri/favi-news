@@ -4,17 +4,28 @@ on:
   schedule:
     # Executa automaticamente a cada 15 minutos ("Em 15 minutos tudo pode mudar !!")
     - cron: "*/15 * * * *"
-  workflow_dispatch: # Permite disparo manual com 1 clique na aba Actions do GitHub
+  workflow_dispatch: # Permite disparo manual com 1 clique
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "favinews-crawler-pages"
+  cancel-in-progress: false
 
 jobs:
-  coletar-noticias:
+  coletar-e-publicar:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: "📥 Checkout do Repositório"
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: "🐍 Configurar Python 3.11"
         uses: actions/setup-python@v5
@@ -26,7 +37,7 @@ jobs:
           pip install --upgrade pip
           pip install Pillow google-api-python-client google-auth
 
-      - name: "🎙️ Executar Crawler FaviNews (Gera _R_ e _N_ + Expurgo 72h)"
+      - name: "🎙️ Executar Crawler FaviNews (Gera _R_ e _N_ + Status JSON + Expurgo 72h)"
         env:
           TZ: "America/Sao_Paulo"
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
@@ -34,11 +45,21 @@ jobs:
         run: |
           python backend/crawler.py
 
-      - name: "💾 Atualizar Base de Conhecimento (Janela de 3 Dias)"
+      - name: "💾 Salvar Base de Conhecimento nas Branches"
         run: |
           git config user.name "FaviNews Bot"
           git config user.email "bot@favinews.local"
           git add base_conhecimento/
-          git diff --staged --quiet || git commit -m "chore(noticias): atualizacao automatica 15min [skip ci]"
-          git push
+          git diff --staged --quiet || (git commit -m "chore(noticias): giro automatico 15min" && git push origin HEAD:main HEAD:frontend HEAD:backend)
 
+      - name: "🌐 Configurar GitHub Pages"
+        uses: actions/configure-pages@v5
+
+      - name: "📦 Empacotar Site e Base de Conhecimento para o Pages"
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      - name: "🚀 Publicar Atualização Direto no GitHub Pages"
+        id: deployment
+        uses: actions/deploy-pages@v4

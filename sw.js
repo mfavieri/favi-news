@@ -4,7 +4,7 @@
  * e do catálogo de 3 dias no celular.
  */
 
-const CACHE_NAME = "favinews-cache-v4";
+const CACHE_NAME = "favinews-cache-v5";
 const ARQUIVOS_ESSENCIAIS = [
   "./",
   "./index.html",
@@ -43,6 +43,13 @@ self.addEventListener("activate", (event) => {
 // Estratégia Network-First com fallback para Cache (ideal para notícias de 15 em 15 min)
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+  // Nunca usa cache antigo para o JSON de status/catálogo de 15 min
+  if (event.request.url.includes("catalogo_3dias.json") || event.request.url.includes("fontes.config.json")) {
+    event.respondWith(
+      fetch(event.request, { cache: "no-store" }).catch(() => caches.match(event.request))
+    );
+    return;
+  }
   event.respondWith(
     fetch(event.request)
       .then((respostaRede) => {

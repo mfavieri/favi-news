@@ -97,13 +97,20 @@ def carregar_catalogo(pasta_base: Path) -> Dict:
     }
 
 
-def salvar_catalogo(pasta_base: Path, itens_novos_ou_atuais: List[Dict], dias_retencao: int = 3) -> Dict:
+def salvar_catalogo(
+    pasta_base: Path,
+    itens_novos_ou_atuais: List[Dict],
+    dias_retencao: int = 3,
+    info_ciclo: Optional[Dict] = None,
+) -> Dict:
     """
     Filtra apenas os itens dentro da janela de 3 dias cujo arquivo _R_ exista na pasta,
-    ordena do mais recente para o mais antigo e salva o `catalogo_3dias.json`.
+    ordena do mais recente para o mais antigo e salva o `catalogo_3dias.json`
+    incluindo o status detalhado do giro de 15 minutos (mesmo quando há 0 novas páginas).
     """
     pasta_base.mkdir(parents=True, exist_ok=True)
     agora = agora_brasilia()
+    proximo = agora + timedelta(minutes=15)
     limite_corte = agora - timedelta(days=dias_retencao)
 
     por_carimbo: Dict[str, Dict] = {}
@@ -127,11 +134,37 @@ def salvar_catalogo(pasta_base: Path, itens_novos_ou_atuais: List[Dict], dias_re
         reverse=True,
     )
 
+    novas_qtd = int((info_ciclo or {}).get("novas_paginas", 0))
+    fontes_lidas = int((info_ciclo or {}).get("fontes_verificadas", 0))
+    expurgados_qtd = int((info_ciclo or {}).get("expurgados", 0))
+    hora_curta = agora.strftime("%H:%M")
+    prox_curta = proximo.strftime("%H:%M")
+
+    if novas_qtd > 0:
+        detalhe_novas = f"+{novas_qtd} nova(s) página(s) coletada(s)"
+    else:
+        detalhe_novas = f"sem novas páginas ({fontes_lidas} fontes varridas)"
+
+    msg_status = f"Giro {hora_curta} OK • {detalhe_novas} • Próximo às {prox_curta}"
+
     catalogo = {
         "atualizado_em": agora.strftime("%d/%m/%Y %H:%M:%S"),
         "atualizado_iso": agora.isoformat(),
+        "proximo_giro_em": proximo.strftime("%d/%m/%Y %H:%M:%S"),
+        "proximo_giro_iso": proximo.isoformat(),
         "janela_dias": dias_retencao,
         "total_itens": len(itens_ordenados),
+        "status_ciclo": {
+            "estado": "concluido",
+            "verificado_em": agora.strftime("%d/%m/%Y %H:%M:%S"),
+            "hora_curta": hora_curta,
+            "proximo_giro": prox_curta,
+            "novas_paginas": novas_qtd,
+            "fontes_verificadas": fontes_lidas,
+            "expurgados_ciclo": expurgados_qtd,
+            "total_ativas_3dias": len(itens_ordenados),
+            "mensagem": msg_status,
+        },
         "itens": itens_ordenados,
     }
 

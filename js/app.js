@@ -20,6 +20,7 @@ const elSplash = document.getElementById("splash-screen");
 const elSplashProgress = document.getElementById("splash-progress");
 const elSplashStatus = document.getElementById("splash-status");
 const elLabelAtualizado = document.getElementById("label-atualizado");
+const elTextoStatusCiclo = document.getElementById("texto-status-ciclo");
 const elCategoriasNav = document.getElementById("categorias-nav");
 const elListaNoticias = document.getElementById("lista-noticias");
 const elContador = document.getElementById("contador-resultados");
@@ -71,8 +72,8 @@ function exibirSplashScreen(duracaoMinimaMs = 1550) {
 async function carregarDadosBase() {
   try {
     const [respCfg, respCat] = await Promise.all([
-      fetch(`config/fontes.config.json?t=${Date.now()}`),
-      fetch(`base_conhecimento/catalogo_3dias.json?t=${Date.now()}`)
+      fetch(`config/fontes.config.json?t=${Date.now()}`, { cache: "no-store" }),
+      fetch(`base_conhecimento/catalogo_3dias.json?t=${Date.now()}`, { cache: "no-store" })
     ]);
 
     if (respCfg.ok) {
@@ -84,7 +85,17 @@ async function carregarDadosBase() {
       const cat = await respCat.json();
       estado.itensCatalogo = cat.itens || [];
       estado.atualizadoEm = cat.atualizado_em || "Agora";
-      elLabelAtualizado.textContent = `Atualizado: ${estado.atualizadoEm}`;
+      const sc = cat.status_ciclo || {};
+      if (sc.hora_curta && sc.proximo_giro) {
+        elLabelAtualizado.textContent = `Giro: ${sc.hora_curta} (Próx: ${sc.proximo_giro})`;
+      } else {
+        elLabelAtualizado.textContent = `Atualizado: ${estado.atualizadoEm}`;
+      }
+      if (elTextoStatusCiclo) {
+        elTextoStatusCiclo.textContent =
+          sc.mensagem ||
+          `Última verificação em ${estado.atualizadoEm} • ${estado.itensCatalogo.length} páginas ativas na base`;
+      }
     } else {
       elLabelAtualizado.textContent = "Base aguardando 1º giro";
     }
@@ -381,15 +392,13 @@ if (elBtnShareApp) {
 
 elBtnCrawler.addEventListener("click", async () => {
   elBtnCrawler.classList.add("girando");
-  elLabelAtualizado.textContent = "Coletando notícias...";
+  elLabelAtualizado.textContent = "Varrendo fontes...";
+  if (elTextoStatusCiclo) {
+    elTextoStatusCiclo.textContent = "⏳ Giro em andamento: consultando portais e atualizando catalogo_3dias.json...";
+  }
   try {
-    // Se estiver rodando com server.py local, dispara o crawler ao vivo; se estático, recarrega o catálogo
     const resp = await fetch("/api/atualizar-agora", { method: "POST" }).catch(() => null);
-    if (resp && resp.ok) {
-      await carregarDadosBase();
-    } else {
-      await carregarDadosBase();
-    }
+    await carregarDadosBase();
   } finally {
     elBtnCrawler.classList.remove("girando");
   }
