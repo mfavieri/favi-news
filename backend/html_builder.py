@@ -27,16 +27,18 @@ def limpar_subtopico(texto: str) -> str:
 
 def montar_nomes_arquivos(carimbo_ts: str, categoria_id: str, subtopico: str) -> Dict[str, str]:
     """
-    Retorna os nomes padronizados para o par Notícia (_N_) e Resenha (_R_).
+    Retorna os nomes padronizados para Notícia (_N_), Resenha (_R_) e Alerta (_A_).
     Exemplo:
-      - 20261107-081500_N_Politica_Brasil.html
-      - 20261107-081500_R_Politica_Brasil.html
+      - 20261107-081500_N_Politica_Brasil.html (Notícia — retenção 3 dias)
+      - 20261107-081500_R_Politica_Brasil.html (Resenha — retenção 3 dias)
+      - 20261107-081500_A_Clima_Niteroi.html   (Alerta  — retenção 1 ciclo / 15 min)
     """
     cat_limpa = limpar_subtopico(categoria_id)
     sub_limpo = limpar_subtopico(subtopico)
     return {
         "arquivo_n": f"{carimbo_ts}_N_{cat_limpa}_{sub_limpo}.html",
         "arquivo_r": f"{carimbo_ts}_R_{cat_limpa}_{sub_limpo}.html",
+        "arquivo_a": f"{carimbo_ts}_A_{cat_limpa}_{sub_limpo}.html",
     }
 
 
@@ -93,6 +95,21 @@ CSS_COMUM_EMBUTIDO = """
   }
   .badge-r { background: rgba(56, 189, 248, 0.18); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); }
   .badge-n { background: rgba(34, 197, 94, 0.18); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4); }
+  .badge-a { background: rgba(239, 68, 68, 0.24); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.65); }
+  .alerta-box {
+    background: rgba(127, 29, 29, 0.35);
+    border-left: 4px solid #ef4444;
+    padding: 16px;
+    border-radius: 0 12px 12px 0;
+    margin: 16px 0;
+  }
+  .alerta-box h2 {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #fca5a5;
+    margin-bottom: 10px;
+  }
   .badge-cat {
     padding: 4px 10px;
     border-radius: 999px;
@@ -285,4 +302,68 @@ def gerar_html_noticia(dados: Dict) -> str:
   </article>
 </body>
 </html>"""
+
+
+def gerar_html_alerta(dados: Dict) -> str:
+    """
+    Gera o arquivo HTML de Alerta (_A_) com validade efêmera de 1 ciclo (15 minutos).
+    Deletado e reavaliado automaticamente a cada novo giro do Crawler.
+    """
+    titulo = html.escape(dados["titulo"])
+    fonte = html.escape(dados["fonte"])
+    categoria_rotulo = html.escape(dados["categoria_rotulo"])
+    icone = html.escape(dados.get("icone", "🚨"))
+    data_formatada = html.escape(dados["data_fato_formatada"])
+    resenha_texto = html.escape(dados["resenha_texto"])
+    pontos_chave: List[str] = dados.get("pontos_chave", [])
+    paragrafos: List[str] = dados.get("paragrafos_noticia", [])
+    img_b64 = dados.get("imagem_base64_completa") or dados.get("imagem_base64_miniatura", "")
+    arquivo_a = html.escape(dados["arquivo_a"])
+    url_original = html.escape(dados.get("url_original", "#"))
+
+    itens_html = "\n".join(f"<li>{html.escape(p)}</li>" for p in pontos_chave)
+    corpo_html = "\n".join(
+        f'<p class="paragrafo-noticia">{html.escape(p)}</p>' for p in paragrafos if p.strip()
+    )
+
+    return f"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="favi-tipo" content="A">
+  <meta name="favi-timestamp" content="{html.escape(dados['carimbo_ts'])}">
+  <meta name="favi-categoria" content="{html.escape(dados['categoria_id'])}">
+  <title>[ALERTA] {titulo}</title>
+  <style>{CSS_COMUM_EMBUTIDO}</style>
+</head>
+<body>
+  <article class="favi-article" data-arquivo="{arquivo_a}">
+    <img class="favi-hero-img" src="{img_b64}" alt="{titulo}">
+    <div class="favi-content">
+      <div class="favi-badges">
+        <span class="badge-tipo badge-a">🚨 Alerta Ativo (_A_) • Ciclo 15 min</span>
+        <span class="badge-cat">{icone} {categoria_rotulo}</span>
+      </div>
+      <h1>{titulo}</h1>
+      <div class="favi-meta">
+        📍 <strong>Órgão / Fonte:</strong> {fonte} &nbsp;|&nbsp; 🕒 <strong>Verificado em:</strong> {data_formatada}
+      </div>
+      <div class="alerta-box">
+        <h2>⚠️ Orientações e Severidade do Ciclo Atual</h2>
+        <ul class="resenha-lista">
+          {itens_html or f"<li>{resenha_texto}</li>"}
+        </ul>
+      </div>
+      <div class="noticia-corpo">
+        {corpo_html or f'<p class="paragrafo-noticia">{resenha_texto}</p>'}
+      </div>
+      <div class="favi-footer">
+        <a class="btn-link secundario" href="{url_original}" target="_blank" rel="noopener noreferrer">🔗 Boletim Oficial ({fonte})</a>
+      </div>
+    </div>
+  </article>
+</body>
+</html>"""
+
 

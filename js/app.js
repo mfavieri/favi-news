@@ -146,13 +146,14 @@ async function carregarDadosBase(apenasStatus = false) {
         estado.atualizadoEm = cat.atualizado_em || "Agora";
         estado.ultimoHashItens = novoHash;
 
-        // Exibe Banner Vermelho de Alerta da Defesa Civil / INMET se houver alerta ativo em Niterói
+        // Exibe Banner Vermelho de Alerta da Defesa Civil / INMET se houver alerta ativo [A] em Niterói
         const itemAlerta = estado.itensCatalogo.find((it) => it.alerta_defesa_civil);
         if (elBannerDefesaCivil && elTextoDefesaCivil) {
           if (itemAlerta && itemAlerta.alerta_defesa_civil) {
             elTextoDefesaCivil.textContent = itemAlerta.alerta_defesa_civil;
             elBannerDefesaCivil.classList.remove("hidden");
-            elBannerDefesaCivil.onclick = () => abrirLeitorModal(itemAlerta, "R");
+            elBannerDefesaCivil.onclick = () =>
+              abrirLeitorModal(itemAlerta, itemAlerta.arquivo_a ? "A" : "R");
           } else {
             elBannerDefesaCivil.classList.add("hidden");
           }
@@ -355,10 +356,35 @@ function renderizarListaNoticias() {
   }
 
   elListaNoticias.innerHTML = filtradas
-    .map(
-      (item) => `
+    .map((item) => {
+      const ehAlertaPuro = item.tipo_artefato === "A" && item.arquivo_a === item.arquivo_r;
+      const temAlertaAssociado = Boolean(item.arquivo_a);
+      const arqExibido = item.arquivo_a || item.arquivo_r;
+      const botoesHtml = ehAlertaPuro
+        ? `
+            <button class="btn-card btn-card-a" style="grid-column: 1 / -1; background: rgba(239,68,68,0.22); border-color: rgba(239,68,68,0.6); color: #fca5a5;" data-acao="abrir-a" data-ts="${item.carimbo_ts}">
+              🚨 Alerta Ativo (_A_) • Válido neste Ciclo
+            </button>
+          `
+        : `
+            <button class="btn-card btn-card-r" data-acao="abrir-r" data-ts="${item.carimbo_ts}">
+              ⚡ Resenha (_R_)
+            </button>
+            <button class="btn-card btn-card-n" data-acao="abrir-n" data-ts="${item.carimbo_ts}">
+              📰 Notícia (_N_)
+            </button>
+            ${
+              temAlertaAssociado
+                ? `<button class="btn-card btn-card-a" style="grid-column: 1 / -1; margin-top: 6px; background: rgba(239,68,68,0.22); border-color: rgba(239,68,68,0.6); color: #fca5a5;" data-acao="abrir-a" data-ts="${item.carimbo_ts}">
+                    🚨 Alerta (_A_)
+                   </button>`
+                : ""
+            }
+          `;
+
+      return `
       <article class="news-card" data-ts="${item.carimbo_ts}">
-        <div class="card-thumb-wrap" data-acao="abrir-r" data-ts="${item.carimbo_ts}">
+        <div class="card-thumb-wrap" data-acao="${ehAlertaPuro ? "abrir-a" : "abrir-r"}" data-ts="${item.carimbo_ts}">
           <img class="card-thumb" src="${item.thumbnail_base64}" alt="${escaparHtml(item.titulo)}" loading="lazy">
           <span class="card-cat-badge">${item.icone || "📰"} ${escaparHtml(item.categoria_rotulo)}</span>
           <span class="card-time-badge">🕒 ${escaparHtml(item.data_fato_formatada)}</span>
@@ -366,53 +392,54 @@ function renderizarListaNoticias() {
 
         <div class="card-body">
           <div class="card-source">📍 ${escaparHtml(item.fonte)}</div>
-          <h2 class="card-title" data-acao="abrir-r" data-ts="${item.carimbo_ts}">
+          <h2 class="card-title" data-acao="${ehAlertaPuro ? "abrir-a" : "abrir-r"}" data-ts="${item.carimbo_ts}">
             ${escaparHtml(item.titulo)}
           </h2>
           <p class="card-resenha">${escaparHtml(item.resenha_texto)}</p>
 
-          <div class="card-file-id" title="Par de arquivos HTML na Base de Conhecimento">
-            📁 ${escaparHtml(item.arquivo_r)}
+          <div class="card-file-id" title="Artefato HTML na Base de Conhecimento ([R] Resenha, [N] Notícia, [A] Alerta)">
+            📁 ${escaparHtml(arqExibido)}
           </div>
 
           <div class="card-actions">
-            <button class="btn-card btn-card-r" data-acao="abrir-r" data-ts="${item.carimbo_ts}">
-              ⚡ Resenha (_R_)
-            </button>
-            <button class="btn-card btn-card-n" data-acao="abrir-n" data-ts="${item.carimbo_ts}">
-              📰 Notícia (_N_)
-            </button>
+            ${botoesHtml}
           </div>
         </div>
       </article>
-    `
-    )
+    `;
+    })
     .join("");
 
-  // Eventos de abertura rápida dos arquivos _R_ e _N_
+  // Eventos de abertura rápida dos arquivos _R_, _N_ e _A_
   elListaNoticias.querySelectorAll("[data-acao]").forEach((el) => {
     el.addEventListener("click", () => {
       const ts = el.getAttribute("data-ts");
       const acao = el.getAttribute("data-acao");
       const item = estado.itensCatalogo.find((i) => i.carimbo_ts === ts);
       if (item) {
-        abrirLeitorModal(item, acao === "abrir-n" ? "N" : "R");
+        const modo = acao === "abrir-n" ? "N" : acao === "abrir-a" ? "A" : "R";
+        abrirLeitorModal(item, modo);
       }
     });
   });
 }
 
 /**
- * Abre o Modal Leitor carregando o arquivo HTML autocontido (_R_ ou _N_)
+ * Abre o Modal Leitor carregando o arquivo HTML autocontido (_R_, _N_ ou _A_)
  */
 function abrirLeitorModal(item, modo = "R") {
   estado.itemAberto = item;
   estado.modoLeitor = modo;
 
-  const nomeArq = modo === "N" ? item.arquivo_n : item.arquivo_r;
+  const nomeArq =
+    modo === "A" && item.arquivo_a
+      ? item.arquivo_a
+      : modo === "N"
+        ? item.arquivo_n
+        : item.arquivo_r;
   elNomeArquivo.textContent = nomeArq;
 
-  elTabResenha.classList.toggle("active", modo === "R");
+  elTabResenha.classList.toggle("active", modo === "R" || modo === "A");
   elTabNoticia.classList.toggle("active", modo === "N");
 
   elIframeLeitor.src = `base_conhecimento/${nomeArq}`;

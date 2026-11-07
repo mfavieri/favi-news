@@ -25,15 +25,17 @@ def agora_brasilia() -> datetime:
 
 
 PADRAO_NOME_ARQUIVO = re.compile(
-    r"^(\d{8}-\d{6})_([NR])_([A-Za-z0-9]+)_([A-Za-z0-9]+)\.html$"
+    r"^(\d{8}-\d{6})_([NRA])_([A-Za-z0-9]+)_([A-Za-z0-9]+)\.html$"
 )
 
 
 def extrair_metadados_do_nome(nome_arquivo: str) -> Optional[Dict[str, str]]:
     """
     Analisa um nome de arquivo no padrão do Favi:
-      Ex: 20261107-081500_N_Politica_Brasil.html
-    Retorna dicionário com timestamp, data_hora, tipo ('N' ou 'R'), categoria e subtopico.
+      Ex: 20261107-081500_N_Politica_Brasil.html (Notícia - 3 dias)
+          20261107-081500_R_Politica_Brasil.html (Resenha - 3 dias)
+          20261107-081500_A_Clima_Niteroi.html   (Alerta  - 1 ciclo de 15 min)
+    Retorna dicionário com timestamp, data_hora, tipo ('N', 'R' ou 'A'), categoria e subtopico.
     """
     m = PADRAO_NOME_ARQUIVO.match(nome_arquivo)
     if not m:
@@ -51,6 +53,31 @@ def extrair_metadados_do_nome(nome_arquivo: str) -> Optional[Dict[str, str]]:
         "categoria": categoria,
         "subtopico": subtopico,
     }
+
+
+def expurgar_alertas_ciclo(pasta_base: Path) -> List[str]:
+    """
+    Deleta TODOS os arquivos de Alerta (`_A_`) do ciclo anterior (e resíduos legados `_AlertaRJ.html`).
+    Como alertas têm sazonalidade curtíssima e podem perder validade/severidade em minutos
+    (ex: fim de tempestade), eles são limpos a cada ciclo de 15 minutos e recriados somente se
+    ainda estiverem ativos e válidos no ciclo atual.
+    """
+    removidos: List[str] = []
+    if not pasta_base.exists():
+        return removidos
+
+    for arq in pasta_base.glob("*.html"):
+        info = extrair_metadados_do_nome(arq.name)
+        if not info:
+            continue
+        if info["tipo"] == "A" or info["subtopico"] == "AlertaRJ":
+            try:
+                arq.unlink()
+                removidos.append(arq.name)
+            except OSError:
+                pass
+
+    return removidos
 
 
 def expurgar_arquivos_antigos(pasta_base: Path, dias_retencao: int = 3, agora: Optional[datetime] = None) -> List[str]:
@@ -116,8 +143,8 @@ def salvar_catalogo(
     por_carimbo: Dict[str, Dict] = {}
     for item in itens_novos_ou_atuais:
         ts = item.get("carimbo_ts", "")
-        arq_r = item.get("arquivo_r", "")
-        if not ts or not arq_r:
+        arq_principal = item.get("arquivo_a") or item.get("arquivo_r", "")
+        if not ts or not arq_principal:
             continue
         try:
             dt = datetime.strptime(ts, "%Y%m%d-%H%M%S")
@@ -125,7 +152,7 @@ def salvar_catalogo(
             continue
         if dt < limite_corte:
             continue
-        if (pasta_base / arq_r).exists():
+        if (pasta_base / arq_principal).exists():
             por_carimbo[ts] = item
 
     itens_ordenados = sorted(
@@ -211,11 +238,11 @@ def sincronizar_google_drive(pasta_base: Path, folder_id: str, dias_retencao: in
         )
         arquivos_drive = {f["name"]: f["id"] for f in resp.get("files", [])}
 
-        # 1. Expurga do Drive arquivos HTML com mais de 3 dias
+        # 1. Expurga do Drive arquivos HTML com mais de 3 dias OU alertas (_A_) já removidos localmente
         limite_corte = agora_brasilia() - timedelta(days=dias_retencao)
         for nome_arq, file_id in list(arquivos_drive.items()):
             meta = extrair_metadados_do_nome(nome_arq)
-            if meta and meta["datetime"] < limite_corte:
+            if meta and (meta["datetime"] < limite_corte or (meta["tipo"] == "A" and not (pasta_base / nome_arq).exists())):
                 service.files().delete(fileId=file_id).execute()
                 del arquivos_drive[nome_arq]
                 resultado["expurgados_drive"] += 1

@@ -26,12 +26,14 @@ from backend.drive_service import (
     FUSO_BRASILIA,
     agora_brasilia,
     carregar_catalogo,
+    expurgar_alertas_ciclo,
     expurgar_arquivos_antigos,
     extrair_metadados_do_nome,
     salvar_catalogo,
     sincronizar_google_drive,
 )
 from backend.html_builder import (
+    gerar_html_alerta,
     gerar_html_noticia,
     gerar_html_resenha,
     montar_nomes_arquivos,
@@ -431,11 +433,17 @@ def gerar_boletim_clima_niteroi(
             "imagem_base64_completa": b64_painel,
             "arquivo_r": nomes["arquivo_r"],
             "arquivo_n": nomes["arquivo_n"],
+            "arquivo_a": nomes["arquivo_a"],
             "url_original": url_climatempo_niteroi,
         }
 
         (pasta_base / nomes["arquivo_r"]).write_text(gerar_html_resenha(dados_artigo), encoding="utf-8")
         (pasta_base / nomes["arquivo_n"]).write_text(gerar_html_noticia(dados_artigo), encoding="utf-8")
+        arquivo_alerta_gerado = ""
+        if alerta_principal_str:
+            (pasta_base / nomes["arquivo_a"]).write_text(gerar_html_alerta(dados_artigo), encoding="utf-8")
+            arquivo_alerta_gerado = nomes["arquivo_a"]
+            print(f"  [!] Alerta [A] Efêmero gerado: {nomes['arquivo_a']}")
         print(f"  [+] Boletim Clima Niterói gerado: {nomes['arquivo_r']}")
 
         return {
@@ -447,12 +455,14 @@ def gerar_boletim_clima_niteroi(
             "icone": cat_cfg["icone"],
             "cor": cat_cfg["cor"],
             "subtopico": "Niteroi",
+            "tipo_artefato": "A" if arquivo_alerta_gerado else "R",
             "data_fato_formatada": dt_alocado.strftime("%d/%m/%Y às %Hh%M"),
             "resenha_texto": resenha_texto,
             "pontos_chave": pontos_chave,
             "alerta_defesa_civil": alerta_principal_str,
             "arquivo_r": nomes["arquivo_r"],
             "arquivo_n": nomes["arquivo_n"],
+            "arquivo_a": arquivo_alerta_gerado,
             "url_original": url_climatempo_niteroi,
             "thumbnail_base64": b64_painel,
         }
@@ -529,8 +539,12 @@ def processar_feed_rss(
             pub_el = item.find("{http://www.w3.org/2005/Atom}published")
         dt_fato = converter_data_rss(pub_el.text if pub_el is not None and pub_el.text else "")
 
-        # Ignora notícias com mais de 3 dias (72 horas)
-        if dt_fato < limite_corte:
+        # Se for fonte de Alerta ([A]), exige validade curtíssima (últimas 2 horas); se for notícia ([R]/[N]), 3 dias
+        eh_fonte_alerta = "alerta" in subtopico.lower()
+        if eh_fonte_alerta:
+            if dt_fato < (agora_brasilia() - timedelta(hours=2)):
+                continue
+        elif dt_fato < limite_corte:
             continue
 
         desc_el = item.find("description")
@@ -597,41 +611,69 @@ def processar_feed_rss(
             "imagem_base64_completa": b64_completa,
             "arquivo_r": nomes["arquivo_r"],
             "arquivo_n": nomes["arquivo_n"],
+            "arquivo_a": nomes["arquivo_a"],
             "url_original": url_original,
         }
 
-        # Grava os 2 arquivos HTML autocontidos na Base de Conhecimento
-        html_r = gerar_html_resenha(dados_artigo)
-        html_n = gerar_html_noticia(dados_artigo)
+        if eh_fonte_alerta:
+            # Artefato [A] - Alerta: grava apenas o arquivo _A_ (que será deletado no próximo ciclo de 15 min)
+            html_a = gerar_html_alerta(dados_artigo)
+            (pasta_base / nomes["arquivo_a"]).write_text(html_a, encoding="utf-8")
+            novos_itens_catalogo.append(
+                {
+                    "carimbo_ts": carimbo_ts,
+                    "titulo": titulo,
+                    "fonte": nome_fonte,
+                    "categoria_id": cat_cfg["id"],
+                    "categoria_rotulo": cat_cfg["rotulo"],
+                    "icone": "🚨",
+                    "cor": "#ef4444",
+                    "subtopico": subtopico,
+                    "tipo_artefato": "A",
+                    "data_fato_formatada": dt_alocado.strftime("%d/%m/%Y às %Hh%M"),
+                    "resenha_texto": resenha_texto,
+                    "pontos_chave": pontos_chave,
+                    "arquivo_a": nomes["arquivo_a"],
+                    "arquivo_r": nomes["arquivo_a"],
+                    "arquivo_n": nomes["arquivo_a"],
+                    "url_original": url_original,
+                    "thumbnail_base64": b64_miniatura,
+                }
+            )
+            print(f"  [!] Gerado Alerta Efêmero [A]: {nomes['arquivo_a']}")
+        else:
+            # Artefatos [R] e [N]: grava os 2 arquivos HTML autocontidos na Base de Conhecimento (retenção 3 dias)
+            html_r = gerar_html_resenha(dados_artigo)
+            html_n = gerar_html_noticia(dados_artigo)
 
-        (pasta_base / nomes["arquivo_r"]).write_text(html_r, encoding="utf-8")
-        (pasta_base / nomes["arquivo_n"]).write_text(html_n, encoding="utf-8")
+            (pasta_base / nomes["arquivo_r"]).write_text(html_r, encoding="utf-8")
+            (pasta_base / nomes["arquivo_n"]).write_text(html_n, encoding="utf-8")
 
-        # Registra metadado enxuto no catálogo para a Home do PWA abrir em milissegundos
-        novos_itens_catalogo.append(
-            {
-                "carimbo_ts": carimbo_ts,
-                "titulo": titulo,
-                "fonte": nome_fonte,
-                "categoria_id": cat_cfg["id"],
-                "categoria_rotulo": cat_cfg["rotulo"],
-                "icone": cat_cfg["icone"],
-                "cor": cat_cfg["cor"],
-                "subtopico": subtopico,
-                "data_fato_formatada": dt_alocado.strftime("%d/%m/%Y às %Hh%M"),
-                "resenha_texto": resenha_texto,
-                "pontos_chave": pontos_chave,
-                "arquivo_r": nomes["arquivo_r"],
-                "arquivo_n": nomes["arquivo_n"],
-                "url_original": url_original,
-                "thumbnail_base64": b64_miniatura,
-            }
-        )
+            novos_itens_catalogo.append(
+                {
+                    "carimbo_ts": carimbo_ts,
+                    "titulo": titulo,
+                    "fonte": nome_fonte,
+                    "categoria_id": cat_cfg["id"],
+                    "categoria_rotulo": cat_cfg["rotulo"],
+                    "icone": cat_cfg["icone"],
+                    "cor": cat_cfg["cor"],
+                    "subtopico": subtopico,
+                    "tipo_artefato": "RN",
+                    "data_fato_formatada": dt_alocado.strftime("%d/%m/%Y às %Hh%M"),
+                    "resenha_texto": resenha_texto,
+                    "pontos_chave": pontos_chave,
+                    "arquivo_r": nomes["arquivo_r"],
+                    "arquivo_n": nomes["arquivo_n"],
+                    "url_original": url_original,
+                    "thumbnail_base64": b64_miniatura,
+                }
+            )
+            print(f"  [+] Gerado par: {nomes['arquivo_r']} | {nomes['arquivo_n']}")
 
         if url_original:
             urls_ja_processadas.add(url_original)
         contador += 1
-        print(f"  [+] Gerado par: {nomes['arquivo_r']} | {nomes['arquivo_n']}")
 
     return novos_itens_catalogo
 
@@ -686,10 +728,13 @@ def executar_crawler() -> Dict:
     print("🎙️  FAVI NEWS CRAWLER — 'Em 15 minutos tudo pode mudar !!'")
     print("=================================================================")
 
-    # 1. Expurga arquivos com mais de 3 dias (> 72h)
+    # 1. Expurga arquivos com mais de 3 dias (> 72h) e deleta TODOS os alertas (_A_) do ciclo anterior
     expurgados = expurgar_arquivos_antigos(pasta_base, dias_retencao=dias_retencao)
+    alertas_deletados = expurgar_alertas_ciclo(pasta_base)
     if expurgados:
         print(f"🧹 Expurgo de {dias_retencao} dias: {len(expurgados)} arquivo(s) antigo(s) removido(s).")
+    if alertas_deletados:
+        print(f"🚨 Expurgo de Ciclo [A]: {len(alertas_deletados)} alerta(s) anterior(es) deletado(s) para revalidação.")
 
     # 1.1 Expurga arquivos de categorias que foram removidas do fontes.config.json
     categorias_ativas = {c["id"] for c in cfg.get("categorias", [])}
@@ -705,10 +750,14 @@ def executar_crawler() -> Dict:
     if removidos_cat:
         print(f"🗑️ Limpeza de categorias desativadas: {removidos_cat} arquivo(s) removido(s).")
 
-    # 2. Carrega catálogo existente (filtrando apenas categorias ativas)
+    # 2. Carrega catálogo existente (filtrando apenas categorias ativas e descartando alertas [A] do ciclo anterior)
     cat_atual = carregar_catalogo(pasta_base)
     itens_existentes: List[Dict] = [
-        it for it in cat_atual.get("itens", []) if it.get("categoria_id") in categorias_ativas
+        it
+        for it in cat_atual.get("itens", [])
+        if it.get("categoria_id") in categorias_ativas
+        and it.get("tipo_artefato") != "A"
+        and "alerta" not in str(it.get("subtopico", "")).lower()
     ]
     urls_ja_processadas: Set[str] = {
         it.get("url_original", "") for it in itens_existentes if it.get("url_original")
