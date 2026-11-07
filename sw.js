@@ -4,13 +4,17 @@
  * e do catálogo de 3 dias no celular.
  */
 
-const CACHE_NAME = "favinews-cache-v1";
+const CACHE_NAME = "favinews-cache-v2";
 const ARQUIVOS_ESSENCIAIS = [
   "./",
   "./index.html",
   "./css/styles.css",
   "./js/app.js",
-  "./manifest.json"
+  "./manifest.json",
+  "./favicon.ico",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
+  "./icons/apple-touch-icon.png"
 ];
 
 self.addEventListener("install", (event) => {
