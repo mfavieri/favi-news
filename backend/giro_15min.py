@@ -29,7 +29,12 @@ def executar_giro_e_publicar():
                 timeout=20,
             )
             subprocess.run(
-                ["git", "push", "origin", "HEAD:main", "HEAD:frontend", "HEAD:backend"],
+                ["git", "pull", "--rebase", "-X", "theirs", "origin", "main"],
+                cwd=str(RAIZ_PROJETO),
+                timeout=30,
+            )
+            subprocess.run(
+                ["git", "push", "origin", "HEAD:main", "HEAD:frontend", "HEAD:backend", "--force"],
                 cwd=str(RAIZ_PROJETO),
                 timeout=60,
             )
