@@ -4,7 +4,7 @@
  * e do catálogo de 3 dias no celular.
  */
 
-const CACHE_NAME = "favinews-cache-v2";
+const CACHE_NAME = "favinews-cache-v3";
 const ARQUIVOS_ESSENCIAIS = [
   "./",
   "./index.html",
@@ -12,6 +12,7 @@ const ARQUIVOS_ESSENCIAIS = [
   "./js/app.js",
   "./manifest.json",
   "./favicon.ico",
+  "./icons/FaviNews.png",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/apple-touch-icon.png"
