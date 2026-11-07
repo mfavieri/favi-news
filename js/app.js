@@ -917,7 +917,11 @@ if ("serviceWorker" in navigator) {
 
 // Inicialização com Splash Screen "Em 15 minutos tudo pode mudar !!"
 window.addEventListener("DOMContentLoaded", () => {
-  exibirSplashScreen(1650);
+  exibirSplashScreen(1650).then(() => {
+    if (window.location.search.includes("config=1")) {
+      abrirModalConfigurador();
+    }
+  });
   carregarDadosBase(false);
 
   // Consulta o status_ciclo no JSON a cada 5 segundos para mostrar o andamento ao vivo
