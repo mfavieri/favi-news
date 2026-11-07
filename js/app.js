@@ -922,8 +922,8 @@ if (elBtnSalvarConfig) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          usr: credUsr,
-          psw: credPsw,
+          usr: "FaviNews",
+          psw: "NewsFavi",
           config: cfg,
           rodar_crawler: true
         })
@@ -934,16 +934,12 @@ if (elBtnSalvarConfig) {
         mostrarToast("💾 Configuração salva, enviada ao GitHub e giro iniciado!");
         setTimeout(() => carregarDadosBase(false), 1500);
       } else {
-        throw new Error("Servidor local não respondeu");
+        const txtErro = await resp.text().catch(() => "");
+        throw new Error(txtErro || "Servidor local não respondeu");
       }
-    } catch (_) {
-      // Caso aberto direto pelo GitHub Pages sem o server.py local, baixa o fontes.config.json pronto
-      const blob = new Blob([JSON.stringify(cfg, null, 2)], { type: "application/json" });
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = "fontes.config.json";
-      a.click();
-      elCfgStatusMsg.textContent = "📥 Arquivo fontes.config.json gerado (rode em localhost:8090 para push direto).";
+    } catch (err) {
+      elCfgStatusMsg.textContent = "⚠️ Verifique se o Iniciar_Configurador_FaviNews.bat está aberto na porta 8090.";
+      mostrarToast("⚠️ Servidor local não encontrado na porta 8090.");
     }
   });
 }

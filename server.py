@@ -6,6 +6,7 @@ sob demanda pelo botão 🔄 da interface.
 """
 
 import json
+import os
 import subprocess
 import sys
 import threading
@@ -171,7 +172,28 @@ class FaviNewsRequestHandler(SimpleHTTPRequestHandler):
             self.send_error(404, "Rota nao encontrada")
 
 
+def liberar_porta_windows(porta: int):
+    """Encerra eventual processo anterior do servidor que tenha ficado preso na mesma porta."""
+    meu_pid = os.getpid()
+    try:
+        saida = subprocess.check_output(["netstat", "-ano"], text=True, stderr=subprocess.DEVNULL)
+        for linha in saida.splitlines():
+            if f":{porta} " in linha and "LISTENING" in linha:
+                partes = linha.split()
+                pid_antigo = int(partes[-1])
+                if pid_antigo != meu_pid and pid_antigo > 0:
+                    subprocess.run(
+                        ["taskkill", "/F", "/PID", str(pid_antigo)],
+                        stdout=subprocess.DEVNULL,
+                        stderr=subprocess.DEVNULL,
+                    )
+                    time.sleep(0.4)
+    except Exception:
+        pass
+
+
 def iniciar_servidor(porta: int = PORTA_PADRAO):
+    liberar_porta_windows(porta)
     # Inicia a thread autônoma de 15 em 15 minutos em background
     t_cron = threading.Thread(target=loop_agendador_15min, daemon=True)
     t_cron.start()
