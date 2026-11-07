@@ -22,6 +22,8 @@ const elSplashProgress = document.getElementById("splash-progress");
 const elSplashStatus = document.getElementById("splash-status");
 const elLabelAtualizado = document.getElementById("label-atualizado");
 const elTextoStatusCiclo = document.getElementById("texto-status-ciclo");
+const elBannerDefesaCivil = document.getElementById("banner-alerta-defesa-civil");
+const elTextoDefesaCivil = document.getElementById("texto-alerta-defesa-civil");
 const elCategoriasNav = document.getElementById("categorias-nav");
 const elListaNoticias = document.getElementById("lista-noticias");
 const elContador = document.getElementById("contador-resultados");
@@ -143,6 +145,19 @@ async function carregarDadosBase(apenasStatus = false) {
         estado.itensCatalogo = cat.itens || [];
         estado.atualizadoEm = cat.atualizado_em || "Agora";
         estado.ultimoHashItens = novoHash;
+
+        // Exibe Banner Vermelho de Alerta da Defesa Civil / INMET se houver alerta ativo em Niterói
+        const itemAlerta = estado.itensCatalogo.find((it) => it.alerta_defesa_civil);
+        if (elBannerDefesaCivil && elTextoDefesaCivil) {
+          if (itemAlerta && itemAlerta.alerta_defesa_civil) {
+            elTextoDefesaCivil.textContent = itemAlerta.alerta_defesa_civil;
+            elBannerDefesaCivil.classList.remove("hidden");
+            elBannerDefesaCivil.onclick = () => abrirLeitorModal(itemAlerta, "R");
+          } else {
+            elBannerDefesaCivil.classList.add("hidden");
+          }
+        }
+
         renderizarAbasCategorias();
         renderizarListaNoticias();
       }

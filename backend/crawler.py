@@ -403,7 +403,7 @@ def gerar_boletim_clima_niteroi(
         return {
             "carimbo_ts": carimbo_ts,
             "titulo": titulo,
-            "fonte": "Climatempo • Niterói - RJ",
+            "fonte": "Climatempo & Defesa Civil • Niterói - RJ",
             "categoria_id": cat_cfg["id"],
             "categoria_rotulo": cat_cfg["rotulo"],
             "icone": cat_cfg["icone"],
@@ -412,6 +412,7 @@ def gerar_boletim_clima_niteroi(
             "data_fato_formatada": dt_alocado.strftime("%d/%m/%Y às %Hh%M"),
             "resenha_texto": resenha_texto,
             "pontos_chave": pontos_chave,
+            "alerta_defesa_civil": alerta_principal_str,
             "arquivo_r": nomes["arquivo_r"],
             "arquivo_n": nomes["arquivo_n"],
             "url_original": url_climatempo_niteroi,
@@ -703,7 +704,7 @@ def executar_crawler() -> Dict:
             fontes_verificadas += 1
             # Remove boletins automáticos anteriores de Niterói para manter sempre o mais fresco no topo
             for ant in list(itens_existentes):
-                if ant.get("fonte") == "Climatempo • Niterói - RJ":
+                if "Climatempo" in ant.get("fonte", "") and "Niterói - RJ" in ant.get("fonte", ""):
                     for chave_arq in ("arquivo_r", "arquivo_n"):
                         caminho_ant = pasta_base / ant.get(chave_arq, "")
                         if caminho_ant.exists():
