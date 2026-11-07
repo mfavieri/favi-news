@@ -238,8 +238,9 @@ def gerar_boletim_clima_niteroi(
 ) -> Optional[Dict]:
     """
     Gera o Boletim Meteorológico em Tempo Real de Niterói - RJ combinando:
-    1. Estação real de Niterói (wttr.in / METAR SBRJ) + Open-Meteo;
-    2. Alertas Meteorológicos Oficiais Ativos (INMET / MSN Clima RJ & Niterói).
+    1. Estação real de Niterói (Open-Meteo + wttr.in / METAR SBRJ) com fallback resiliente;
+    2. Alertas Meteorológicos Oficiais Ativos (INMET / MSN Clima RJ & Niterói),
+       cruzando com a precipitação e vento reais da estação para detectar quando a tempestade já passou.
     """
     url_api = (
         "https://api.open-meteo.com/v1/forecast?"
@@ -249,43 +250,60 @@ def gerar_boletim_clima_niteroi(
         "&timezone=America%2FSao_Paulo&forecast_days=3"
     )
     try:
-        req = urllib.request.Request(url_api, headers=HEADERS_PADRAO)
-        with urllib.request.urlopen(req, timeout=8) as resp:
-            dados = json.loads(resp.read().decode("utf-8"))
+        dados = {}
+        for tentativa in range(2):
+            try:
+                req = urllib.request.Request(url_api, headers=HEADERS_PADRAO)
+                with urllib.request.urlopen(req, timeout=10) as resp:
+                    dados = json.loads(resp.read().decode("utf-8"))
+                break
+            except Exception:
+                if tentativa == 1:
+                    dados = {}
 
         atual = dados.get("current", {})
         diario = dados.get("daily", {})
 
         temp = float(atual.get("temperature_2m", 26.0))
         sensacao = float(atual.get("apparent_temperature", temp))
-        umidade = int(atual.get("relative_humidity_2m", 75))
-        vento = float(atual.get("wind_speed_10m", 14.0))
-        wcode = int(atual.get("weather_code", 2))
+        umidade = int(atual.get("relative_humidity_2m", 80))
+        precip_mm = float(atual.get("precipitation", 0.0))
+        vento = float(atual.get("wind_speed_10m", 8.0))
+        wcode = int(atual.get("weather_code", 3))
         icone_cond, texto_cond = MAPA_WMO_CLIMA.get(wcode, ("⛅", "Tempo Variável"))
 
-        # Sobrescreve com leitura da estação real de Niterói (METAR) para refletir chuva/nebulosidade real
+        # Complementa com leitura da estação METAR de Niterói (wttr.in)
         try:
             req_wttr = urllib.request.Request("https://wttr.in/Niteroi?format=j1&lang=pt", headers=HEADERS_PADRAO)
             with urllib.request.urlopen(req_wttr, timeout=6) as r_w:
                 dw = json.loads(r_w.read().decode("utf-8", errors="ignore"))
                 cc = dw.get("current_condition", [{}])[0]
-                if cc.get("temp_C"):
+                if not atual and cc.get("temp_C"):
                     temp = float(cc["temp_C"])
-                if cc.get("FeelsLikeC"):
+                if not atual and cc.get("FeelsLikeC"):
                     sensacao = float(cc["FeelsLikeC"])
-                if cc.get("humidity"):
+                if not atual and cc.get("humidity"):
                     umidade = int(cc["humidity"])
+                wttr_precip = float(cc.get("precipMM", 0.0) or 0.0)
+                # Só usa descrição de chuva/trovoada do wttr se houver precipitação real agora
                 if cc.get("lang_pt") and cc["lang_pt"][0].get("value"):
-                    texto_cond = cc["lang_pt"][0]["value"].strip()
+                    desc_wttr = cc["lang_pt"][0]["value"].strip()
+                    if precip_mm > 0.2 or wttr_precip > 0.2:
+                        texto_cond = desc_wttr
         except Exception:
             pass
 
-        # Consulta alertas oficiais ativos para Niterói / RJ (Tempestade, Chuvas, Ventos Costeiros)
+        # Verifica se ainda está chovendo/tempestade AGORA na estação de Niterói
+        estacao_com_chuva_ou_vento_forte = (precip_mm >= 0.3) or (wcode >= 51) or (vento >= 35.0)
+        if not estacao_com_chuva_ou_vento_forte and precip_mm == 0.0 and wcode <= 3:
+            texto_cond = f"{texto_cond} • Sem Chuva (0 mm)"
+
+        # Consulta alertas oficiais ativos para Niterói / RJ (INMET / Defesa Civil)
         alertas_ativos = consultar_alertas_oficiais_rj()
 
         t_min_lista = diario.get("temperature_2m_min", [22.0, 21.0, 21.0])
         t_max_lista = diario.get("temperature_2m_max", [31.0, 29.0, 28.0])
-        prob_lista = diario.get("precipitation_probability_max", [60, 40, 30])
+        prob_lista = diario.get("precipitation_probability_max", [40, 35, 30])
         wcode_lista = diario.get("weather_code", [wcode, wcode, wcode])
         datas_lista = diario.get("time", [])
 
@@ -295,18 +313,27 @@ def gerar_boletim_clima_niteroi(
 
         alerta_principal_str = ""
         alerta_banner_svg = ""
+        aviso_informativo_pos_chuva = ""
         if alertas_ativos:
             a0 = alertas_ativos[0]
-            alerta_banner_svg = f"ALERTA {a0['descricao'].upper()} ({a0['severidade']}) EM NITERÓI/RJ"
             risco_txt = a0["riscos"][0] if a0.get("riscos") else ""
-            alerta_principal_str = (
-                f"🚨 ALERTA OFICIAL ATIVO ({a0['descricao']} - {a0['severidade']}): "
-                f"Vigência de {a0['inicio']} até {a0['fim']}. {risco_txt}"
-            )
-            if "tempestade" in a0["descricao"].lower() or "chuva" in a0["descricao"].lower():
-                icone_cond = "⛈️"
-                texto_cond = f"Alerta de {a0['descricao']}"
-                prob_hoje = max(prob_hoje, 85)
+            if estacao_com_chuva_ou_vento_forte:
+                # Tempestade/Chuva ativa em Niterói: aciona Banner Vermelho Global de Emergência
+                alerta_banner_svg = f"ALERTA {a0['descricao'].upper()} ({a0['severidade']}) EM NITERÓI/RJ"
+                alerta_principal_str = (
+                    f"🚨 ALERTA OFICIAL ATIVO ({a0['descricao']} - {a0['severidade']}): "
+                    f"Vigência de {a0['inicio']} até {a0['fim']}. {risco_txt}"
+                )
+                if "tempestade" in a0["descricao"].lower() or "chuva" in a0["descricao"].lower():
+                    icone_cond = "⛈️"
+                    texto_cond = f"Alerta de {a0['descricao']}"
+                    prob_hoje = max(prob_hoje, 85)
+            else:
+                # A tempestade já passou na estação de Niterói (0 mm de chuva e vento calmo)
+                aviso_informativo_pos_chuva = (
+                    f"ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de {vento:.0f} km/h). "
+                    f"Aviso preventivo do INMET ({a0['descricao']}) segue em observação regional até {a0['fim']}."
+                )
 
         agora_br = agora_brasilia()
         carimbo_ts, dt_alocado = alocar_carimbo_unico(agora_br, carimbos_usados)
@@ -324,36 +351,47 @@ def gerar_boletim_clima_niteroi(
             alerta_banner=alerta_banner_svg,
         )
 
-        prefixo_alerta = f"⛈️ [ALERTA: {alertas_ativos[0]['descricao'].upper()}] " if alertas_ativos else ""
+        prefixo_alerta = (
+            f"⛈️ [ALERTA: {alertas_ativos[0]['descricao'].upper()}] "
+            if (alertas_ativos and estacao_com_chuva_ou_vento_forte)
+            else ""
+        )
         titulo = (
             f"{prefixo_alerta}Niterói - RJ Agora: {temp:.0f}°C ({texto_cond}) • "
-            f"Sensação {sensacao:.0f}°C | Máx {t_max_hoje:.0f}°C / Mín {t_min_hoje:.0f}°C"
+            f"Vento {vento:.0f} km/h | Máx {t_max_hoje:.0f}°C / Mín {t_min_hoje:.0f}°C"
         )
         resenha_texto = (
             f"{alerta_principal_str + ' | ' if alerta_principal_str else ''}"
-            f"Estação Niterói registra {temp:.0f}°C ({texto_cond}) com sensação de {sensacao:.0f}°C "
-            f"e umidade de {umidade}%."
+            f"Estação Niterói registra agora {temp:.0f}°C ({texto_cond}), sensação de {sensacao:.0f}°C, "
+            f"vento de {vento:.0f} km/h e umidade de {umidade}%."
+            f"{' ' + aviso_informativo_pos_chuva if aviso_informativo_pos_chuva else ''}"
         )
 
-        pontos_chave = []
-        for al in alertas_ativos[:2]:
-            r_resumo = al["riscos"][0] if al.get("riscos") else ""
-            pontos_chave.append(
-                f"🚨 Alerta {al['descricao']} ({al['severidade']}): {r_resumo} (até {al['fim']})"
-            )
-        pontos_chave.extend([
-            f"Agora na Estação Niterói: {icone_cond} {temp:.0f}°C ({texto_cond}) — Sensação térmica de {sensacao:.0f}°C e umidade {umidade}%.",
-            f"Temperaturas Hoje em Niterói: Mínima de {t_min_hoje:.0f}°C e Máxima de {t_max_hoje:.0f}°C | Chuva: {prob_hoje}%.",
-        ])
+        pontos_chave = [
+            f"Agora na Estação Niterói: {icone_cond} {temp:.0f}°C ({texto_cond}) — Vento {vento:.0f} km/h, sensação {sensacao:.0f}°C e umidade {umidade}%.",
+            f"Temperaturas Hoje em Niterói: Mínima de {t_min_hoje:.0f}°C e Máxima de {t_max_hoje:.0f}°C | Probabilidade residual de chuva: {prob_hoje}%.",
+        ]
+        if estacao_com_chuva_ou_vento_forte and alertas_ativos:
+            for al in alertas_ativos[:2]:
+                r_resumo = al["riscos"][0] if al.get("riscos") else ""
+                pontos_chave.insert(
+                    0,
+                    f"🚨 Alerta {al['descricao']} ({al['severidade']}): {r_resumo} (até {al['fim']})",
+                )
+        elif aviso_informativo_pos_chuva:
+            pontos_chave.append(aviso_informativo_pos_chuva)
 
         paragrafos = [resenha_texto]
-        for al in alertas_ativos:
-            riscos_juntos = " ".join(al.get("riscos", []))
-            instr_juntas = " ".join(al.get("instrucoes", []))
-            paragrafos.append(
-                f"⚠️ AVISO METEOROLÓGICO ATIVO — {al['descricao'].upper()} ({al['severidade']}): "
-                f"Início: {al['inicio']} | Fim: {al['fim']}. Riscos: {riscos_juntos} {instr_juntas}"
-            )
+        if estacao_com_chuva_ou_vento_forte:
+            for al in alertas_ativos:
+                riscos_juntos = " ".join(al.get("riscos", []))
+                instr_juntas = " ".join(al.get("instrucoes", []))
+                paragrafos.append(
+                    f"⚠️ AVISO METEOROLÓGICO ATIVO — {al['descricao'].upper()} ({al['severidade']}): "
+                    f"Início: {al['inicio']} | Fim: {al['fim']}. Riscos: {riscos_juntos} {instr_juntas}"
+                )
+        elif aviso_informativo_pos_chuva:
+            paragrafos.append(aviso_informativo_pos_chuva)
 
         # Adiciona previsão detalhada dos 3 dias
         nomes_dias = ["Hoje", "Amanhã", "Próximo Dia"]
@@ -702,19 +740,19 @@ def executar_crawler() -> Dict:
         print(f"\n📡 Varrendo editoria: {cat_cfg['icone']} {cat_cfg['rotulo']}...")
         if cat_cfg.get("id") == "Clima":
             fontes_verificadas += 1
-            # Remove boletins automáticos anteriores de Niterói para manter sempre o mais fresco no topo
-            for ant in list(itens_existentes):
-                if "Climatempo" in ant.get("fonte", "") and "Niterói - RJ" in ant.get("fonte", ""):
-                    for chave_arq in ("arquivo_r", "arquivo_n"):
-                        caminho_ant = pasta_base / ant.get(chave_arq, "")
-                        if caminho_ant.exists():
-                            try:
-                                caminho_ant.unlink()
-                            except OSError:
-                                pass
-                    itens_existentes.remove(ant)
             boletim_nit = gerar_boletim_clima_niteroi(cat_cfg, carimbos_usados, pasta_base)
             if boletim_nit:
+                # Só remove boletins automáticos anteriores de Niterói depois que o novo já foi gerado com sucesso
+                for ant in list(itens_existentes):
+                    if "Climatempo" in ant.get("fonte", "") and "Niterói - RJ" in ant.get("fonte", ""):
+                        for chave_arq in ("arquivo_r", "arquivo_n"):
+                            caminho_ant = pasta_base / ant.get(chave_arq, "")
+                            if caminho_ant.exists() and caminho_ant.name not in (boletim_nit["arquivo_r"], boletim_nit["arquivo_n"]):
+                                try:
+                                    caminho_ant.unlink()
+                                except OSError:
+                                    pass
+                        itens_existentes.remove(ant)
                 todos_novos.append(boletim_nit)
         for fonte_cfg in cat_cfg.get("fontes", []):
             fontes_verificadas += 1
