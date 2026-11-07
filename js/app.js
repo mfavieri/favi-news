@@ -27,6 +27,7 @@ const elInputBusca = document.getElementById("input-busca");
 const elBtnLimparBusca = document.getElementById("btn-limpar-busca");
 const elSelectDia = document.getElementById("select-janela-dia");
 const elBtnCrawler = document.getElementById("btn-forcar-crawler");
+const elBtnShareApp = document.getElementById("btn-compartilhar-app");
 const elBtnReplaySplash = document.getElementById("btn-replay-splash");
 
 // Modal Leitor
@@ -335,6 +336,48 @@ elSelectDia.addEventListener("change", () => {
 elBtnReplaySplash.addEventListener("click", () => {
   exibirSplashScreen(1800);
 });
+
+function mostrarToast(mensagem) {
+  const toast = document.createElement("div");
+  toast.className = "toast-share";
+  toast.textContent = mensagem;
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    setTimeout(() => toast.remove(), 350);
+  }, 2600);
+}
+
+if (elBtnShareApp) {
+  elBtnShareApp.addEventListener("click", async () => {
+    const urlOficial = "https://mfavieri.github.io/favi-news/";
+    const dadosShare = {
+      title: "FaviNews — Em 15 minutos tudo pode mudar !!",
+      text: "🎙️ Instale o FaviNews ('Em 15 minutos tudo pode mudar !!') — manchetes e resenhas em tempo real, direto no celular e sem login:",
+      url: urlOficial
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(dadosShare);
+        return;
+      } catch (err) {
+        if (err && err.name === "AbortError") return;
+      }
+    }
+
+    // Fallback para PC/Desktop: copia link e abre opção de WhatsApp
+    try {
+      await navigator.clipboard.writeText(`${dadosShare.text} ${urlOficial}`);
+      mostrarToast("🔗 Link do FaviNews copiado para a área de transferência!");
+    } catch (_) {
+      window.open(
+        `https://wa.me/?text=${encodeURIComponent(dadosShare.text + " " + urlOficial)}`,
+        "_blank"
+      );
+    }
+  });
+}
 
 elBtnCrawler.addEventListener("click", async () => {
   elBtnCrawler.classList.add("girando");
