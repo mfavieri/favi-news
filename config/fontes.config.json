@@ -88,6 +88,15 @@
           "rss_url": "https://news.google.com/rss/search?q=Niteroi+RJ+-futebol+when:1d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
           "sazonalidade": "1d",
           "filtro": "primeira_pagina"
+        },
+        {
+          "nome": "G1 / Niteroi",
+          "subtopico": "G1Niteroi",
+          "site_url": "https://g1.globo.com/rj/rio-de-janeiro/cidade/niteroi/",
+          "rss_url": "https://g1.globo.com/rj/rio-de-janeiro/cidade/niteroi/",
+          "sazonalidade": "2d",
+          "filtro": "primeira_pagina",
+          "regras_busca": ""
         }
       ]
     },
