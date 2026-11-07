@@ -13,6 +13,8 @@ echo.
 echo [1/3] Sincronizando com a nuvem do GitHub (git pull)...
 git pull --rebase -X theirs origin main >nul 2>&1
 
+powershell -NoProfile -Command "Get-NetTCPConnection -LocalPort 8090 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }" >nul 2>&1
+
 echo [2/3] Abrindo navegador em http://localhost:8090/?config=1 ...
 start "" "http://localhost:8090/?config=1"
 
