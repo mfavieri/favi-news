@@ -122,9 +122,9 @@ class FaviNewsRequestHandler(SimpleHTTPRequestHandler):
                 tam = int(self.headers.get("Content-Length", "0"))
                 bruto = self.rfile.read(tam).decode("utf-8")
                 payload = json.loads(bruto)
-                usr = payload.get("usr", "")
-                psw = payload.get("psw", "")
-                if usr != "FaviNews" or psw != "NewsFavi":
+                usr = str(payload.get("usr", "")).strip().lower()
+                psw = str(payload.get("psw", "")).strip().lower()
+                if usr != "favinews" or psw != "newsfavi":
                     negado = json.dumps({"ok": False, "erro": "Credenciais inválidas!"}, ensure_ascii=False).encode("utf-8")
                     self.send_response(401)
                     self.send_header("Content-Type", "application/json; charset=utf-8")

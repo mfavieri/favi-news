@@ -644,12 +644,12 @@ function fecharModalConfigurador() {
 }
 
 function autenticarConfigurador() {
-  const u = (elInputUsr?.value || "").trim();
+  const u = (elInputUsr?.value || "FaviNews").trim();
   const p = (elInputPsw?.value || "").trim();
-  if (u === "FaviNews" && p === "NewsFavi") {
+  if (u.toLowerCase() === "favinews" && p.toLowerCase() === "newsfavi") {
     configAutenticado = true;
-    credUsr = u;
-    credPsw = p;
+    credUsr = "FaviNews";
+    credPsw = "NewsFavi";
     elLoginErro.classList.add("hidden");
     elConfigLoginView.classList.add("hidden");
     elConfigStudioView.classList.remove("hidden");
