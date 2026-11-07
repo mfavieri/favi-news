@@ -90,10 +90,10 @@
           "filtro": "primeira_pagina"
         },
         {
-          "nome": "G1 / Niteroi",
-          "subtopico": "G1Niteroi",
-          "site_url": "https://g1.globo.com/rj/rio-de-janeiro/cidade/niteroi/",
-          "rss_url": "https://g1.globo.com/rj/rio-de-janeiro/cidade/niteroi/",
+          "nome": "Prefeitura de Niteroi",
+          "subtopico": "PrefeituradeNi",
+          "site_url": "https://niteroi.rj.gov.br/noticias/",
+          "rss_url": "https://niteroi.rj.gov.br/noticias/",
           "sazonalidade": "2d",
           "filtro": "primeira_pagina",
           "regras_busca": ""
