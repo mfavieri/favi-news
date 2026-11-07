@@ -1,0 +1,51 @@
+/**
+ * Service Worker do FaviNews PWA.
+ * Garante funcionamento rápido e leitura offline dos arquivos HTML (_R_ e _N_)
+ * e do catálogo de 3 dias no celular.
+ */
+
+const CACHE_NAME = "favinews-cache-v1";
+const ARQUIVOS_ESSENCIAIS = [
+  "./",
+  "./index.html",
+  "./css/styles.css",
+  "./js/app.js",
+  "./manifest.json"
+];
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ARQUIVOS_ESSENCIAIS))
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((chaves) =>
+      Promise.all(
+        chaves.map((chave) => {
+          if (chave !== CACHE_NAME) {
+            return caches.delete(chave);
+          }
+        })
+      )
+    )
+  );
+  self.clients.claim();
+});
+
+// Estratégia Network-First com fallback para Cache (ideal para notícias de 15 em 15 min)
+self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") return;
+  event.respondWith(
+    fetch(event.request)
+      .then((respostaRede) => {
+        const copia = respostaRede.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copia));
+        return respostaRede;
+      })
+      .catch(() => caches.match(event.request))
+  );
+});
+

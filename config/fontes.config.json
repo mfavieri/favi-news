@@ -1,0 +1,147 @@
+{
+  "janela_retencao_dias": 3,
+  "intervalo_crawler_minutos": 15,
+  "max_noticias_por_fonte": 4,
+  "google_drive": {
+    "habilitado": false,
+    "folder_id": "COLE_AQUI_O_ID_DA_PASTA_DO_GOOGLE_DRIVE",
+    "leitura_publica_sem_login": true
+  },
+  "categorias": [
+    {
+      "id": "Politica",
+      "rotulo": "Política",
+      "icone": "🏛️",
+      "cor": "#2563eb",
+      "subtopico_padrao": "Brasil",
+      "fontes": [
+        {
+          "nome": "G1 Política",
+          "subtopico": "Brasil",
+          "rss_url": "https://g1.globo.com/rss/g1/politica/"
+        },
+        {
+          "nome": "BBC News Brasil",
+          "subtopico": "Brasil",
+          "rss_url": "https://feeds.bbci.co.uk/portuguese/rss.xml"
+        },
+        {
+          "nome": "Agência Brasil Política",
+          "subtopico": "Brasilia",
+          "rss_url": "https://agenciabrasil.ebc.com.br/rss/politica/feed.xml"
+        }
+      ]
+    },
+    {
+      "id": "Economia",
+      "rotulo": "Economia",
+      "icone": "📈",
+      "cor": "#059669",
+      "subtopico_padrao": "Mercados",
+      "fontes": [
+        {
+          "nome": "G1 Economia",
+          "subtopico": "Brasil",
+          "rss_url": "https://g1.globo.com/rss/g1/economia/"
+        },
+        {
+          "nome": "InfoMoney Mercados",
+          "subtopico": "Mercados",
+          "rss_url": "https://www.infomoney.com.br/feed/"
+        },
+        {
+          "nome": "Agência Brasil Economia",
+          "subtopico": "Brasil",
+          "rss_url": "https://agenciabrasil.ebc.com.br/rss/economia/feed.xml"
+        }
+      ]
+    },
+    {
+      "id": "Esporte",
+      "rotulo": "Esporte",
+      "icone": "⚽",
+      "cor": "#16a34a",
+      "subtopico_padrao": "Futebol",
+      "fontes": [
+        {
+          "nome": "GE Globo Esporte",
+          "subtopico": "Brasil",
+          "rss_url": "https://ge.globo.com/rss/ge/"
+        },
+        {
+          "nome": "ESPN Brasil",
+          "subtopico": "Esportes",
+          "rss_url": "https://news.google.com/rss/search?q=site:espn.com.br+futebol+OR+esporte&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        },
+        {
+          "nome": "Agência Brasil Esportes",
+          "subtopico": "Brasil",
+          "rss_url": "https://agenciabrasil.ebc.com.br/rss/esportes/feed.xml"
+        }
+      ]
+    },
+    {
+      "id": "Ciencias",
+      "rotulo": "Ciências",
+      "icone": "🔬",
+      "cor": "#7c3aed",
+      "subtopico_padrao": "Inovacao",
+      "fontes": [
+        {
+          "nome": "G1 Ciência",
+          "subtopico": "Pesquisa",
+          "rss_url": "https://g1.globo.com/rss/g1/ciencia-e-saude/"
+        },
+        {
+          "nome": "BBC Ciência & Tecnologia",
+          "subtopico": "Mundo",
+          "rss_url": "https://news.google.com/rss/search?q=ciencia+tecnologia+descoberta&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        }
+      ]
+    },
+    {
+      "id": "Saude",
+      "rotulo": "Saúde",
+      "icone": "🩺",
+      "cor": "#e11d48",
+      "subtopico_padrao": "BemEstar",
+      "fontes": [
+        {
+          "nome": "Agência Brasil Saúde",
+          "subtopico": "Brasil",
+          "rss_url": "https://agenciabrasil.ebc.com.br/rss/saude/feed.xml"
+        },
+        {
+          "nome": "CNN & Portais Saúde",
+          "subtopico": "BemEstar",
+          "rss_url": "https://news.google.com/rss/search?q=saude+medicina+bem+estar+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        }
+      ]
+    },
+    {
+      "id": "Transito",
+      "rotulo": "Trânsito RJ",
+      "icone": "🚗",
+      "cor": "#ea580c",
+      "subtopico_padrao": "Rio",
+      "fontes": [
+        {
+          "nome": "COR-Rio & Trânsito RJ",
+          "subtopico": "Rio",
+          "rss_url": "https://news.google.com/rss/search?q=Transito+Rio+de+Janeiro+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        },
+        {
+          "nome": "Vias Expressas RJ (Av. Brasil, Ponte e Linhas)",
+          "subtopico": "ViasRJ",
+          "rss_url": "https://news.google.com/rss/search?q=Avenida+Brasil+OR+Linha+Vermelha+OR+Ponte+Rio-Niteroi+OR+Linha+Amarela+Rio+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        },
+        {
+          "nome": "G1 Rio de Janeiro",
+          "subtopico": "Rio",
+          "rss_url": "https://g1.globo.com/rss/g1/rio-de-janeiro/"
+        }
+      ]
+    }
+  ]
+}
+

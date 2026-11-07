@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0b1120">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="FaviNews">
+  <title>FaviNews — Em 15 minutos tudo pode mudar !!</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       SPLASH SCREEN: FaviNews - "Em 15 minutos tudo pode mudar !!"
+       ========================================================================= -->
+  <div id="splash-screen" class="splash-screen" role="dialog" aria-label="Carregando FaviNews">
+    <div class="splash-content">
+      <div class="splash-radar">
+        <div class="radar-ring ring-1"></div>
+        <div class="radar-ring ring-2"></div>
+        <div class="radar-clock">
+          <span class="clock-15">15'</span>
+        </div>
+      </div>
+
+      <div class="splash-brand">
+        <span class="brand-badge">EDIÇÃO EM TEMPO REAL • SEM LOGIN</span>
+        <h1 class="splash-title">Favi<span>News</span></h1>
+        <p class="splash-slogan">“Em 15 minutos tudo pode mudar !!”</p>
+      </div>
+
+      <div class="splash-loader">
+        <div class="loader-bar">
+          <div id="splash-progress" class="loader-fill"></div>
+        </div>
+        <span id="splash-status" class="loader-text">Sintonizando manchetes dos últimos 3 dias...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       CABEÇALHO FIXO MOBILE-FIRST
+       ========================================================================= -->
+  <header class="app-header">
+    <div class="header-top">
+      <div class="logo-area" id="btn-replay-splash" title="Clique para exibir a Splash Screen">
+        <div class="logo-badge">15'</div>
+        <div>
+          <div class="logo-title">Favi<span>News</span></div>
+          <div class="logo-slogan">Em 15 minutos tudo pode mudar !!</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="status-pill" id="status-atualizacao" title="Última sincronização da Base de Conhecimento">
+          <span class="pulse-dot"></span>
+          <span id="label-atualizado">Sincronizando...</span>
+        </div>
+        <button id="btn-forcar-crawler" class="btn-icon" title="Disparar giro de 15 min agora">
+          🔄
+        </button>
+      </div>
+    </div>
+
+    <!-- Barra de Busca por Palavras-Chave + Filtro de Janela de 3 Dias -->
+    <div class="search-bar-row">
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input
+          type="search"
+          id="input-busca"
+          placeholder="Buscar por palavra-chave, assunto ou fonte..."
+          autocomplete="off"
+        >
+        <button id="btn-limpar-busca" class="btn-clear-search hidden" aria-label="Limpar busca">✕</button>
+      </div>
+
+      <select id="select-janela-dia" class="select-dia" aria-label="Filtrar dia dentro da janela de 3 dias">
+        <option value="todos">📅 3 Dias</option>
+        <option value="hoje">Hoje</option>
+        <option value="ontem">Ontem</option>
+      </select>
+    </div>
+
+    <!-- Abas Deslizáveis de Editorias Configuráveis -->
+    <nav class="categorias-nav" id="categorias-nav" aria-label="Editorias de notícias">
+      <!-- Preenchido dinamicamente a partir de config/fontes.config.json -->
+    </nav>
+  </header>
+
+  <!-- =========================================================================
+       CONTEÚDO PRINCIPAL: MANCHETES E RESENHAS DO DIA
+       ========================================================================= -->
+  <main class="app-main">
+    <!-- Barra informativa de resumo do filtro atual -->
+    <div class="filter-summary-bar">
+      <span id="contador-resultados">Carregando base de conhecimento...</span>
+      <span class="window-badge">⏱️ Janela ativa: 72h (3 dias)</span>
+    </div>
+
+    <!-- Grade de Cards de Notícias (_R_ Resenhas) -->
+    <section id="lista-noticias" class="news-grid" aria-live="polite">
+      <!-- Cards inseridos via JS -->
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       MODAL / LEITOR DE ARQUIVOS HTML (_R_ RESENHA ↔ _N_ NOTÍCIA COMPLETA)
+       ========================================================================= -->
+  <div id="modal-leitor" class="leitor-modal hidden" role="dialog" aria-modal="true">
+    <div class="leitor-backdrop" id="leitor-backdrop"></div>
+    <div class="leitor-sheet">
+      <div class="leitor-topbar">
+        <button id="btn-fechar-leitor" class="btn-voltar">← Voltar</button>
+
+        <!-- Seletor direto entre o arquivo _R_ e o arquivo _N_ -->
+        <div class="toggle-rn-group" role="tablist">
+          <button id="tab-resenha" class="btn-toggle-rn active" data-modo="R">
+            ⚡ Resenha (<code>_R_</code>)
+          </button>
+          <button id="tab-noticia" class="btn-toggle-rn" data-modo="N">
+            📰 Notícia (<code>_N_</code>)
+          </button>
+        </div>
+      </div>
+
+      <!-- Barra mostrando o nome exato do arquivo físico na Base de Conhecimento -->
+      <div class="leitor-filebar">
+        <span class="file-icon">📄</span>
+        <code id="leitor-nome-arquivo">20261107-081500_R_Politica_Brasil.html</code>
+      </div>
+
+      <!-- Área de renderização do HTML autocontido (com imagens em Base64) -->
+      <div class="leitor-frame-container">
+        <iframe
+          id="iframe-leitor"
+          class="leitor-iframe"
+          title="Leitor de Notícia FaviNews"
+          sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
+

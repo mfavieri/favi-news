@@ -1,0 +1,413 @@
+"""
+Motor Crawler Principal do Favi News ("Em 15 minutos tudo pode mudar !!").
+Varre os portais configurados em `config/fontes.config.json`, extrai manchetes,
+resenhas, textos das notícias e imagens (convertendo-as para bytecode Base64),
+salva os pares `_R_` (Resenha) e `_N_` (Notícia Completa) padronizados por
+timestamp `YYYYMMDD-HHMMSS` e executa o expurgo automático da janela de 3 dias.
+"""
+
+import email.utils
+import html
+import json
+import re
+import sys
+import urllib.request
+import xml.etree.ElementTree as ET
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Dict, List, Optional, Set, Tuple
+
+# Garante que o diretório raiz do projeto esteja no sys.path
+RAIZ_PROJETO = Path(__file__).resolve().parent.parent
+if str(RAIZ_PROJETO) not in sys.path:
+    sys.path.insert(0, str(RAIZ_PROJETO))
+
+from backend.drive_service import (
+    carregar_catalogo,
+    expurgar_arquivos_antigos,
+    salvar_catalogo,
+    sincronizar_google_drive,
+)
+from backend.html_builder import (
+    gerar_html_noticia,
+    gerar_html_resenha,
+    montar_nomes_arquivos,
+)
+from backend.image_utils import (
+    HEADERS_PADRAO,
+    baixar_imagem_para_base64,
+    gerar_svg_placeholder_base64,
+)
+
+
+def limpar_tags_html(texto_html: str) -> str:
+    """Remove tags HTML, scripts e normaliza espaços em branco."""
+    if not texto_html:
+        return ""
+    sem_script = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", texto_html, flags=re.DOTALL | re.IGNORECASE)
+    sem_tags = re.sub(r"<[^>]+>", " ", sem_script)
+    decodificado = html.unescape(sem_tags)
+    return re.sub(r"\s+", " ", decodificado).strip()
+
+
+def extrair_primeira_imagem_html(trecho_html: str) -> Optional[str]:
+    """Busca a primeira URL de imagem dentro de um trecho HTML do RSS."""
+    if not trecho_html:
+        return None
+    m = re.search(r'<img[^>]+src=["\'](https?://[^"\']+)["\']', trecho_html, flags=re.IGNORECASE)
+    return m.group(1) if m else None
+
+
+def converter_data_rss(pub_date_str: str) -> datetime:
+    """Converte datas RFC-2822 ou ISO-8601 do RSS para datetime local."""
+    if not pub_date_str:
+        return datetime.now()
+    try:
+        dt = email.utils.parsedate_to_datetime(pub_date_str.strip())
+        if dt.tzinfo is not None:
+            dt = dt.astimezone().replace(tzinfo=None)
+        # Se a data vier no futuro por fuso horário mal configurado na fonte, ajusta para agora
+        if dt > datetime.now() + timedelta(minutes=5):
+            return datetime.now()
+        return dt
+    except Exception:
+        pass
+    try:
+        dt_iso = datetime.fromisoformat(pub_date_str.strip().replace("Z", "+00:00"))
+        if dt_iso.tzinfo is not None:
+            dt_iso = dt_iso.astimezone().replace(tzinfo=None)
+        return dt_iso
+    except Exception:
+        return datetime.now()
+
+
+def alocar_carimbo_unico(dt_base: datetime, carimbos_usados: Set[str]) -> Tuple[str, datetime]:
+    """
+    Gera o carimbo `YYYYMMDD-HHMMSS` cravado até o segundo.
+    Se já houver outra notícia no exato mesmo segundo, incrementa +1 segundo
+    para manter a chave primária 100% única sem colisões.
+    """
+    dt_atual = dt_base
+    while True:
+        carimbo = dt_atual.strftime("%Y%m%d-%H%M%S")
+        if carimbo not in carimbos_usados:
+            carimbos_usados.add(carimbo)
+            return carimbo, dt_atual
+        dt_atual += timedelta(seconds=1)
+
+
+def raspar_artigo_completo(url: str, timeout: int = 6) -> Tuple[List[str], Optional[str]]:
+    """
+    Visita a página da notícia para extrair os parágrafos do corpo e a imagem OpenGraph (`og:image`),
+    caso o feed RSS traga apenas o resumo curto.
+    """
+    if not url or "news.google.com" in url:
+        return [], None
+
+    try:
+        req = urllib.request.Request(url, headers=HEADERS_PADRAO)
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            conteudo_bytes = resp.read(350_000)
+            html_bruto = conteudo_bytes.decode("utf-8", errors="ignore")
+
+        # Tenta extrair og:image
+        og_img = None
+        m_og = re.search(
+            r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\'](https?://[^"\']+)["\']',
+            html_bruto,
+            flags=re.IGNORECASE,
+        )
+        if not m_og:
+            m_og = re.search(
+                r'<meta[^>]+content=["\'](https?://[^"\']+)["\'][^>]+property=["\']og:image["\']',
+                html_bruto,
+                flags=re.IGNORECASE,
+            )
+        if m_og:
+            og_img = html.unescape(m_og.group(1))
+
+        # Extrai parágrafos significativos (<p>...</p>)
+        blocos_p = re.findall(r"<p[^>]*>(.*?)</p>", html_bruto, flags=re.DOTALL | re.IGNORECASE)
+        paragrafos: List[str] = []
+        for b in blocos_p:
+            texto_p = limpar_tags_html(b)
+            if len(texto_p) >= 65 and not any(
+                ruido in texto_p.lower()
+                for ruido in ["cookies", "assine já", "todos os direitos reservados", "newsletter", "publicidade"]
+            ):
+                if texto_p not in paragrafos:
+                    paragrafos.append(texto_p)
+            if len(paragrafos) >= 10:
+                break
+
+        return paragrafos, og_img
+    except Exception:
+        return [], None
+
+
+def construir_resenha_inteligente(titulo: str, descricao_rss: str, paragrafos: List[str], fonte: str) -> Tuple[str, List[str]]:
+    """
+    Constrói a Resenha (_R_) e os bullet points executivos a partir do Lead
+    jornalístico da notícia, garantindo leitura rápida em 15 segundos.
+    """
+    base_texto = descricao_rss if len(descricao_rss) >= 50 else (paragrafos[0] if paragrafos else titulo)
+    if len(base_texto) > 360:
+        base_texto = base_texto[:357].rsplit(" ", 1)[0] + "..."
+
+    pontos: List[str] = []
+    # Ponto 1: Fato central (Manchete/Lead)
+    pontos.append(f"Fato Central: {titulo}")
+
+    # Ponto 2: Contexto imediato
+    if descricao_rss and descricao_rss.lower() != titulo.lower():
+        resumo_curto = descricao_rss[:220] + ("..." if len(descricao_rss) > 220 else "")
+        pontos.append(f"Contexto: {resumo_curto}")
+    elif len(paragrafos) > 0:
+        p0 = paragrafos[0][:220] + ("..." if len(paragrafos[0]) > 220 else "")
+        pontos.append(f"Contexto: {p0}")
+
+    # Ponto 3: Desdobramento adicional se houver mais parágrafos
+    if len(paragrafos) > 1:
+        p1 = paragrafos[1][:220] + ("..." if len(paragrafos[1]) > 220 else "")
+        pontos.append(f"Detalhes: {p1}")
+    else:
+        pontos.append(f"Apuração publicada por {fonte}.")
+
+    return base_texto, pontos
+
+
+def processar_feed_rss(
+    fonte_cfg: Dict,
+    cat_cfg: Dict,
+    max_itens: int,
+    urls_ja_processadas: Set[str],
+    carimbos_usados: Set[str],
+    pasta_base: Path,
+    limite_corte: datetime,
+) -> List[Dict]:
+    """Lê um feed RSS, processa as notícias inéditas dos últimos 3 dias e gera os pares _R_ e _N_."""
+    novos_itens_catalogo: List[Dict] = []
+    rss_url = fonte_cfg["rss_url"]
+    nome_fonte = fonte_cfg["nome"]
+    subtopico = fonte_cfg.get("subtopico", cat_cfg.get("subtopico_padrao", "Brasil"))
+
+    try:
+        req = urllib.request.Request(rss_url, headers=HEADERS_PADRAO)
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            xml_bytes = resp.read()
+        root = ET.fromstring(xml_bytes)
+    except Exception as exc:
+        print(f"  [!] Aviso ao ler RSS de '{nome_fonte}': {exc}")
+        return novos_itens_catalogo
+
+    items_xml = root.findall(".//item")
+    if not items_xml:
+        items_xml = root.findall(".//{http://www.w3.org/2005/Atom}entry")
+
+    contador = 0
+    for item in items_xml:
+        if contador >= max_itens:
+            break
+
+        titulo_el = item.find("title")
+        if titulo_el is None:
+            titulo_el = item.find("{http://www.w3.org/2005/Atom}title")
+        titulo = limpar_tags_html(titulo_el.text if titulo_el is not None and titulo_el.text else "")
+        if not titulo:
+            continue
+
+        link_el = item.find("link")
+        url_original = ""
+        if link_el is not None:
+            url_original = (link_el.text or link_el.attrib.get("href", "")).strip()
+
+        if url_original and url_original in urls_ja_processadas:
+            continue
+
+        pub_el = item.find("pubDate")
+        if pub_el is None:
+            pub_el = item.find("{http://purl.org/dc/elements/1.1/}date")
+        if pub_el is None:
+            pub_el = item.find("{http://www.w3.org/2005/Atom}published")
+        dt_fato = converter_data_rss(pub_el.text if pub_el is not None and pub_el.text else "")
+
+        # Ignora notícias com mais de 3 dias (72 horas)
+        if dt_fato < limite_corte:
+            continue
+
+        desc_el = item.find("description")
+        if desc_el is None:
+            desc_el = item.find("{http://www.w3.org/2005/Atom}summary")
+        desc_bruta = desc_el.text if desc_el is not None and desc_el.text else ""
+        descricao_limpa = limpar_tags_html(desc_bruta)
+
+        # Tenta localizar URL de imagem no próprio XML (media:content, enclosure ou <img> na descrição)
+        url_img = extrair_primeira_imagem_html(desc_bruta)
+        if not url_img:
+            for elem in item.iter():
+                tag_local = elem.tag.split("}")[-1].lower()
+                if tag_local in ("content", "thumbnail", "enclosure"):
+                    candidato = elem.attrib.get("url", "")
+                    if candidato.startswith("http"):
+                        url_img = candidato
+                        break
+
+        # Raspa parágrafos completos e og:image da página original
+        paragrafos, og_img = raspar_artigo_completo(url_original)
+        if not url_img and og_img:
+            url_img = og_img
+
+        if not paragrafos and descricao_limpa:
+            paragrafos = [descricao_limpa]
+
+        resenha_texto, pontos_chave = construir_resenha_inteligente(
+            titulo, descricao_limpa, paragrafos, nome_fonte
+        )
+
+        # Converte imagem para bytecode Base64 (ou gera placeholder SVG em Base64 se não houver foto)
+        b64_completa = baixar_imagem_para_base64(url_img, largura_max=760, qualidade_jpeg=74)
+        b64_miniatura = baixar_imagem_para_base64(url_img, largura_max=420, qualidade_jpeg=66)
+
+        if not b64_completa:
+            b64_completa = gerar_svg_placeholder_base64(
+                cat_cfg["rotulo"], cat_cfg["icone"], cat_cfg["cor"], eh_miniatura=False
+            )
+        if not b64_miniatura:
+            b64_miniatura = gerar_svg_placeholder_base64(
+                cat_cfg["rotulo"], cat_cfg["icone"], cat_cfg["cor"], eh_miniatura=True
+            )
+
+        # Aloca o timestamp único YYYYMMDD-HHMMSS
+        carimbo_ts, dt_alocado = alocar_carimbo_unico(dt_fato, carimbos_usados)
+        nomes = montar_nomes_arquivos(carimbo_ts, cat_cfg["id"], subtopico)
+
+        dados_artigo = {
+            "carimbo_ts": carimbo_ts,
+            "titulo": titulo,
+            "fonte": nome_fonte,
+            "categoria_id": cat_cfg["id"],
+            "categoria_rotulo": cat_cfg["rotulo"],
+            "icone": cat_cfg["icone"],
+            "cor": cat_cfg["cor"],
+            "subtopico": subtopico,
+            "data_fato_formatada": dt_alocado.strftime("%d/%m/%Y às %Hh%M"),
+            "data_iso": dt_alocado.isoformat(),
+            "resenha_texto": resenha_texto,
+            "pontos_chave": pontos_chave,
+            "paragrafos_noticia": paragrafos,
+            "imagem_base64_miniatura": b64_miniatura,
+            "imagem_base64_completa": b64_completa,
+            "arquivo_r": nomes["arquivo_r"],
+            "arquivo_n": nomes["arquivo_n"],
+            "url_original": url_original,
+        }
+
+        # Grava os 2 arquivos HTML autocontidos na Base de Conhecimento
+        html_r = gerar_html_resenha(dados_artigo)
+        html_n = gerar_html_noticia(dados_artigo)
+
+        (pasta_base / nomes["arquivo_r"]).write_text(html_r, encoding="utf-8")
+        (pasta_base / nomes["arquivo_n"]).write_text(html_n, encoding="utf-8")
+
+        # Registra metadado enxuto no catálogo para a Home do PWA abrir em milissegundos
+        novos_itens_catalogo.append(
+            {
+                "carimbo_ts": carimbo_ts,
+                "titulo": titulo,
+                "fonte": nome_fonte,
+                "categoria_id": cat_cfg["id"],
+                "categoria_rotulo": cat_cfg["rotulo"],
+                "icone": cat_cfg["icone"],
+                "cor": cat_cfg["cor"],
+                "subtopico": subtopico,
+                "data_fato_formatada": dt_alocado.strftime("%d/%m/%Y às %Hh%M"),
+                "resenha_texto": resenha_texto,
+                "pontos_chave": pontos_chave,
+                "arquivo_r": nomes["arquivo_r"],
+                "arquivo_n": nomes["arquivo_n"],
+                "url_original": url_original,
+                "thumbnail_base64": b64_miniatura,
+            }
+        )
+
+        if url_original:
+            urls_ja_processadas.add(url_original)
+        contador += 1
+        print(f"  [+] Gerado par: {nomes['arquivo_r']} | {nomes['arquivo_n']}")
+
+    return novos_itens_catalogo
+
+
+def executar_crawler() -> Dict:
+    """Executa um ciclo completo de coleta, geração de HTMLs, expurgo de 3 dias e catálogo."""
+    caminho_cfg = RAIZ_PROJETO / "config" / "fontes.config.json"
+    pasta_base = RAIZ_PROJETO / "base_conhecimento"
+    pasta_base.mkdir(parents=True, exist_ok=True)
+
+    with open(caminho_cfg, "r", encoding="utf-8") as f:
+        cfg = json.load(f)
+
+    dias_retencao = int(cfg.get("janela_retencao_dias", 3))
+    max_por_fonte = int(cfg.get("max_noticias_por_fonte", 3))
+    limite_corte = datetime.now() - timedelta(days=dias_retencao)
+
+    print("=================================================================")
+    print("🎙️  FAVI NEWS CRAWLER — 'Em 15 minutos tudo pode mudar !!'")
+    print("=================================================================")
+
+    # 1. Expurga arquivos com mais de 3 dias (> 72h)
+    expurgados = expurgar_arquivos_antigos(pasta_base, dias_retencao=dias_retencao)
+    if expurgados:
+        print(f"🧹 Expurgo de {dias_retencao} dias: {len(expurgados)} arquivo(s) antigo(s) removido(s).")
+
+    # 2. Carrega catálogo existente para não duplicar notícias já coletadas
+    cat_atual = carregar_catalogo(pasta_base)
+    itens_existentes: List[Dict] = cat_atual.get("itens", [])
+    urls_ja_processadas: Set[str] = {
+        it.get("url_original", "") for it in itens_existentes if it.get("url_original")
+    }
+    carimbos_usados: Set[str] = {
+        it.get("carimbo_ts", "") for it in itens_existentes if it.get("carimbo_ts")
+    }
+
+    todos_novos: List[Dict] = []
+    for cat_cfg in cfg.get("categorias", []):
+        print(f"\n📡 Varrendo editoria: {cat_cfg['icone']} {cat_cfg['rotulo']}...")
+        for fonte_cfg in cat_cfg.get("fontes", []):
+            novos = processar_feed_rss(
+                fonte_cfg=fonte_cfg,
+                cat_cfg=cat_cfg,
+                max_itens=max_por_fonte,
+                urls_ja_processadas=urls_ja_processadas,
+                carimbos_usados=carimbos_usados,
+                pasta_base=pasta_base,
+                limite_corte=limite_corte,
+            )
+            todos_novos.extend(novos)
+
+    # 3. Salva o catálogo atualizado de 3 dias
+    catalogo_final = salvar_catalogo(
+        pasta_base, itens_existentes + todos_novos, dias_retencao=dias_retencao
+    )
+
+    # 4. Sincroniza com o Google Drive se habilitado/configurado
+    status_drive = sincronizar_google_drive(
+        pasta_base=pasta_base,
+        folder_id=cfg.get("google_drive", {}).get("folder_id", ""),
+        dias_retencao=dias_retencao,
+    )
+
+    resumo = {
+        "novos_pares_gerados": len(todos_novos),
+        "total_ativos_3dias": catalogo_final["total_itens"],
+        "expurgados_local": len(expurgados),
+        "atualizado_em": catalogo_final["atualizado_em"],
+        "drive": status_drive,
+    }
+    print("\n✅ Ciclo concluído com sucesso:", json.dumps(resumo, ensure_ascii=False))
+    return resumo
+
+
+if __name__ == "__main__":
+    executar_crawler()
+
