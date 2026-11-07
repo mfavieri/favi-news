@@ -76,30 +76,6 @@
       ]
     },
     {
-      "id": "Esporte",
-      "rotulo": "Esporte",
-      "icone": "⚽",
-      "cor": "#16a34a",
-      "subtopico_padrao": "Futebol",
-      "fontes": [
-        {
-          "nome": "GE Globo Esporte",
-          "subtopico": "Brasil",
-          "rss_url": "https://ge.globo.com/rss/ge/"
-        },
-        {
-          "nome": "ESPN Brasil",
-          "subtopico": "Esportes",
-          "rss_url": "https://news.google.com/rss/search?q=site:espn.com.br+futebol+OR+esporte&hl=pt-BR&gl=BR&ceid=BR:pt-419"
-        },
-        {
-          "nome": "Agência Brasil Esportes",
-          "subtopico": "Brasil",
-          "rss_url": "https://agenciabrasil.ebc.com.br/rss/esportes/feed.xml"
-        }
-      ]
-    },
-    {
       "id": "Ciencias",
       "rotulo": "Ciências",
       "icone": "🔬",

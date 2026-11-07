@@ -27,6 +27,7 @@ from backend.drive_service import (
     agora_brasilia,
     carregar_catalogo,
     expurgar_arquivos_antigos,
+    extrair_metadados_do_nome,
     salvar_catalogo,
     sincronizar_google_drive,
 )
@@ -526,9 +527,25 @@ def executar_crawler() -> Dict:
     if expurgados:
         print(f"🧹 Expurgo de {dias_retencao} dias: {len(expurgados)} arquivo(s) antigo(s) removido(s).")
 
-    # 2. Carrega catálogo existente para não duplicar notícias já coletadas
+    # 1.1 Expurga arquivos de categorias que foram removidas do fontes.config.json
+    categorias_ativas = {c["id"] for c in cfg.get("categorias", [])}
+    removidos_cat = 0
+    for arq_html in pasta_base.glob("*.html"):
+        meta = extrair_metadados_do_nome(arq_html.name)
+        if meta and meta["categoria"] not in categorias_ativas:
+            try:
+                arq_html.unlink()
+                removidos_cat += 1
+            except OSError:
+                pass
+    if removidos_cat:
+        print(f"🗑️ Limpeza de categorias desativadas: {removidos_cat} arquivo(s) removido(s).")
+
+    # 2. Carrega catálogo existente (filtrando apenas categorias ativas)
     cat_atual = carregar_catalogo(pasta_base)
-    itens_existentes: List[Dict] = cat_atual.get("itens", [])
+    itens_existentes: List[Dict] = [
+        it for it in cat_atual.get("itens", []) if it.get("categoria_id") in categorias_ativas
+    ]
     urls_ja_processadas: Set[str] = {
         it.get("url_original", "") for it in itens_existentes if it.get("url_original")
     }
