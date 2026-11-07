@@ -23,6 +23,8 @@ if str(RAIZ_PROJETO) not in sys.path:
     sys.path.insert(0, str(RAIZ_PROJETO))
 
 from backend.drive_service import (
+    FUSO_BRASILIA,
+    agora_brasilia,
     carregar_catalogo,
     expurgar_arquivos_antigos,
     salvar_catalogo,
@@ -59,26 +61,26 @@ def extrair_primeira_imagem_html(trecho_html: str) -> Optional[str]:
 
 
 def converter_data_rss(pub_date_str: str) -> datetime:
-    """Converte datas RFC-2822 ou ISO-8601 do RSS para datetime local."""
+    """Converte datas RFC-2822 ou ISO-8601 do RSS para o fuso horário do Rio/Brasília (UTC-3)."""
+    agora_br = agora_brasilia()
     if not pub_date_str:
-        return datetime.now()
+        return agora_br
     try:
         dt = email.utils.parsedate_to_datetime(pub_date_str.strip())
         if dt.tzinfo is not None:
-            dt = dt.astimezone().replace(tzinfo=None)
-        # Se a data vier no futuro por fuso horário mal configurado na fonte, ajusta para agora
-        if dt > datetime.now() + timedelta(minutes=5):
-            return datetime.now()
+            dt = dt.astimezone(FUSO_BRASILIA).replace(tzinfo=None)
+        if dt > agora_br + timedelta(minutes=5):
+            return agora_br
         return dt
     except Exception:
         pass
     try:
         dt_iso = datetime.fromisoformat(pub_date_str.strip().replace("Z", "+00:00"))
         if dt_iso.tzinfo is not None:
-            dt_iso = dt_iso.astimezone().replace(tzinfo=None)
+            dt_iso = dt_iso.astimezone(FUSO_BRASILIA).replace(tzinfo=None)
         return dt_iso
     except Exception:
-        return datetime.now()
+        return agora_br
 
 
 def alocar_carimbo_unico(dt_base: datetime, carimbos_usados: Set[str]) -> Tuple[str, datetime]:
@@ -349,7 +351,7 @@ def executar_crawler() -> Dict:
 
     dias_retencao = int(cfg.get("janela_retencao_dias", 3))
     max_por_fonte = int(cfg.get("max_noticias_por_fonte", 3))
-    limite_corte = datetime.now() - timedelta(days=dias_retencao)
+    limite_corte = agora_brasilia() - timedelta(days=dias_retencao)
 
     print("=================================================================")
     print("🎙️  FAVI NEWS CRAWLER — 'Em 15 minutos tudo pode mudar !!'")

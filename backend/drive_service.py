@@ -11,9 +11,17 @@ Responsável por:
 import json
 import os
 import re
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Dict, List, Optional
+
+# Fuso horário oficial de Brasília / Rio de Janeiro (UTC-3)
+FUSO_BRASILIA = timezone(timedelta(hours=-3))
+
+
+def agora_brasilia() -> datetime:
+    """Retorna o datetime atual sempre no fuso horário do Rio/Brasília (UTC-3), sem tzinfo."""
+    return datetime.now(FUSO_BRASILIA).replace(tzinfo=None)
 
 
 PADRAO_NOME_ARQUIVO = re.compile(
@@ -51,7 +59,7 @@ def expurgar_arquivos_antigos(pasta_base: Path, dias_retencao: int = 3, agora: O
     (`YYYYMMDD-HHMMSS`) seja anterior à janela de retenção (padrão: 3 dias / 72 horas).
     """
     if agora is None:
-        agora = datetime.now()
+        agora = agora_brasilia()
     limite_corte = agora - timedelta(days=dias_retencao)
     removidos: List[str] = []
 
@@ -95,7 +103,7 @@ def salvar_catalogo(pasta_base: Path, itens_novos_ou_atuais: List[Dict], dias_re
     ordena do mais recente para o mais antigo e salva o `catalogo_3dias.json`.
     """
     pasta_base.mkdir(parents=True, exist_ok=True)
-    agora = datetime.now()
+    agora = agora_brasilia()
     limite_corte = agora - timedelta(days=dias_retencao)
 
     por_carimbo: Dict[str, Dict] = {}
@@ -171,7 +179,7 @@ def sincronizar_google_drive(pasta_base: Path, folder_id: str, dias_retencao: in
         arquivos_drive = {f["name"]: f["id"] for f in resp.get("files", [])}
 
         # 1. Expurga do Drive arquivos HTML com mais de 3 dias
-        limite_corte = datetime.now() - timedelta(days=dias_retencao)
+        limite_corte = agora_brasilia() - timedelta(days=dias_retencao)
         for nome_arq, file_id in list(arquivos_drive.items()):
             meta = extrair_metadados_do_nome(nome_arq)
             if meta and meta["datetime"] < limite_corte:
