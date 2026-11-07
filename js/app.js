@@ -70,24 +70,46 @@ function exibirSplashScreen(duracaoMinimaMs = 1550) {
 /**
  * Carrega as categorias configuráveis e o catálogo de 3 dias
  */
+async function buscarJsonMaisRecente(caminhoRelativo) {
+  const ts = Date.now();
+  const ehGithubPages = window.location.hostname.includes("github.io");
+  const promessaLocal = fetch(`${caminhoRelativo}?t=${ts}`, { cache: "no-store" }).then((r) =>
+    r.ok ? r.json() : null
+  ).catch(() => null);
+
+  if (!ehGithubPages) {
+    return promessaLocal;
+  }
+
+  // No GitHub Pages, consulta também o arquivo direto na branch main para eliminar o delay de build do Pages
+  const urlRaw = `https://raw.githubusercontent.com/mfavieri/favi-news/main/${caminhoRelativo}?t=${ts}`;
+  const promessaRaw = fetch(urlRaw, { cache: "no-store" }).then((r) =>
+    r.ok ? r.json() : null
+  ).catch(() => null);
+
+  const [dadosPages, dadosRaw] = await Promise.all([promessaLocal, promessaRaw]);
+  if (dadosRaw && dadosPages) {
+    const isoRaw = dadosRaw.atualizado_iso || "";
+    const isoPages = dadosPages.atualizado_iso || "";
+    return isoRaw >= isoPages ? dadosRaw : dadosPages;
+  }
+  return dadosRaw || dadosPages;
+}
+
 async function carregarDadosBase(apenasStatus = false) {
   try {
-    const promessas = [
-      fetch(`base_conhecimento/catalogo_3dias.json?t=${Date.now()}`, { cache: "no-store" })
-    ];
+    const promessas = [buscarJsonMaisRecente("base_conhecimento/catalogo_3dias.json")];
     if (!apenasStatus || estado.categoriasConfig.length === 0) {
-      promessas.push(fetch(`config/fontes.config.json?t=${Date.now()}`, { cache: "no-store" }));
+      promessas.push(buscarJsonMaisRecente("config/fontes.config.json"));
     }
 
-    const [respCat, respCfg] = await Promise.all(promessas);
+    const [cat, cfg] = await Promise.all(promessas);
 
-    if (respCfg && respCfg.ok) {
-      const cfg = await respCfg.json();
+    if (cfg && cfg.categorias) {
       estado.categoriasConfig = cfg.categorias || [];
     }
 
-    if (respCat && respCat.ok) {
-      const cat = await respCat.json();
+    if (cat && cat.itens) {
       const sc = cat.status_ciclo || {};
 
       // Atualiza o relógio do topo e o banner de andamento vindo do JSON

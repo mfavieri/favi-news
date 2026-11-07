@@ -380,7 +380,8 @@ def processar_feed_rss(
         if titulo_el is None:
             titulo_el = item.find("{http://www.w3.org/2005/Atom}title")
         titulo = limpar_tags_html(titulo_el.text if titulo_el is not None and titulo_el.text else "")
-        if not titulo:
+        # Filtra títulos vazios, muito curtos (ex: apenas nome de portal no MSN) ou páginas de coordenadas
+        if not titulo or len(titulo) < 32 or "previsão do tempo para " in titulo.lower():
             continue
 
         link_el = item.find("link")

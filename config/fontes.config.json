@@ -28,6 +28,35 @@
       ]
     },
     {
+      "id": "Variedades",
+      "rotulo": "Variedades",
+      "icone": "🎭",
+      "cor": "#d946ef",
+      "subtopico_padrao": "Lazer",
+      "fontes": [
+        {
+          "nome": "MSN Brasil (Moda, Estilo & Entretenimento)",
+          "subtopico": "MSN",
+          "rss_url": "https://news.google.com/rss/search?q=site:msn.com/pt-br/estilo-de-vida+OR+site:msn.com/pt-br/entretenimento+OR+site:msn.com/pt-br/receitas+-clima+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        },
+        {
+          "nome": "Gastronomia, Festas & Eventos (Rio & Niterói)",
+          "subtopico": "GastronomiaFestas",
+          "rss_url": "https://news.google.com/rss/search?q=(gastronomia+OR+restaurantes+OR+festas+OR+shows+OR+roteiro)+(%22Rio+de+Janeiro%22+OR+Niteroi)+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        },
+        {
+          "nome": "Fofocas, Famosos & Entretenimento",
+          "subtopico": "Famosos",
+          "rss_url": "https://news.google.com/rss/search?q=famosos+OR+celebridades+OR+fofoca+OR+bastidores+TV+OR+cinema+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        },
+        {
+          "nome": "Viagens, Moda & Curiosidades",
+          "subtopico": "ViagensModa",
+          "rss_url": "https://news.google.com/rss/search?q=(turismo+viagem+destinos)+OR+(tendencias+moda+estilo)+OR+(curiosidades+incrivel+mundo)+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        }
+      ]
+    },
+    {
       "id": "Politica",
       "rotulo": "Política",
       "icone": "🏛️",
@@ -35,9 +64,9 @@
       "subtopico_padrao": "Brasil",
       "fontes": [
         {
-          "nome": "G1 Política",
-          "subtopico": "Brasil",
-          "rss_url": "https://g1.globo.com/rss/g1/politica/"
+          "nome": "MSN Brasil Notícias",
+          "subtopico": "MSN",
+          "rss_url": "https://news.google.com/rss/search?q=site:msn.com/pt-br/noticias+Brasil+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
         },
         {
           "nome": "BBC News Brasil",
@@ -59,9 +88,9 @@
       "subtopico_padrao": "Mercados",
       "fontes": [
         {
-          "nome": "G1 Economia",
-          "subtopico": "Brasil",
-          "rss_url": "https://g1.globo.com/rss/g1/economia/"
+          "nome": "MSN Brasil Dinheiro & Mercados",
+          "subtopico": "MSN",
+          "rss_url": "https://news.google.com/rss/search?q=site:msn.com/pt-br/dinheiro+economia+OR+mercados+OR+dolar+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
         },
         {
           "nome": "InfoMoney Mercados",
@@ -83,14 +112,9 @@
       "subtopico_padrao": "Inovacao",
       "fontes": [
         {
-          "nome": "G1 Ciência",
-          "subtopico": "Pesquisa",
-          "rss_url": "https://g1.globo.com/rss/g1/ciencia-e-saude/"
-        },
-        {
-          "nome": "BBC Ciência & Tecnologia",
+          "nome": "BBC & Portais Ciência & Tecnologia",
           "subtopico": "Mundo",
-          "rss_url": "https://news.google.com/rss/search?q=ciencia+tecnologia+descoberta&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "rss_url": "https://news.google.com/rss/search?q=ciencia+tecnologia+descoberta+astronomia+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
         }
       ]
     },
@@ -109,7 +133,7 @@
         {
           "nome": "CNN & Portais Saúde",
           "subtopico": "BemEstar",
-          "rss_url": "https://news.google.com/rss/search?q=saude+medicina+bem+estar+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "rss_url": "https://news.google.com/rss/search?q=saude+medicina+bem+estar+longevidade+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
         }
       ]
     },
@@ -129,14 +153,8 @@
           "nome": "Vias Expressas RJ (Av. Brasil, Ponte e Linhas)",
           "subtopico": "ViasRJ",
           "rss_url": "https://news.google.com/rss/search?q=Avenida+Brasil+OR+Linha+Vermelha+OR+Ponte+Rio-Niteroi+OR+Linha+Amarela+Rio+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
-        },
-        {
-          "nome": "G1 Rio de Janeiro",
-          "subtopico": "Rio",
-          "rss_url": "https://g1.globo.com/rss/g1/rio-de-janeiro/"
         }
       ]
     }
   ]
 }
-
