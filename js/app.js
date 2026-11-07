@@ -108,6 +108,7 @@ async function carregarDadosBase(apenasStatus = false) {
     const [cat, cfg] = await Promise.all(promessas);
 
     if (cfg && cfg.categorias) {
+      estado.configCompleta = cfg;
       estado.categoriasConfig = cfg.categorias || [];
     }
 
@@ -571,6 +572,338 @@ elBtnCrawler.addEventListener("click", async () => {
     elBtnCrawler.classList.remove("girando");
   }
 });
+
+// =========================================================================
+// CONFIGURADOR PC (LOGIN usr: FaviNews / psw: NewsFavi)
+// =========================================================================
+const elBtnAbrirConfig = document.getElementById("btn-abrir-config");
+const elModalConfig = document.getElementById("modal-configurador");
+const elConfigBackdrop = document.getElementById("config-backdrop");
+const elBtnFecharConfig = document.getElementById("btn-fechar-config");
+const elConfigLoginView = document.getElementById("config-login-view");
+const elConfigStudioView = document.getElementById("config-studio-view");
+const elInputUsr = document.getElementById("cfg-login-usr");
+const elInputPsw = document.getElementById("cfg-login-psw");
+const elLoginErro = document.getElementById("cfg-login-erro");
+const elBtnEntrarConfig = document.getElementById("btn-entrar-config");
+
+const elCfgAbaSelect = document.getElementById("cfg-aba-select");
+const elCfgNovaAbaWrap = document.getElementById("cfg-nova-aba-wrap");
+const elCfgNovaAbaIcone = document.getElementById("cfg-nova-aba-icone");
+const elCfgNovaAbaNome = document.getElementById("cfg-nova-aba-nome");
+const elCfgFonteNome = document.getElementById("cfg-fonte-nome");
+const elCfgFonteUrl = document.getElementById("cfg-fonte-url");
+const elCfgFonteSaz = document.getElementById("cfg-fonte-sazonalidade");
+const elCfgFonteFiltro = document.getElementById("cfg-fonte-filtro");
+const elCfgFonteRegras = document.getElementById("cfg-fonte-regras");
+const elBtnAddFonte = document.getElementById("btn-adicionar-fonte");
+const elCfgListaAbas = document.getElementById("cfg-lista-abas");
+const elCfgMaxPorFonte = document.getElementById("cfg-max-por-fonte");
+const elCfgTamMinTitulo = document.getElementById("cfg-tam-min-titulo");
+const elCfgBlacklist = document.getElementById("cfg-palavras-bloqueadas");
+const elBtnSalvarConfig = document.getElementById("btn-salvar-config");
+const elCfgStatusMsg = document.getElementById("cfg-status-msg");
+
+let configAutenticado = false;
+let credUsr = "";
+let credPsw = "";
+
+const ROTULOS_SAZ = {
+  ultimo_boletim: "⚡ Último boletim (1 ciclo)",
+  "6h": "⏱️ 6 horas",
+  "1d": "📅 1 dia",
+  "3d": "🗓️ 3 dias",
+  "7d": "📚 7 dias"
+};
+
+const ROTULOS_FILTRO = {
+  primeira_pagina: "📰 Primeira página",
+  todo_conteudo: "📚 Todo conteúdo",
+  apenas_alertas: "🚨 Apenas Alertas [A]"
+};
+
+function abrirModalConfigurador() {
+  if (!elModalConfig) return;
+  elModalConfig.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+  if (configAutenticado) {
+    elConfigLoginView.classList.add("hidden");
+    elConfigStudioView.classList.remove("hidden");
+    renderizarEstudioConfig();
+  } else {
+    elConfigLoginView.classList.remove("hidden");
+    elConfigStudioView.classList.add("hidden");
+    if (elInputUsr) elInputUsr.focus();
+  }
+}
+
+function fecharModalConfigurador() {
+  if (!elModalConfig) return;
+  elModalConfig.classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+function autenticarConfigurador() {
+  const u = (elInputUsr?.value || "").trim();
+  const p = (elInputPsw?.value || "").trim();
+  if (u === "FaviNews" && p === "NewsFavi") {
+    configAutenticado = true;
+    credUsr = u;
+    credPsw = p;
+    elLoginErro.classList.add("hidden");
+    elConfigLoginView.classList.add("hidden");
+    elConfigStudioView.classList.remove("hidden");
+    renderizarEstudioConfig();
+  } else {
+    elLoginErro.classList.remove("hidden");
+  }
+}
+
+function renderizarEstudioConfig() {
+  if (!estado.configCompleta) {
+    estado.configCompleta = {
+      janela_retencao_dias: 7,
+      intervalo_crawler_minutos: 15,
+      max_noticias_por_fonte: 4,
+      regras_crawler: {},
+      categorias: estado.categoriasConfig || []
+    };
+  }
+  const cfg = estado.configCompleta;
+  const cats = cfg.categorias || [];
+  const regras = cfg.regras_crawler || {};
+
+  // Popula select de Abas
+  if (elCfgAbaSelect) {
+    elCfgAbaSelect.innerHTML =
+      cats
+        .map((c) => `<option value="${escaparHtml(c.id)}">${c.icone || "📰"} ${escaparHtml(c.rotulo)}</option>`)
+        .join("") + `<option value="__nova__">➕ Criar Nova Aba...</option>`;
+  }
+
+  // Popula parâmetros globais do Crawler
+  if (elCfgMaxPorFonte) {
+    elCfgMaxPorFonte.value = regras.max_noticias_por_fonte || cfg.max_noticias_por_fonte || 4;
+  }
+  if (elCfgTamMinTitulo) {
+    elCfgTamMinTitulo.value = regras.tamanho_minimo_titulo || 30;
+  }
+  if (elCfgBlacklist) {
+    elCfgBlacklist.value = (regras.palavras_bloqueadas || []).join(", ");
+  }
+
+  // Renderiza lista de abas com botões Subir/Descer, Sazonalidade da Aba e Fontes
+  if (elCfgListaAbas) {
+    elCfgListaAbas.innerHTML = cats
+      .map((cat, idx) => {
+        const sazCat = cat.sazonalidade || "3d";
+        const fontesHtml = (cat.fontes || [])
+          .map((f, fIdx) => {
+            const urlMostrada = f.site_url || f.rss_url || "";
+            const sazFonte = ROTULOS_SAZ[f.sazonalidade || sazCat] || f.sazonalidade || sazCat;
+            const filtroFonte = ROTULOS_FILTRO[f.filtro || cat.filtro_padrao || "todo_conteudo"] || "Todo conteúdo";
+            return `
+              <div class="cfg-fonte-item">
+                <div>
+                  <strong>${escaparHtml(f.nome)}</strong>
+                  <span class="cfg-tag">${escaparHtml(sazFonte)}</span>
+                  <span class="cfg-tag">${escaparHtml(filtroFonte)}</span>
+                  ${f.regras_busca ? `<span class="cfg-tag">🔍 ${escaparHtml(f.regras_busca)}</span>` : ""}
+                  <div style="color:#94a3b8;font-size:0.74rem;margin-top:2px;word-break:break-all;">
+                    🔗 ${escaparHtml(urlMostrada)}
+                  </div>
+                </div>
+                <button class="cfg-btn-mini cfg-btn-del" data-del-fonte="${idx}:${fIdx}" title="Remover esta fonte">
+                  🗑️ Remover
+                </button>
+              </div>
+            `;
+          })
+          .join("");
+
+        return `
+          <div class="cfg-aba-card">
+            <div class="cfg-aba-header">
+              <div>
+                <strong style="font-size:0.95rem;color:#ffffff;">${cat.icone || "📰"} ${escaparHtml(cat.rotulo)}</strong>
+                <span class="cfg-tag">Sazonalidade: ${escaparHtml(ROTULOS_SAZ[sazCat] || sazCat)}</span>
+              </div>
+              <div style="display:flex;gap:6px;align-items:center;">
+                <select class="cfg-btn-mini" data-saz-cat="${idx}" title="Alterar sazonalidade padrão da aba">
+                  <option value="ultimo_boletim" ${sazCat === "ultimo_boletim" ? "selected" : ""}>⚡ Último boletim (1 ciclo)</option>
+                  <option value="6h" ${sazCat === "6h" ? "selected" : ""}>⏱️ 6 horas</option>
+                  <option value="1d" ${sazCat === "1d" ? "selected" : ""}>📅 1 dia</option>
+                  <option value="3d" ${sazCat === "3d" ? "selected" : ""}>🗓️ 3 dias</option>
+                  <option value="7d" ${sazCat === "7d" ? "selected" : ""}>📚 7 dias</option>
+                </select>
+                <button class="cfg-btn-mini" data-move-cat="${idx}:-1" ${idx === 0 ? "disabled" : ""} title="Subir Aba">⬆️</button>
+                <button class="cfg-btn-mini" data-move-cat="${idx}:1" ${idx === cats.length - 1 ? "disabled" : ""} title="Descer Aba">⬇️</button>
+              </div>
+            </div>
+            <div>${fontesHtml || '<div style="color:#64748b;font-size:0.8rem;">(Apenas boletim automático da editoria)</div>'}</div>
+          </div>
+        `;
+      })
+      .join("");
+
+    // Eventos de mover aba
+    elCfgListaAbas.querySelectorAll("[data-move-cat]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const [iStr, dirStr] = btn.getAttribute("data-move-cat").split(":");
+        const i = Number(iStr);
+        const novoI = i + Number(dirStr);
+        if (novoI >= 0 && novoI < cats.length) {
+          const temp = cats[i];
+          cats[i] = cats[novoI];
+          cats[novoI] = temp;
+          estado.categoriasConfig = cats;
+          renderizarAbasCategorias();
+          renderizarEstudioConfig();
+        }
+      });
+    });
+
+    // Evento de alterar sazonalidade da aba
+    elCfgListaAbas.querySelectorAll("[data-saz-cat]").forEach((sel) => {
+      sel.addEventListener("change", () => {
+        const i = Number(sel.getAttribute("data-saz-cat"));
+        if (cats[i]) {
+          cats[i].sazonalidade = sel.value;
+          renderizarEstudioConfig();
+        }
+      });
+    });
+
+    // Evento de remover fonte
+    elCfgListaAbas.querySelectorAll("[data-del-fonte]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const [cIdx, fIdx] = btn.getAttribute("data-del-fonte").split(":").map(Number);
+        if (cats[cIdx] && cats[cIdx].fontes) {
+          cats[cIdx].fontes.splice(fIdx, 1);
+          renderizarEstudioConfig();
+        }
+      });
+    });
+  }
+}
+
+if (elCfgAbaSelect) {
+  elCfgAbaSelect.addEventListener("change", () => {
+    if (elCfgNovaAbaWrap) {
+      elCfgNovaAbaWrap.classList.toggle("hidden", elCfgAbaSelect.value !== "__nova__");
+    }
+  });
+}
+
+if (elBtnAddFonte) {
+  elBtnAddFonte.addEventListener("click", () => {
+    const url = (elCfgFonteUrl?.value || "").trim();
+    if (!url) {
+      mostrarToast("⚠️ Informe a URL do portal ou feed!");
+      return;
+    }
+    const nome = (elCfgFonteNome?.value || url.replace(/^https?:\/\/(www\.)?/, "").split("/")[0]).trim();
+    const saz = elCfgFonteSaz?.value || "3d";
+    const filtro = elCfgFonteFiltro?.value || "primeira_pagina";
+    const regras = (elCfgFonteRegras?.value || "").trim();
+
+    const cats = estado.configCompleta.categorias || [];
+    let abaAlvo = null;
+
+    if (elCfgAbaSelect.value === "__nova__") {
+      const nomeNova = (elCfgNovaAbaNome?.value || "Nova Aba").trim();
+      const iconeNova = (elCfgNovaAbaIcone?.value || "📰").trim();
+      const idNova = nomeNova.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]/g, "") || "Custom";
+      abaAlvo = {
+        id: idNova,
+        rotulo: nomeNova,
+        icone: iconeNova,
+        cor: "#0ea5e9",
+        subtopico_padrao: idNova,
+        sazonalidade: saz,
+        filtro_padrao: filtro,
+        fontes: []
+      };
+      cats.push(abaAlvo);
+    } else {
+      abaAlvo = cats.find((c) => c.id === elCfgAbaSelect.value);
+    }
+
+    if (!abaAlvo) return;
+    abaAlvo.fontes = abaAlvo.fontes || [];
+    const subtopicoCurto = nome.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]/g, "").slice(0, 14) || abaAlvo.id;
+    abaAlvo.fontes.push({
+      nome,
+      subtopico: subtopicoCurto,
+      site_url: url,
+      rss_url: url,
+      sazonalidade: saz,
+      filtro,
+      regras_busca: regras
+    });
+
+    elCfgFonteNome.value = "";
+    elCfgFonteUrl.value = "";
+    elCfgFonteRegras.value = "";
+    mostrarToast(`✅ Fonte "${nome}" adicionada na aba ${abaAlvo.rotulo}!`);
+    renderizarAbasCategorias();
+    renderizarEstudioConfig();
+  });
+}
+
+if (elBtnSalvarConfig) {
+  elBtnSalvarConfig.addEventListener("click", async () => {
+    const cfg = estado.configCompleta;
+    cfg.max_noticias_por_fonte = Number(elCfgMaxPorFonte?.value || 4);
+    cfg.regras_crawler = cfg.regras_crawler || {};
+    cfg.regras_crawler.max_noticias_por_fonte = cfg.max_noticias_por_fonte;
+    cfg.regras_crawler.tamanho_minimo_titulo = Number(elCfgTamMinTitulo?.value || 30);
+    cfg.regras_crawler.palavras_bloqueadas = (elCfgBlacklist?.value || "")
+      .split(",")
+      .map((s) => s.trim().toLowerCase())
+      .filter(Boolean);
+
+    elCfgStatusMsg.textContent = "⏳ Salvando em config/fontes.config.json e sincronizando com GitHub...";
+    try {
+      const resp = await fetch("/api/salvar-config", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          usr: credUsr,
+          psw: credPsw,
+          config: cfg,
+          rodar_crawler: true
+        })
+      });
+      if (resp.ok) {
+        const resJson = await resp.json();
+        elCfgStatusMsg.textContent = "✅ " + (resJson.mensagem || "Salvo com sucesso!");
+        mostrarToast("💾 Configuração salva, enviada ao GitHub e giro iniciado!");
+        setTimeout(() => carregarDadosBase(false), 1500);
+      } else {
+        throw new Error("Servidor local não respondeu");
+      }
+    } catch (_) {
+      // Caso aberto direto pelo GitHub Pages sem o server.py local, baixa o fontes.config.json pronto
+      const blob = new Blob([JSON.stringify(cfg, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "fontes.config.json";
+      a.click();
+      elCfgStatusMsg.textContent = "📥 Arquivo fontes.config.json gerado (rode em localhost:8090 para push direto).";
+    }
+  });
+}
+
+if (elBtnAbrirConfig) elBtnAbrirConfig.addEventListener("click", abrirModalConfigurador);
+if (elBtnFecharConfig) elBtnFecharConfig.addEventListener("click", fecharModalConfigurador);
+if (elConfigBackdrop) elConfigBackdrop.addEventListener("click", fecharModalConfigurador);
+if (elBtnEntrarConfig) elBtnEntrarConfig.addEventListener("click", autenticarConfigurador);
+if (elInputPsw) {
+  elInputPsw.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") autenticarConfigurador();
+  });
+}
 
 // Registra e força atualização imediata do Service Worker para não reter versão antiga
 if ("serviceWorker" in navigator) {

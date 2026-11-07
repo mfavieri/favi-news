@@ -1,7 +1,44 @@
 {
-  "janela_retencao_dias": 3,
+  "janela_retencao_dias": 7,
   "intervalo_crawler_minutos": 15,
   "max_noticias_por_fonte": 4,
+  "regras_crawler": {
+    "max_noticias_por_fonte": 4,
+    "tamanho_minimo_titulo": 30,
+    "tamanho_minimo_paragrafo": 65,
+    "max_paragrafos_noticia": 10,
+    "palavras_bloqueadas": [
+      "copa do brasil",
+      "brasileirão",
+      "libertadores",
+      "champions league",
+      "futebol",
+      "onde assistir",
+      "escalação",
+      "flamengo",
+      "fluminense",
+      "botafogo",
+      "vasco",
+      "palmeiras",
+      "corinthians",
+      "são paulo fc",
+      "atlético-mg",
+      "grêmio",
+      "cruzeiro",
+      "rodada do",
+      "campeonato brasileiro",
+      "gol de",
+      "gols de",
+      "eliminatórias"
+    ],
+    "ruidos_pagina": [
+      "cookies",
+      "assine já",
+      "todos os direitos reservados",
+      "newsletter",
+      "publicidade"
+    ]
+  },
   "google_drive": {
     "habilitado": false,
     "folder_id": "COLE_AQUI_O_ID_DA_PASTA_DO_GOOGLE_DRIVE",
@@ -14,21 +51,43 @@
       "icone": "⛅",
       "cor": "#0284c7",
       "subtopico_padrao": "Niteroi",
+      "sazonalidade": "ultimo_boletim",
+      "filtro_padrao": "apenas_alertas",
       "fontes": [
-        {
-          "nome": "Climatempo (Niterói & RJ)",
-          "subtopico": "Niteroi",
-          "rss_url": "https://news.google.com/rss/search?q=site:climatempo.com.br+Niteroi+OR+%22Rio+de+Janeiro%22+OR+frente+fria+OR+calor+OR+chuva+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
-        },
         {
           "nome": "Alertas de Clima (MSN Clima & INMET RJ/Niterói)",
           "subtopico": "AlertaRJ",
-          "rss_url": "https://news.google.com/rss/search?q=alerta+chuva+OR+frente+fria+OR+tempestade+Rio+de+Janeiro+OR+Niteroi+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "site_url": "https://www.climatempo.com.br/previsao-do-tempo/cidade/315/niteroi-rj",
+          "rss_url": "https://news.google.com/rss/search?q=alerta+chuva+OR+frente+fria+OR+tempestade+Rio+de+Janeiro+OR+Niteroi+when:1d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "sazonalidade": "ultimo_boletim",
+          "filtro": "apenas_alertas"
+        }
+      ]
+    },
+    {
+      "id": "Niteroi",
+      "rotulo": "Niterói",
+      "icone": "🏙️",
+      "cor": "#0ea5e9",
+      "subtopico_padrao": "Enfoco",
+      "sazonalidade": "1d",
+      "filtro_padrao": "primeira_pagina",
+      "fontes": [
+        {
+          "nome": "Portal Enfoco Niterói",
+          "subtopico": "Enfoco",
+          "site_url": "https://enfoco.com.br/",
+          "rss_url": "https://enfoco.com.br/feed/",
+          "sazonalidade": "1d",
+          "filtro": "primeira_pagina"
         },
         {
-          "nome": "Previsão do Tempo Niterói & RJ",
-          "subtopico": "Niteroi",
-          "rss_url": "https://news.google.com/rss/search?q=Climatempo+OR+%22previsao+do+tempo%22+Niteroi+OR+%22Rio+de+Janeiro%22+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "nome": "Notícias de Niterói (Icaraí, Região Oceânica e Centro)",
+          "subtopico": "Cidade",
+          "site_url": "https://enfoco.com.br/",
+          "rss_url": "https://news.google.com/rss/search?q=Niteroi+RJ+-futebol+when:1d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "sazonalidade": "1d",
+          "filtro": "primeira_pagina"
         }
       ]
     },
@@ -38,26 +97,40 @@
       "icone": "🎭",
       "cor": "#d946ef",
       "subtopico_padrao": "Lazer",
+      "sazonalidade": "3d",
+      "filtro_padrao": "todo_conteudo",
       "fontes": [
         {
           "nome": "MSN Brasil (Moda, Estilo & Entretenimento)",
           "subtopico": "MSN",
-          "rss_url": "https://news.google.com/rss/search?q=site:msn.com/pt-br/estilo-de-vida+OR+site:msn.com/pt-br/entretenimento+OR+site:msn.com/pt-br/receitas+-clima+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "site_url": "https://www.msn.com/pt-br/estilo-de-vida",
+          "rss_url": "https://news.google.com/rss/search?q=site:msn.com/pt-br/estilo-de-vida+OR+site:msn.com/pt-br/entretenimento+OR+site:msn.com/pt-br/receitas+-clima+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "sazonalidade": "3d",
+          "filtro": "todo_conteudo"
         },
         {
           "nome": "Gastronomia, Festas & Eventos (Rio & Niterói)",
           "subtopico": "GastronomiaFestas",
-          "rss_url": "https://news.google.com/rss/search?q=(gastronomia+OR+restaurantes+OR+festas+OR+shows+OR+roteiro)+(%22Rio+de+Janeiro%22+OR+Niteroi)+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "site_url": "https://www.msn.com/pt-br/receitas",
+          "rss_url": "https://news.google.com/rss/search?q=(gastronomia+OR+restaurantes+OR+festas+OR+shows+OR+roteiro)+(%22Rio+de+Janeiro%22+OR+Niteroi)+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "sazonalidade": "3d",
+          "filtro": "todo_conteudo"
         },
         {
           "nome": "Fofocas, Famosos & Entretenimento",
           "subtopico": "Famosos",
-          "rss_url": "https://news.google.com/rss/search?q=famosos+OR+celebridades+OR+fofoca+OR+bastidores+TV+OR+cinema+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "site_url": "https://www.msn.com/pt-br/entretenimento",
+          "rss_url": "https://news.google.com/rss/search?q=famosos+OR+celebridades+OR+fofoca+OR+bastidores+TV+OR+cinema+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "sazonalidade": "3d",
+          "filtro": "todo_conteudo"
         },
         {
           "nome": "Viagens, Moda & Curiosidades",
           "subtopico": "ViagensModa",
-          "rss_url": "https://news.google.com/rss/search?q=(turismo+viagem+destinos)+OR+(tendencias+moda+estilo)+OR+(curiosidades+incrivel+mundo)+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "site_url": "https://www.msn.com/pt-br/viagem",
+          "rss_url": "https://news.google.com/rss/search?q=(turismo+viagem+destinos)+OR+(tendencias+moda+estilo)+OR+(curiosidades+incrivel+mundo)+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "sazonalidade": "3d",
+          "filtro": "todo_conteudo"
         }
       ]
     },
@@ -67,21 +140,32 @@
       "icone": "🏛️",
       "cor": "#2563eb",
       "subtopico_padrao": "Brasil",
+      "sazonalidade": "3d",
+      "filtro_padrao": "primeira_pagina",
       "fontes": [
         {
           "nome": "MSN Brasil Notícias",
           "subtopico": "MSN",
-          "rss_url": "https://news.google.com/rss/search?q=site:msn.com/pt-br/noticias+Brasil+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "site_url": "https://www.msn.com/pt-br/noticias",
+          "rss_url": "https://news.google.com/rss/search?q=site:msn.com/pt-br/noticias+Brasil+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "sazonalidade": "3d",
+          "filtro": "primeira_pagina"
         },
         {
           "nome": "BBC News Brasil",
           "subtopico": "Brasil",
-          "rss_url": "https://feeds.bbci.co.uk/portuguese/rss.xml"
+          "site_url": "https://www.bbc.com/portuguese",
+          "rss_url": "https://feeds.bbci.co.uk/portuguese/rss.xml",
+          "sazonalidade": "3d",
+          "filtro": "primeira_pagina"
         },
         {
           "nome": "Agência Brasil Política",
           "subtopico": "Brasilia",
-          "rss_url": "https://agenciabrasil.ebc.com.br/rss/politica/feed.xml"
+          "site_url": "https://agenciabrasil.ebc.com.br/politica",
+          "rss_url": "https://agenciabrasil.ebc.com.br/rss/politica/feed.xml",
+          "sazonalidade": "3d",
+          "filtro": "primeira_pagina"
         }
       ]
     },
@@ -91,21 +175,32 @@
       "icone": "📈",
       "cor": "#059669",
       "subtopico_padrao": "Mercados",
+      "sazonalidade": "3d",
+      "filtro_padrao": "primeira_pagina",
       "fontes": [
         {
           "nome": "MSN Brasil Dinheiro & Mercados",
           "subtopico": "MSN",
-          "rss_url": "https://news.google.com/rss/search?q=site:msn.com/pt-br/dinheiro+economia+OR+mercados+OR+dolar+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "site_url": "https://www.msn.com/pt-br/dinheiro",
+          "rss_url": "https://news.google.com/rss/search?q=site:msn.com/pt-br/dinheiro+economia+OR+mercados+OR+dolar+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "sazonalidade": "3d",
+          "filtro": "primeira_pagina"
         },
         {
           "nome": "InfoMoney Mercados",
           "subtopico": "Mercados",
-          "rss_url": "https://www.infomoney.com.br/feed/"
+          "site_url": "https://www.infomoney.com.br/",
+          "rss_url": "https://www.infomoney.com.br/feed/",
+          "sazonalidade": "3d",
+          "filtro": "primeira_pagina"
         },
         {
           "nome": "Agência Brasil Economia",
           "subtopico": "Brasil",
-          "rss_url": "https://agenciabrasil.ebc.com.br/rss/economia/feed.xml"
+          "site_url": "https://agenciabrasil.ebc.com.br/economia",
+          "rss_url": "https://agenciabrasil.ebc.com.br/rss/economia/feed.xml",
+          "sazonalidade": "3d",
+          "filtro": "primeira_pagina"
         }
       ]
     },
@@ -114,12 +209,25 @@
       "rotulo": "Ciências",
       "icone": "🔬",
       "cor": "#7c3aed",
-      "subtopico_padrao": "Inovacao",
+      "subtopico_padrao": "MITTech",
+      "sazonalidade": "7d",
+      "filtro_padrao": "todo_conteudo",
       "fontes": [
+        {
+          "nome": "MIT Technology Review Brasil",
+          "subtopico": "MITTech",
+          "site_url": "https://mittechreview.com.br/",
+          "rss_url": "https://mittechreview.com.br/feed/",
+          "sazonalidade": "7d",
+          "filtro": "todo_conteudo"
+        },
         {
           "nome": "BBC & Portais Ciência & Tecnologia",
           "subtopico": "Mundo",
-          "rss_url": "https://news.google.com/rss/search?q=ciencia+tecnologia+descoberta+astronomia+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "site_url": "https://www.bbc.com/portuguese/topics/cr50y580rjxt",
+          "rss_url": "https://news.google.com/rss/search?q=ciencia+tecnologia+descoberta+astronomia+when:7d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "sazonalidade": "7d",
+          "filtro": "todo_conteudo"
         }
       ]
     },
@@ -129,16 +237,24 @@
       "icone": "🩺",
       "cor": "#e11d48",
       "subtopico_padrao": "BemEstar",
+      "sazonalidade": "3d",
+      "filtro_padrao": "todo_conteudo",
       "fontes": [
         {
           "nome": "Agência Brasil Saúde",
           "subtopico": "Brasil",
-          "rss_url": "https://agenciabrasil.ebc.com.br/rss/saude/feed.xml"
+          "site_url": "https://agenciabrasil.ebc.com.br/saude",
+          "rss_url": "https://agenciabrasil.ebc.com.br/rss/saude/feed.xml",
+          "sazonalidade": "3d",
+          "filtro": "todo_conteudo"
         },
         {
           "nome": "CNN & Portais Saúde",
           "subtopico": "BemEstar",
-          "rss_url": "https://news.google.com/rss/search?q=saude+medicina+bem+estar+longevidade+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "site_url": "https://www.cnnbrasil.com.br/saude/",
+          "rss_url": "https://news.google.com/rss/search?q=saude+medicina+bem+estar+longevidade+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "sazonalidade": "3d",
+          "filtro": "todo_conteudo"
         }
       ]
     },
@@ -148,16 +264,24 @@
       "icone": "🚗",
       "cor": "#ea580c",
       "subtopico_padrao": "Rio",
+      "sazonalidade": "1d",
+      "filtro_padrao": "primeira_pagina",
       "fontes": [
         {
           "nome": "COR-Rio & Trânsito RJ",
           "subtopico": "Rio",
-          "rss_url": "https://news.google.com/rss/search?q=Transito+Rio+de+Janeiro+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "site_url": "https://cor.rio/",
+          "rss_url": "https://news.google.com/rss/search?q=Transito+Rio+de+Janeiro+OR+Ponte+Rio-Niteroi+when:1d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "sazonalidade": "1d",
+          "filtro": "primeira_pagina"
         },
         {
-          "nome": "Vias Expressas RJ (Av. Brasil, Ponte e Linhas)",
+          "nome": "Vias Expressas RJ (Ponte Rio-Niterói, Av. Brasil e Linhas)",
           "subtopico": "ViasRJ",
-          "rss_url": "https://news.google.com/rss/search?q=Avenida+Brasil+OR+Linha+Vermelha+OR+Ponte+Rio-Niteroi+OR+Linha+Amarela+Rio+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+          "site_url": "https://www.ecoponte.com.br/",
+          "rss_url": "https://news.google.com/rss/search?q=Ponte+Rio-Niteroi+OR+Avenida+Brasil+OR+Linha+Vermelha+OR+Niteroi+transito+when:1d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "sazonalidade": "1d",
+          "filtro": "primeira_pagina"
         }
       ]
     }

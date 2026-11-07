@@ -4,7 +4,7 @@
  * e do catálogo de 3 dias no celular.
  */
 
-const CACHE_NAME = "favinews-cache-v5";
+const CACHE_NAME = "favinews-cache-v6";
 const ARQUIVOS_ESSENCIAIS = [
   "./",
   "./index.html",

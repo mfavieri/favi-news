@@ -46,16 +46,20 @@ Um agregador e curador pessoal de notícias das primeiras páginas da internet e
    - Interface mobile-first instalável no smartphone.
    - Lê apenas o índice de 3 dias e os arquivos pré-formatados (`_R_` na listagem/resumo e `_N_` ao abrir a matéria completa).
    - Zero login, zero scraping no celular, carregamento instantâneo.
-2. **Backend (Motor Crawler Serverless — GitHub Actions):**
-   - Script Python executado automaticamente na nuvem via **GitHub Actions (`cron` a cada 15 minutos)**, sem depender de computador ligado.
+2. **Backend (Motor Crawler Serverless — GitHub Actions & Local) + Configurador PC (`⚙️`):**
+   - Script Python executado automaticamente na nuvem via **GitHub Actions (`cron` a cada 15 minutos: `3,18,33,48 * * * *`)**, sem depender de computador ligado.
+   - **Configurador Exclusivo na Versão PC (`usr: FaviNews` / `psw: NewsFavi`):**
+     - Permite **ordenar as abas (`⬆️` / `⬇️`)**, **incluir novas abas e fontes** informando diretamente a URL do site/portal, definir a **Sazonalidade** individual (`Último boletim / 1 ciclo`, `6 horas`, `1 dia`, `3 dias`, `7 dias`) e calibrar o **Filtro de Busca na Página** (`Notícias de primeira página`, `Todo conteúdo`, `Apenas Alertas [A]`, palavras-chave e blacklist).
    - Varre os portais configurados em `fontes.config.json`:
-     - **Clima (Niterói & RJ):** Boletim Ao Vivo de Niterói (Temperatura, Sensação Térmica, Chuva e Previsão de 3 dias) + Climatempo Niterói/RJ
-     - **Variedades (MSN & Lazer):** MSN Brasil Estilo & Entretenimento, Gastronomia, Festas, Fofocas/Famosos, Curiosidades, Viagens e Moda
-     - **Política / Geral:** MSN Brasil Notícias, BBC Brasil, Agência Brasil
-     - **Economia:** Valor Econômico, InfoMoney, Exame
-     - **Ciências & Saúde:** BBC Ciência/Saúde, Galileu, G1 Ciência e Saúde
-     - **Trânsito (Rio de Janeiro):** Centro de Operações Rio (COR), G1 Rio Trânsito, O Dia / Extra Rio
-   - Gera os pares `.html` (`_R_` e `_N_`) com imagens comprimidas em Base64, envia para a pasta do Google Drive e remove arquivos com mais de 3 dias (> 72h).
+     - **Clima (Niterói & RJ):** Sazonalidade `Último boletim (1 ciclo)` — deleta os anteriores e mantém apenas o boletim atual de Niterói + Alertas `[A]` vigentes
+     - **Niterói:** `https://enfoco.com.br/` — Sazonalidade `1 dia` | Filtro `Notícias de primeira página`
+     - **Variedades (MSN & Lazer):** MSN Brasil Estilo & Entretenimento, Gastronomia, Festas, Fofocas/Famosos, Curiosidades, Viagens e Moda — Sazonalidade `3 dias`
+     - **Política / Geral:** MSN Brasil Notícias, BBC Brasil, Agência Brasil — Sazonalidade `3 dias`
+     - **Economia:** MSN Dinheiro, InfoMoney, Agência Brasil — Sazonalidade `3 dias`
+     - **Ciências:** `https://mittechreview.com.br/` (MIT Technology Review Brasil) + BBC Ciência — Sazonalidade `7 dias` | Filtro `Todo conteúdo`
+     - **Saúde:** Agência Brasil Saúde, CNN Saúde — Sazonalidade `3 dias`
+     - **Trânsito (Rio de Janeiro):** COR-Rio, Ponte Rio-Niterói e Vias Expressas — Sazonalidade `1 dia` | Filtro `Notícias de primeira página`
+   - Gera os artefatos `.html` (`_R_`, `_N_` e `_A_`) com imagens comprimidas em Base64 e executa o expurgo automático respeitando a sazonalidade de cada aba/fonte.
 
 ---
 

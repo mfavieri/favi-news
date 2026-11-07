@@ -55,22 +55,57 @@ def extrair_metadados_do_nome(nome_arquivo: str) -> Optional[Dict[str, str]]:
     }
 
 
-def expurgar_alertas_ciclo(pasta_base: Path) -> List[str]:
+def converter_sazonalidade_timedelta(sazonalidade_str: str, padrao_dias: int = 3) -> Optional[timedelta]:
     """
-    Deleta TODOS os arquivos de Alerta (`_A_`) do ciclo anterior (e resíduos legados `_AlertaRJ.html`).
-    Como alertas têm sazonalidade curtíssima e podem perder validade/severidade em minutos
-    (ex: fim de tempestade), eles são limpos a cada ciclo de 15 minutos e recriados somente se
-    ainda estiverem ativos e válidos no ciclo atual.
+    Converte o código de sazonalidade do Configurador em timedelta:
+      - 'ultimo_boletim' / 'ciclo' / '15m': None (efêmero de 1 ciclo — mantém apenas o último boletim)
+      - '6h': 6 horas
+      - '1d': 1 dia (24h)
+      - '3d': 3 dias (72h)
+      - '7d': 7 dias (168h)
+    """
+    s = (sazonalidade_str or "").strip().lower()
+    if s in ("ultimo_boletim", "ciclo", "15m", "alerta"):
+        return None
+    if s == "6h":
+        return timedelta(hours=6)
+    if s in ("1d", "24h"):
+        return timedelta(days=1)
+    if s in ("3d", "72h"):
+        return timedelta(days=3)
+    if s in ("7d", "semana"):
+        return timedelta(days=7)
+    if s.endswith("d") and s[:-1].isdigit():
+        return timedelta(days=int(s[:-1]))
+    return timedelta(days=padrao_dias)
+
+
+def expurgar_alertas_ciclo(pasta_base: Path, categorias_cfg: Optional[List[Dict]] = None) -> List[str]:
+    """
+    Deleta TODOS os arquivos de Alerta (`_A_`) do ciclo anterior e todos os arquivos de
+    categorias com sazonalidade `ultimo_boletim` (como `Clima`, exceto o par de boletim reserva
+    que é substituído pelo novo boletim).
     """
     removidos: List[str] = []
     if not pasta_base.exists():
         return removidos
 
+    cats_efemeras = {"Clima"}
+    if categorias_cfg:
+        for c in categorias_cfg:
+            if c.get("sazonalidade") in ("ultimo_boletim", "ciclo", "15m"):
+                cats_efemeras.add(c.get("id", ""))
+
     for arq in pasta_base.glob("*.html"):
         info = extrair_metadados_do_nome(arq.name)
         if not info:
             continue
-        if info["tipo"] == "A" or info["subtopico"] == "AlertaRJ":
+        # Deleta todo arquivo _A_, todo AlertaRJ, ou arquivos de Clima que não sejam o último boletim Niteroi
+        if (
+            info["tipo"] == "A"
+            or info["subtopico"] == "AlertaRJ"
+            or (info["categoria"] in cats_efemeras and info["subtopico"] != "Niteroi")
+        ):
             try:
                 arq.unlink()
                 removidos.append(arq.name)
@@ -80,23 +115,43 @@ def expurgar_alertas_ciclo(pasta_base: Path) -> List[str]:
     return removidos
 
 
-def expurgar_arquivos_antigos(pasta_base: Path, dias_retencao: int = 3, agora: Optional[datetime] = None) -> List[str]:
+def expurgar_arquivos_antigos(
+    pasta_base: Path,
+    dias_retencao: int = 3,
+    agora: Optional[datetime] = None,
+    categorias_cfg: Optional[List[Dict]] = None,
+) -> List[str]:
     """
     Remove da Base de Conhecimento qualquer arquivo HTML cujo timestamp no nome
-    (`YYYYMMDD-HHMMSS`) seja anterior à janela de retenção (padrão: 3 dias / 72 horas).
+    (`YYYYMMDD-HHMMSS`) tenha ultrapassado a Sazonalidade configurada da sua Aba/Fonte
+    (ex: 7 dias para Ciências, 1 dia para Niterói/Trânsito, 3 dias para Geral).
     """
     if agora is None:
         agora = agora_brasilia()
-    limite_corte = agora - timedelta(days=dias_retencao)
     removidos: List[str] = []
 
     if not pasta_base.exists():
         return removidos
 
+    mapa_sazonalidade_cat: Dict[str, Optional[timedelta]] = {}
+    if categorias_cfg:
+        for c in categorias_cfg:
+            cid = c.get("id", "")
+            mapa_sazonalidade_cat[cid] = converter_sazonalidade_timedelta(
+                c.get("sazonalidade", f"{dias_retencao}d"), padrao_dias=dias_retencao
+            )
+
     for arq in pasta_base.glob("*.html"):
         info = extrair_metadados_do_nome(arq.name)
         if not info:
             continue
+        td_cat = mapa_sazonalidade_cat.get(info["categoria"], timedelta(days=dias_retencao))
+        if td_cat is None:
+            # Categoria efêmera (ultimo_boletim): se tiver mais de 1 hora e não foi substituído, expurga
+            limite_corte = agora - timedelta(hours=2)
+        else:
+            limite_corte = agora - td_cat
+
         if info["datetime"] < limite_corte:
             try:
                 arq.unlink()

@@ -26,6 +26,7 @@ from backend.drive_service import (
     FUSO_BRASILIA,
     agora_brasilia,
     carregar_catalogo,
+    converter_sazonalidade_timedelta,
     expurgar_alertas_ciclo,
     expurgar_arquivos_antigos,
     extrair_metadados_do_nome,
@@ -471,6 +472,80 @@ def gerar_boletim_clima_niteroi(
         return None
 
 
+def descobrir_xml_ou_raspar_capa(url_alvo: str) -> Tuple[Optional[ET.Element], List[Dict]]:
+    """
+    Aceita tanto uma URL de feed RSS quanto a URL direta da home de um portal
+    (ex: https://mittechreview.com.br/ ou https://enfoco.com.br/).
+    1. Se a resposta já for XML RSS/Atom, retorna o elemento raiz XML.
+    2. Se for HTML de um portal, tenta descobrir o link <link rel="alternate" type="application/rss+xml">
+       ou testar `url/feed/`.
+    3. Caso o site não possua RSS, extrai diretamente as manchetes da primeira página HTML.
+    """
+    try:
+        req = urllib.request.Request(url_alvo, headers=HEADERS_PADRAO)
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            bruto = resp.read(450_000)
+    except Exception:
+        bruto = b""
+
+    if bruto:
+        try:
+            return ET.fromstring(bruto), []
+        except Exception:
+            pass
+
+    html_capa = bruto.decode("utf-8", errors="ignore") if bruto else ""
+    # Tenta encontrar link de feed no HTML ou sufixo /feed/
+    candidatos_feed: List[str] = []
+    if html_capa:
+        m_rss = re.search(
+            r'<link[^>]+type=["\']application/(?:rss|atom)\+xml["\'][^>]+href=["\']([^"\']+)["\']',
+            html_capa,
+            flags=re.IGNORECASE,
+        )
+        if m_rss:
+            href_rss = html.unescape(m_rss.group(1).strip())
+            if href_rss.startswith("/"):
+                base_dom = re.match(r"^(https?://[^/]+)", url_alvo)
+                if base_dom:
+                    href_rss = base_dom.group(1) + href_rss
+            if href_rss.startswith("http"):
+                candidatos_feed.append(href_rss)
+
+    if not url_alvo.rstrip("/").endswith("/feed") and "news.google.com" not in url_alvo:
+        candidatos_feed.append(url_alvo.rstrip("/") + "/feed/")
+
+    for cand in candidatos_feed:
+        try:
+            req_f = urllib.request.Request(cand, headers=HEADERS_PADRAO)
+            with urllib.request.urlopen(req_f, timeout=7) as resp_f:
+                return ET.fromstring(resp_f.read(450_000)), []
+        except Exception:
+            pass
+
+    # Fallback: raspa manchetes diretamente do HTML da Primeira Página
+    manchetes_capa: List[Dict] = []
+    if html_capa:
+        base_dom_m = re.match(r"^(https?://[^/]+)", url_alvo)
+        dominio = base_dom_m.group(1) if base_dom_m else ""
+        vistos = set()
+        for m_a in re.finditer(r'<a[^>]+href=["\']([^"\']+)["\'][^>]*>(.*?)</a>', html_capa, flags=re.DOTALL | re.IGNORECASE):
+            href = html.unescape(m_a.group(1).strip())
+            txt = limpar_tags_html(m_a.group(2))
+            if len(txt) < 35 or len(txt) > 220:
+                continue
+            if href.startswith("/") and dominio:
+                href = dominio + href
+            if not href.startswith("http") or href in vistos:
+                continue
+            vistos.add(href)
+            manchetes_capa.append({"titulo": txt, "link": href})
+            if len(manchetes_capa) >= 12:
+                break
+
+    return None, manchetes_capa
+
+
 def processar_feed_rss(
     fonte_cfg: Dict,
     cat_cfg: Dict,
@@ -479,90 +554,150 @@ def processar_feed_rss(
     carimbos_usados: Set[str],
     pasta_base: Path,
     limite_corte: datetime,
+    regras_crawler: Optional[Dict] = None,
 ) -> List[Dict]:
-    """Lê um feed RSS, processa as notícias inéditas dos últimos 3 dias e gera os pares _R_ e _N_."""
+    """
+    Lê uma fonte configurada (URL de portal ou RSS), aplica a Sazonalidade e o Filtro
+    definidos no Configurador e gera os artefatos _R_, _N_ ou _A_.
+    """
     novos_itens_catalogo: List[Dict] = []
-    rss_url = fonte_cfg["rss_url"]
-    nome_fonte = fonte_cfg["nome"]
-    subtopico = fonte_cfg.get("subtopico", cat_cfg.get("subtopico_padrao", "Brasil"))
-
-    try:
-        req = urllib.request.Request(rss_url, headers=HEADERS_PADRAO)
-        with urllib.request.urlopen(req, timeout=8) as resp:
-            xml_bytes = resp.read()
-        root = ET.fromstring(xml_bytes)
-    except Exception as exc:
-        print(f"  [!] Aviso ao ler RSS de '{nome_fonte}': {exc}")
+    rss_url = (fonte_cfg.get("rss_url") or fonte_cfg.get("site_url") or "").strip()
+    if not rss_url:
         return novos_itens_catalogo
 
-    items_xml = root.findall(".//item")
-    if not items_xml:
-        items_xml = root.findall(".//{http://www.w3.org/2005/Atom}entry")
+    nome_fonte = fonte_cfg.get("nome", cat_cfg.get("rotulo", "Portal"))
+    subtopico = fonte_cfg.get("subtopico", cat_cfg.get("subtopico_padrao", "Brasil"))
+    sazonalidade = fonte_cfg.get("sazonalidade") or cat_cfg.get("sazonalidade") or "3d"
+    filtro_modo = (fonte_cfg.get("filtro") or cat_cfg.get("filtro_padrao") or "todo_conteudo").lower()
+    regras_busca_str = (fonte_cfg.get("regras_busca") or "").strip().lower()
+
+    regras = regras_crawler or {}
+    tam_min_titulo = int(regras.get("tamanho_minimo_titulo", 30))
+    termos_esporte_bloqueados = tuple(
+        t.lower()
+        for t in regras.get(
+            "palavras_bloqueadas",
+            [
+                "copa do brasil", "brasileirão", "libertadores", "champions league", "futebol",
+                "onde assistir", "escalação", "flamengo", "fluminense", "botafogo", "vasco",
+                "palmeiras", "corinthians", "são paulo fc", "atlético-mg", "grêmio", "cruzeiro",
+                "rodada do", "campeonato brasileiro", "gol de", "gols de", "eliminatórias",
+            ],
+        )
+    )
+
+    # Ajusta limite de itens e corte temporal conforme o Filtro e a Sazonalidade da Fonte
+    if filtro_modo == "primeira_pagina":
+        limite_itens_fonte = max(2, min(max_itens, 4))
+    elif filtro_modo == "todo_conteudo":
+        limite_itens_fonte = max(max_itens, 5)
+    else:
+        limite_itens_fonte = max_itens
+
+    td_saz = converter_sazonalidade_timedelta(sazonalidade, padrao_dias=3)
+    eh_fonte_alerta = (
+        filtro_modo == "apenas_alertas"
+        or sazonalidade == "ultimo_boletim"
+        or "alerta" in subtopico.lower()
+    )
+    if eh_fonte_alerta:
+        corte_efetivo = agora_brasilia() - timedelta(hours=2)
+    elif td_saz is not None:
+        corte_efetivo = agora_brasilia() - td_saz
+    else:
+        corte_efetivo = limite_corte
+
+    root, manchetes_html = descobrir_xml_ou_raspar_capa(rss_url)
+    if root is None and not manchetes_html:
+        print(f"  [!] Aviso ao ler fonte '{nome_fonte}' ({rss_url})")
+        return novos_itens_catalogo
+
+    entradas_brutas: List[Dict] = []
+    if root is not None:
+        items_xml = root.findall(".//item")
+        if not items_xml:
+            items_xml = root.findall(".//{http://www.w3.org/2005/Atom}entry")
+        for item in items_xml:
+            titulo_el = item.find("title")
+            if titulo_el is None:
+                titulo_el = item.find("{http://www.w3.org/2005/Atom}title")
+            t_txt = limpar_tags_html(titulo_el.text if titulo_el is not None and titulo_el.text else "")
+
+            link_el = item.find("link")
+            u_orig = ""
+            if link_el is not None:
+                u_orig = (link_el.text or link_el.attrib.get("href", "")).strip()
+
+            pub_el = item.find("pubDate")
+            if pub_el is None:
+                pub_el = item.find("{http://purl.org/dc/elements/1.1/}date")
+            if pub_el is None:
+                pub_el = item.find("{http://www.w3.org/2005/Atom}published")
+            p_txt = pub_el.text if pub_el is not None and pub_el.text else ""
+
+            desc_el = item.find("description")
+            if desc_el is None:
+                desc_el = item.find("{http://www.w3.org/2005/Atom}summary")
+            d_bruta = desc_el.text if desc_el is not None and desc_el.text else ""
+
+            u_img = extrair_primeira_imagem_html(d_bruta)
+            if not u_img:
+                for elem in item.iter():
+                    tag_local = elem.tag.split("}")[-1].lower()
+                    if tag_local in ("content", "thumbnail", "enclosure"):
+                        cand_img = elem.attrib.get("url", "")
+                        if cand_img.startswith("http"):
+                            u_img = cand_img
+                            break
+            entradas_brutas.append({
+                "titulo": t_txt,
+                "url": u_orig,
+                "pub_str": p_txt,
+                "desc_bruta": d_bruta,
+                "url_img": u_img,
+            })
+    else:
+        for mh in manchetes_html:
+            entradas_brutas.append({
+                "titulo": mh["titulo"],
+                "url": mh["link"],
+                "pub_str": "",
+                "desc_bruta": "",
+                "url_img": None,
+            })
 
     contador = 0
-    for item in items_xml:
-        if contador >= max_itens:
+    for ent in entradas_brutas:
+        if contador >= limite_itens_fonte:
             break
 
-        titulo_el = item.find("title")
-        if titulo_el is None:
-            titulo_el = item.find("{http://www.w3.org/2005/Atom}title")
-        titulo = limpar_tags_html(titulo_el.text if titulo_el is not None and titulo_el.text else "")
-        # Filtra títulos vazios, muito curtos, páginas de coordenadas ou notícias de futebol/esporte infiltradas em portais gerais
-        termos_esporte_bloqueados = (
-            "copa do brasil", "brasileirão", "libertadores", "champions league", "futebol",
-            "onde assistir", "escalação", "flamengo", "fluminense", "botafogo", "vasco",
-            "palmeiras", "corinthians", "são paulo fc", "atlético-mg", "grêmio", "cruzeiro",
-            "rodada do", "campeonato brasileiro", "gol de", "gols de", "eliminatórias"
-        )
+        titulo = ent["titulo"]
         t_low = titulo.lower()
         if (
             not titulo
-            or len(titulo) < 32
+            or len(titulo) < tam_min_titulo
             or "previsão do tempo para " in t_low
             or any(termo in t_low for termo in termos_esporte_bloqueados)
         ):
             continue
 
-        link_el = item.find("link")
-        url_original = ""
-        if link_el is not None:
-            url_original = (link_el.text or link_el.attrib.get("href", "")).strip()
+        # Se a fonte tiver regras específicas de palavras-chave no Configurador, valida
+        if regras_busca_str:
+            termos_req = [x.strip() for x in regras_busca_str.split(",") if x.strip()]
+            if termos_req and not any(tr in t_low for tr in termos_req):
+                continue
 
+        url_original = ent["url"]
         if url_original and url_original in urls_ja_processadas:
             continue
 
-        pub_el = item.find("pubDate")
-        if pub_el is None:
-            pub_el = item.find("{http://purl.org/dc/elements/1.1/}date")
-        if pub_el is None:
-            pub_el = item.find("{http://www.w3.org/2005/Atom}published")
-        dt_fato = converter_data_rss(pub_el.text if pub_el is not None and pub_el.text else "")
-
-        # Se for fonte de Alerta ([A]), exige validade curtíssima (últimas 2 horas); se for notícia ([R]/[N]), 3 dias
-        eh_fonte_alerta = "alerta" in subtopico.lower()
-        if eh_fonte_alerta:
-            if dt_fato < (agora_brasilia() - timedelta(hours=2)):
-                continue
-        elif dt_fato < limite_corte:
+        dt_fato = converter_data_rss(ent["pub_str"])
+        if dt_fato < corte_efetivo:
             continue
 
-        desc_el = item.find("description")
-        if desc_el is None:
-            desc_el = item.find("{http://www.w3.org/2005/Atom}summary")
-        desc_bruta = desc_el.text if desc_el is not None and desc_el.text else ""
+        desc_bruta = ent["desc_bruta"]
         descricao_limpa = limpar_tags_html(desc_bruta)
-
-        # Tenta localizar URL de imagem no próprio XML (media:content, enclosure ou <img> na descrição)
-        url_img = extrair_primeira_imagem_html(desc_bruta)
-        if not url_img:
-            for elem in item.iter():
-                tag_local = elem.tag.split("}")[-1].lower()
-                if tag_local in ("content", "thumbnail", "enclosure"):
-                    candidato = elem.attrib.get("url", "")
-                    if candidato.startswith("http"):
-                        url_img = candidato
-                        break
+        url_img = ent["url_img"]
 
         # Raspa parágrafos completos e og:image da página original
         paragrafos, og_img = raspar_artigo_completo(url_original)
@@ -720,24 +855,31 @@ def executar_crawler() -> Dict:
     with open(caminho_cfg, "r", encoding="utf-8") as f:
         cfg = json.load(f)
 
-    dias_retencao = int(cfg.get("janela_retencao_dias", 3))
-    max_por_fonte = int(cfg.get("max_noticias_por_fonte", 3))
+    dias_retencao = int(cfg.get("janela_retencao_dias", 7))
+    regras_crawler = cfg.get("regras_crawler", {})
+    max_por_fonte = int(regras_crawler.get("max_noticias_por_fonte", cfg.get("max_noticias_por_fonte", 4)))
     limite_corte = agora_brasilia() - timedelta(days=dias_retencao)
+    lista_categorias = cfg.get("categorias", [])
 
     print("=================================================================")
     print("🎙️  FAVI NEWS CRAWLER — 'Em 15 minutos tudo pode mudar !!'")
     print("=================================================================")
 
-    # 1. Expurga arquivos com mais de 3 dias (> 72h) e deleta TODOS os alertas (_A_) do ciclo anterior
-    expurgados = expurgar_arquivos_antigos(pasta_base, dias_retencao=dias_retencao)
-    alertas_deletados = expurgar_alertas_ciclo(pasta_base)
+    # 1. Expurga arquivos por sazonalidade configurada e deleta TODOS os alertas (_A_) e efêmeros do ciclo anterior
+    expurgados = expurgar_arquivos_antigos(
+        pasta_base, dias_retencao=dias_retencao, categorias_cfg=lista_categorias
+    )
+    alertas_deletados = expurgar_alertas_ciclo(pasta_base, categorias_cfg=lista_categorias)
     if expurgados:
-        print(f"🧹 Expurgo de {dias_retencao} dias: {len(expurgados)} arquivo(s) antigo(s) removido(s).")
+        print(f"🧹 Expurgo por Sazonalidade: {len(expurgados)} arquivo(s) vencido(s) removido(s).")
     if alertas_deletados:
-        print(f"🚨 Expurgo de Ciclo [A]: {len(alertas_deletados)} alerta(s) anterior(es) deletado(s) para revalidação.")
+        print(f"🚨 Expurgo de Ciclo [A / Efêmeros]: {len(alertas_deletados)} arquivo(s) anterior(es) deletado(s).")
 
     # 1.1 Expurga arquivos de categorias que foram removidas do fontes.config.json
-    categorias_ativas = {c["id"] for c in cfg.get("categorias", [])}
+    categorias_ativas = {c["id"] for c in lista_categorias}
+    cats_ultimo_boletim = {
+        c["id"] for c in lista_categorias if c.get("sazonalidade") in ("ultimo_boletim", "ciclo", "15m")
+    }
     removidos_cat = 0
     for arq_html in pasta_base.glob("*.html"):
         meta = extrair_metadados_do_nome(arq_html.name)
@@ -768,7 +910,6 @@ def executar_crawler() -> Dict:
 
     todos_novos: List[Dict] = []
     fontes_verificadas = 0
-    lista_categorias = cfg.get("categorias", [])
     total_cats = max(1, len(lista_categorias))
 
     atualizar_andamento_json(
@@ -791,16 +932,22 @@ def executar_crawler() -> Dict:
             fontes_verificadas += 1
             boletim_nit = gerar_boletim_clima_niteroi(cat_cfg, carimbos_usados, pasta_base)
             if boletim_nit:
-                # Só remove boletins automáticos anteriores de Niterói depois que o novo já foi gerado com sucesso
+                # Deleta TODOS os itens anteriores de Clima para manter exclusivamente o último boletim atual
                 for ant in list(itens_existentes):
-                    if "Climatempo" in ant.get("fonte", "") and "Niterói - RJ" in ant.get("fonte", ""):
-                        for chave_arq in ("arquivo_r", "arquivo_n"):
-                            caminho_ant = pasta_base / ant.get(chave_arq, "")
-                            if caminho_ant.exists() and caminho_ant.name not in (boletim_nit["arquivo_r"], boletim_nit["arquivo_n"]):
-                                try:
-                                    caminho_ant.unlink()
-                                except OSError:
-                                    pass
+                    if ant.get("categoria_id") == "Clima" or ant.get("categoria_id") in cats_ultimo_boletim:
+                        for chave_arq in ("arquivo_r", "arquivo_n", "arquivo_a"):
+                            nome_ant = ant.get(chave_arq, "")
+                            if nome_ant:
+                                caminho_ant = pasta_base / nome_ant
+                                if caminho_ant.exists() and caminho_ant.name not in (
+                                    boletim_nit.get("arquivo_r"),
+                                    boletim_nit.get("arquivo_n"),
+                                    boletim_nit.get("arquivo_a"),
+                                ):
+                                    try:
+                                        caminho_ant.unlink()
+                                    except OSError:
+                                        pass
                         itens_existentes.remove(ant)
                 todos_novos.append(boletim_nit)
         for fonte_cfg in cat_cfg.get("fontes", []):
@@ -819,6 +966,7 @@ def executar_crawler() -> Dict:
                 carimbos_usados=carimbos_usados,
                 pasta_base=pasta_base,
                 limite_corte=limite_corte,
+                regras_crawler=regras_crawler,
             )
             todos_novos.extend(novos)
 

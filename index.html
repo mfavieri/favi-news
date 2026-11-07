@@ -61,6 +61,9 @@
           <span class="pulse-dot"></span>
           <span id="label-atualizado">Sincronizando...</span>
         </div>
+        <button id="btn-abrir-config" class="btn-icon btn-config-pc" title="Configurador FaviNews (Versão PC)">
+          ⚙️
+        </button>
         <button id="btn-compartilhar-app" class="btn-icon btn-share" title="Compartilhar o App FaviNews">
           📤
         </button>
@@ -161,6 +164,133 @@
           title="Leitor de Notícia FaviNews"
           sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL CONFIGURADOR PC (LOGIN: usr: FaviNews / psw: NewsFavi)
+       ========================================================================= -->
+  <div id="modal-configurador" class="leitor-modal hidden" role="dialog" aria-modal="true">
+    <div class="leitor-backdrop" id="config-backdrop"></div>
+    <div class="leitor-sheet config-sheet">
+      <div class="leitor-topbar">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:1.3rem;">⚙️</span>
+          <div>
+            <strong style="color:#f8fafc;font-size:1rem;">Configurador FaviNews (PC)</strong>
+            <div style="font-size:0.76rem;color:#94a3b8;">Ordenar Abas • Fontes &amp; URLs • Sazonalidade • Regras do Crawler</div>
+          </div>
+        </div>
+        <button id="btn-fechar-config" class="btn-voltar">✕ Fechar</button>
+      </div>
+
+      <div class="config-body">
+        <!-- TELA 1: LOGIN RESTRITO -->
+        <div id="config-login-view" class="config-login-card">
+          <h3>🔒 Acesso Restrito ao Curador</h3>
+          <p style="color:#94a3b8;font-size:0.88rem;margin-bottom:14px;">
+            Autentique-se para calibrar abas, fontes, sazonalidades e filtros do Crawler.
+          </p>
+          <div class="cfg-field">
+            <label for="cfg-login-usr">Usuário (usr)</label>
+            <input type="text" id="cfg-login-usr" placeholder="FaviNews" autocomplete="username">
+          </div>
+          <div class="cfg-field">
+            <label for="cfg-login-psw">Senha (psw)</label>
+            <input type="password" id="cfg-login-psw" placeholder="••••••••" autocomplete="current-password">
+          </div>
+          <div id="cfg-login-erro" class="cfg-erro hidden">Credenciais inválidas! Verifique usuário e senha.</div>
+          <button id="btn-entrar-config" class="btn-cfg-primary" style="width:100%;margin-top:8px;">
+            🔓 Entrar no Configurador
+          </button>
+        </div>
+
+        <!-- TELA 2: ESTÚDIO DE CONFIGURAÇÃO -->
+        <div id="config-studio-view" class="config-studio hidden">
+          <!-- BLOCO A: INCLUIR NOVA FONTE / REGRA DE BUSCA -->
+          <section class="cfg-section">
+            <h4>➕ 1. Incluir Nova Fonte / Regra de Curadoria</h4>
+            <div class="cfg-grid-2">
+              <div class="cfg-field">
+                <label for="cfg-aba-select">Aba (Editoria)</label>
+                <select id="cfg-aba-select"></select>
+              </div>
+              <div class="cfg-field hidden" id="cfg-nova-aba-wrap">
+                <label for="cfg-nova-aba-nome">Nome e Ícone da Nova Aba</label>
+                <div style="display:flex;gap:6px;">
+                  <input type="text" id="cfg-nova-aba-icone" placeholder="🏙️" style="width:58px;text-align:center;" value="📰">
+                  <input type="text" id="cfg-nova-aba-nome" placeholder="Ex: Niterói ou Cultura">
+                </div>
+              </div>
+              <div class="cfg-field">
+                <label for="cfg-fonte-nome">Nome do Portal / Fonte</label>
+                <input type="text" id="cfg-fonte-nome" placeholder="Ex: MIT Tech Review ou Enfoco Niterói">
+              </div>
+              <div class="cfg-field">
+                <label for="cfg-fonte-url">URL do Portal ou Feed</label>
+                <input type="url" id="cfg-fonte-url" placeholder="Ex: https://mittechreview.com.br/ ou https://enfoco.com.br/">
+              </div>
+              <div class="cfg-field">
+                <label for="cfg-fonte-sazonalidade">Sazonalidade (Tempo na Base)</label>
+                <select id="cfg-fonte-sazonalidade">
+                  <option value="ultimo_boletim">⚡ Último boletim (1 ciclo / 15 min — Efêmero)</option>
+                  <option value="6h">⏱️ 6 horas</option>
+                  <option value="1d">📅 1 dia (24 horas)</option>
+                  <option value="3d" selected>🗓️ 3 dias (72 horas)</option>
+                  <option value="7d">📚 7 dias (1 semana)</option>
+                </select>
+              </div>
+              <div class="cfg-field">
+                <label for="cfg-fonte-filtro">Filtro (O que buscar na página)</label>
+                <select id="cfg-fonte-filtro">
+                  <option value="primeira_pagina">📰 Notícias de primeira página (Capa)</option>
+                  <option value="todo_conteudo">📚 Todo conteúdo</option>
+                  <option value="apenas_alertas">🚨 Apenas Alertas ([A] Efêmero)</option>
+                </select>
+              </div>
+              <div class="cfg-field">
+                <label for="cfg-fonte-regras">Palavras-Chave Obrigatórias na Página (Opcional)</label>
+                <input type="text" id="cfg-fonte-regras" placeholder="Ex: Niterói, Icaraí (vazio = aceita qualquer tema da fonte)">
+              </div>
+            </div>
+            <button id="btn-adicionar-fonte" class="btn-cfg-secondary" style="margin-top:10px;">
+              ➕ Incluir Regra / Fonte na Aba Selecionada
+            </button>
+          </section>
+
+          <!-- BLOCO B: ORDENAR ABAS E GERENCIAR FONTES ATIVAS -->
+          <section class="cfg-section">
+            <h4>🗂️ 2. Ordenar Abas (⬆️/⬇️), Sazonalidade e Fontes Cadastradas</h4>
+            <div id="cfg-lista-abas" class="cfg-abas-list"></div>
+          </section>
+
+          <!-- BLOCO C: CALIBRAR BUSCA E REGRAS GLOBAIS DO CRAWLER -->
+          <section class="cfg-section">
+            <h4>🎯 3. Calibrar Motor do Crawler (Regras de Extração da Página)</h4>
+            <div class="cfg-grid-2">
+              <div class="cfg-field">
+                <label for="cfg-max-por-fonte">Máx. Notícias por Fonte a cada Giro</label>
+                <input type="number" id="cfg-max-por-fonte" min="1" max="15" value="4">
+              </div>
+              <div class="cfg-field">
+                <label for="cfg-tam-min-titulo">Tamanho Mínimo do Título (caracteres)</label>
+                <input type="number" id="cfg-tam-min-titulo" min="15" max="80" value="30">
+              </div>
+            </div>
+            <div class="cfg-field" style="margin-top:10px;">
+              <label for="cfg-palavras-bloqueadas">Palavras Bloqueadas Globalmente (Blacklist — separadas por vírgula)</label>
+              <textarea id="cfg-palavras-bloqueadas" rows="3" placeholder="futebol, flamengo, brasileirão, onde assistir..."></textarea>
+            </div>
+          </section>
+
+          <div class="cfg-footer-bar">
+            <span id="cfg-status-msg" style="font-size:0.86rem;color:#38bdf8;"></span>
+            <button id="btn-salvar-config" class="btn-cfg-primary">
+              💾 Salvar Regras, Publicar no GitHub &amp; Rodar Crawler
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

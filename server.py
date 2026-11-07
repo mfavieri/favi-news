@@ -117,6 +117,66 @@ class FaviNewsRequestHandler(SimpleHTTPRequestHandler):
                 self.send_header("Content-Length", str(len(erro)))
                 self.end_headers()
                 self.wfile.write(erro)
+        elif self.path.startswith("/api/salvar-config"):
+            try:
+                tam = int(self.headers.get("Content-Length", "0"))
+                bruto = self.rfile.read(tam).decode("utf-8")
+                payload = json.loads(bruto)
+                usr = payload.get("usr", "")
+                psw = payload.get("psw", "")
+                if usr != "FaviNews" or psw != "NewsFavi":
+                    negado = json.dumps({"ok": False, "erro": "Credenciais inválidas!"}, ensure_ascii=False).encode("utf-8")
+                    self.send_response(401)
+                    self.send_header("Content-Type", "application/json; charset=utf-8")
+                    self.send_header("Content-Length", str(len(negado)))
+                    self.end_headers()
+                    self.wfile.write(negado)
+                    return
+
+                nova_cfg = payload.get("config")
+                if not isinstance(nova_cfg, dict) or "categorias" not in nova_cfg:
+                    raise ValueError("Estrutura de configuração inválida.")
+
+                caminho_cfg = RAIZ_PROJETO / "config" / "fontes.config.json"
+                with open(caminho_cfg, "w", encoding="utf-8") as f:
+                    json.dump(nova_cfg, f, ensure_ascii=False, indent=2)
+
+                def _push_cfg_e_rodar():
+                    try:
+                        subprocess.run(["git", "add", "config/fontes.config.json"], cwd=str(RAIZ_PROJETO), timeout=15)
+                        subprocess.run(
+                            ["git", "commit", "-m", "chore(config): atualiza regras pelo Configurador PC FaviNews"],
+                            cwd=str(RAIZ_PROJETO),
+                            timeout=15,
+                        )
+                        subprocess.run(
+                            ["git", "push", "origin", "HEAD:main", "HEAD:frontend", "HEAD:backend", "--force"],
+                            cwd=str(RAIZ_PROJETO),
+                            timeout=45,
+                        )
+                    except Exception:
+                        pass
+                    if payload.get("rodar_crawler", True):
+                        rodar_crawler_seguro("configurador-pc")
+
+                threading.Thread(target=_push_cfg_e_rodar, daemon=True).start()
+
+                resp_ok = json.dumps(
+                    {"ok": True, "mensagem": "Configuração salva no JSON, enviada ao GitHub e giro iniciado!"},
+                    ensure_ascii=False,
+                ).encode("utf-8")
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Content-Length", str(len(resp_ok)))
+                self.end_headers()
+                self.wfile.write(resp_ok)
+            except Exception as exc:
+                erro = json.dumps({"ok": False, "erro": str(exc)}, ensure_ascii=False).encode("utf-8")
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Content-Length", str(len(erro)))
+                self.end_headers()
+                self.wfile.write(erro)
         else:
             self.send_error(404, "Rota nao encontrada")
 
