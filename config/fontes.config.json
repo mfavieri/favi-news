@@ -1,9 +1,9 @@
 {
   "janela_retencao_dias": 7,
   "intervalo_crawler_minutos": 15,
-  "max_noticias_por_fonte": 4,
+  "max_noticias_por_fonte": 6,
   "regras_crawler": {
-    "max_noticias_por_fonte": 4,
+    "max_noticias_por_fonte": 6,
     "tamanho_minimo_titulo": 30,
     "tamanho_minimo_paragrafo": 65,
     "max_paragrafos_noticia": 10,
@@ -97,7 +97,7 @@
       "icone": "🎭",
       "cor": "#d946ef",
       "subtopico_padrao": "Lazer",
-      "sazonalidade": "3d",
+      "sazonalidade": "2d",
       "filtro_padrao": "todo_conteudo",
       "fontes": [
         {
@@ -105,7 +105,7 @@
           "subtopico": "MSN",
           "site_url": "https://www.msn.com/pt-br/estilo-de-vida",
           "rss_url": "https://news.google.com/rss/search?q=site:msn.com/pt-br/estilo-de-vida+OR+site:msn.com/pt-br/entretenimento+OR+site:msn.com/pt-br/receitas+-clima+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "sazonalidade": "3d",
+          "sazonalidade": "2d",
           "filtro": "todo_conteudo"
         },
         {
@@ -113,7 +113,7 @@
           "subtopico": "GastronomiaFestas",
           "site_url": "https://www.msn.com/pt-br/receitas",
           "rss_url": "https://news.google.com/rss/search?q=(gastronomia+OR+restaurantes+OR+festas+OR+shows+OR+roteiro)+(%22Rio+de+Janeiro%22+OR+Niteroi)+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "sazonalidade": "3d",
+          "sazonalidade": "2d",
           "filtro": "todo_conteudo"
         },
         {
@@ -121,7 +121,7 @@
           "subtopico": "Famosos",
           "site_url": "https://www.msn.com/pt-br/entretenimento",
           "rss_url": "https://news.google.com/rss/search?q=famosos+OR+celebridades+OR+fofoca+OR+bastidores+TV+OR+cinema+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "sazonalidade": "3d",
+          "sazonalidade": "2d",
           "filtro": "todo_conteudo"
         },
         {
@@ -129,7 +129,7 @@
           "subtopico": "ViagensModa",
           "site_url": "https://www.msn.com/pt-br/viagem",
           "rss_url": "https://news.google.com/rss/search?q=(turismo+viagem+destinos)+OR+(tendencias+moda+estilo)+OR+(curiosidades+incrivel+mundo)+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "sazonalidade": "3d",
+          "sazonalidade": "2d",
           "filtro": "todo_conteudo"
         }
       ]
@@ -264,7 +264,7 @@
       "icone": "🚗",
       "cor": "#ea580c",
       "subtopico_padrao": "Rio",
-      "sazonalidade": "1d",
+      "sazonalidade": "1h",
       "filtro_padrao": "primeira_pagina",
       "fontes": [
         {
@@ -272,7 +272,7 @@
           "subtopico": "Rio",
           "site_url": "https://cor.rio/",
           "rss_url": "https://news.google.com/rss/search?q=Transito+Rio+de+Janeiro+OR+Ponte+Rio-Niteroi+when:1d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "sazonalidade": "1d",
+          "sazonalidade": "1h",
           "filtro": "primeira_pagina"
         },
         {
@@ -280,7 +280,7 @@
           "subtopico": "ViasRJ",
           "site_url": "https://www.ecoponte.com.br/",
           "rss_url": "https://news.google.com/rss/search?q=Ponte+Rio-Niteroi+OR+Avenida+Brasil+OR+Linha+Vermelha+OR+Niteroi+transito+when:1d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "sazonalidade": "1d",
+          "sazonalidade": "1h",
           "filtro": "primeira_pagina"
         }
       ]
