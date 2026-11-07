@@ -1,25 +1,25 @@
 {
-  "atualizado_em": "07/11/2026 20:06:24",
-  "atualizado_iso": "2026-11-07T20:06:24.998295",
-  "proximo_giro_em": "07/11/2026 20:21:24",
-  "proximo_giro_iso": "2026-11-07T20:21:24.998295",
+  "atualizado_em": "07/11/2026 20:21:15",
+  "atualizado_iso": "2026-11-07T20:21:15.433428",
+  "proximo_giro_em": "07/11/2026 20:36:15",
+  "proximo_giro_iso": "2026-11-07T20:36:15.433428",
   "janela_dias": 7,
-  "total_itens": 297,
+  "total_itens": 301,
   "status_ciclo": {
     "estado": "concluido",
-    "verificado_em": "07/11/2026 20:06:24",
-    "hora_curta": "20:06",
-    "proximo_giro": "20:21",
-    "novas_paginas": 15,
+    "verificado_em": "07/11/2026 20:21:15",
+    "hora_curta": "20:21",
+    "proximo_giro": "20:36",
+    "novas_paginas": 8,
     "fontes_verificadas": 20,
     "expurgados_ciclo": 0,
-    "total_ativas_3dias": 297,
-    "mensagem": "Giro 20:06 OK • +15 nova(s) página(s) coletada(s) • Próximo às 20:21"
+    "total_ativas_3dias": 301,
+    "mensagem": "Giro 20:21 OK • +8 nova(s) página(s) coletada(s) • Próximo às 20:36"
   },
   "itens": [
     {
-      "carimbo_ts": "20261107-200613",
-      "titulo": "Niterói - RJ Agora: 26°C (Céu Encoberto • Sem Chuva (0 mm)) • Vento 8 km/h | Máx 33°C / Mín 22°C",
+      "carimbo_ts": "20261107-202105",
+      "titulo": "Niterói - RJ Agora: 26°C (Chuva moderada • Sem Chuva (0 mm)) • Vento 8 km/h | Máx 33°C / Mín 22°C",
       "fonte": "Climatempo & Defesa Civil • Niterói - RJ",
       "categoria_id": "Clima",
       "categoria_rotulo": "Clima Niterói",
@@ -27,20 +27,20 @@
       "cor": "#0284c7",
       "subtopico": "Niteroi",
       "tipo_artefato": "R",
-      "data_fato_formatada": "07/11/2026 às 20h06",
-      "resenha_texto": "Estação Niterói registra agora 26°C (Céu Encoberto • Sem Chuva (0 mm)), sensação de 31°C, vento de 8 km/h e umidade de 93%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 8 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-07 23:59.",
+      "data_fato_formatada": "07/11/2026 às 20h21",
+      "resenha_texto": "Estação Niterói registra agora 26°C (Chuva moderada • Sem Chuva (0 mm)), sensação de 31°C, vento de 8 km/h e umidade de 93%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 8 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-07 23:59.",
       "pontos_chave": [
-        "Agora na Estação Niterói: ☁️ 26°C (Céu Encoberto • Sem Chuva (0 mm)) — Vento 8 km/h, sensação 31°C e umidade 93%.",
+        "Agora na Estação Niterói: ☁️ 26°C (Chuva moderada • Sem Chuva (0 mm)) — Vento 8 km/h, sensação 31°C e umidade 93%.",
         "Temperaturas Hoje em Niterói: Mínima de 22°C e Máxima de 33°C | Probabilidade residual de chuva: 100%.",
         "ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 8 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-07 23:59.",
         "📅 Previsão Amanhã (2026-11-08) em Niterói: ⛈️ Tempestade com Raios — Mínima 19°C / Máxima 27°C (Chance de chuva: 100%)."
       ],
       "alerta_defesa_civil": "",
-      "arquivo_r": "20261107-200613_R_Clima_Niteroi.html",
-      "arquivo_n": "20261107-200613_N_Clima_Niteroi.html",
+      "arquivo_r": "20261107-202105_R_Clima_Niteroi.html",
+      "arquivo_n": "20261107-202105_N_Clima_Niteroi.html",
       "arquivo_a": "",
       "url_original": "https://www.climatempo.com.br/previsao-do-tempo/cidade/315/niteroi-rj",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yNsKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4piB77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5Dw6l1IEVuY29iZXJ0byDigKIgU2VtIENodXZhIDwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjE1OCIgZmlsbD0iI2ZkZTA0NyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiI+U2Vuc2HDp8OjbyB0w6lybWljYTogMzHCsEM8L3RleHQ+CiAgPHJlY3QgeD0iNDgiIHk9IjIzNiIgd2lkdGg9IjcwNCIgaGVpZ2h0PSIxMDQiIHJ4PSIxNiIgZmlsbD0iIzBmMTcyYSIgZmlsbC1vcGFjaXR5PSIwLjY4IiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS1vcGFjaXR5PSIwLjM1Ii8+CiAgPHRleHQgeD0iODYiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+TcONTiAvIE3DgVggSE9KRTwvdGV4dD4KICA8dGV4dCB4PSI4NiIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7irIcgMjLCsEMgIC8gIOKshiAzM8KwQzwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+Q0hBTkNFIERFIENIVVZBPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMzE0IiBmaWxsPSIjMzhiZGY4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7imJQgMTAwJTwvdGV4dD4KICA8dGV4dCB4PSI1OTUiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+VU1JREFERSBBUjwvdGV4dD4KICA8dGV4dCB4PSI1OTUiIHk9IjMxNCIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyNiI+8J+SpyA5MyU8L3RleHQ+Cjwvc3ZnPg=="
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yNsKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4piB77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5DaHV2YSBtb2RlcmFkYSDigKIgU2VtIENodXZhPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTU4IiBmaWxsPSIjZmRlMDQ3IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjIyIj5TZW5zYcOnw6NvIHTDqXJtaWNhOiAzMcKwQzwvdGV4dD4KICA8cmVjdCB4PSI0OCIgeT0iMjM2IiB3aWR0aD0iNzA0IiBoZWlnaHQ9IjEwNCIgcng9IjE2IiBmaWxsPSIjMGYxNzJhIiBmaWxsLW9wYWNpdHk9IjAuNjgiIHN0cm9rZT0iIzM4YmRmOCIgc3Ryb2tlLW9wYWNpdHk9IjAuMzUiLz4KICA8dGV4dCB4PSI4NiIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5Nw41OIC8gTcOBWCBIT0pFPC90ZXh0PgogIDx0ZXh0IHg9Ijg2IiB5PSIzMTQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjYiPuKshyAyMsKwQyAgLyAg4qyGIDMzwrBDPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5DSEFOQ0UgREUgQ0hVVkE8L3RleHQ+CiAgPHRleHQgeD0iMzYwIiB5PSIzMTQiIGZpbGw9IiMzOGJkZjgiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjYiPuKYlCAxMDAlPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5VTUlEQURFIEFSPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7wn5KnIDkzJTwvdGV4dD4KPC9zdmc+"
     },
     {
       "carimbo_ts": "20261107-200000",
@@ -868,6 +868,28 @@
       "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VhNTgwYyIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfmpc8L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFRSw4JOU0lUTyBSSjwvdGV4dD4KPC9zdmc+"
     },
     {
+      "carimbo_ts": "20261107-162601",
+      "titulo": "Nittrans prepara esquema especial de trânsito para evento no Caminho Niemeyer - Prefeitura Municipal de Niterói",
+      "fonte": "Notícias de Niterói (Icaraí, Região Oceânica e Centro)",
+      "categoria_id": "Niteroi",
+      "categoria_rotulo": "Niterói",
+      "icone": "🏙️",
+      "cor": "#0ea5e9",
+      "subtopico": "Cidade",
+      "tipo_artefato": "RN",
+      "data_fato_formatada": "07/11/2026 às 16h26",
+      "resenha_texto": "Nittrans prepara esquema especial de trânsito para evento no Caminho Niemeyer Prefeitura Municipal de Niterói",
+      "pontos_chave": [
+        "Fato Central: Nittrans prepara esquema especial de trânsito para evento no Caminho Niemeyer - Prefeitura Municipal de Niterói",
+        "Contexto: Nittrans prepara esquema especial de trânsito para evento no Caminho Niemeyer Prefeitura Municipal de Niterói",
+        "Apuração publicada por Notícias de Niterói (Icaraí, Região Oceânica e Centro)."
+      ],
+      "arquivo_r": "20261107-162601_R_Niteroi_Cidade.html",
+      "arquivo_n": "20261107-162601_N_Niteroi_Cidade.html",
+      "url_original": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNZWdSU2ltY25zSXFIcUUxdF8wOWdlSFczNUNBZXcxbno2bUR6QUJHV2ptUGJiVTYxa1FiSVNSMV9mRk93clRZNDlUOVp3a0cwaU1fYzRQWWhMa0JWT1pxYjA3RkpXRnhaUm9sNlI4R1AtQkVuWUhXTGtxZDRtMU1BWG5fRnl4YVVfMS1QSmhYNlU5RFZnejNSLVhXXzZkMUlLSmJPSGV5VQ?oc=5",
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlYTVlOSIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfj5nvuI88L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIE5JVEVSw5NJPC90ZXh0Pgo8L3N2Zz4="
+    },
+    {
       "carimbo_ts": "20261107-162430",
       "titulo": "Temporal faz dia virar noite em Niterói e região",
       "fonte": "Portal Enfoco Niterói",
@@ -1332,6 +1354,28 @@
       "arquivo_n": "20261107-140345_N_Variedades_Famosos.html",
       "url_original": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQbDQyT1o5TnhRcGRBNnlQME9US0JZamhLMVdhb2dmSExIaXdTVVFpVWJxQXhzRjNfYlY5NVRjQ2k4bG5hNERybmdUa01pb1RuSWl2ZFRmRFVrU1NXdlZxTVBWa0lSUGVDX1JtOHNOSVh2Qm1kTHpxMUN1UmZCYkFlRzE4cHpPMm9ya1V2bHo1R2FIMkJOSWVOZFE3a252emVxN25RYXZJOUxiLTRTTC1ITzhqM0o?oc=5",
       "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
+    },
+    {
+      "carimbo_ts": "20261107-140341",
+      "titulo": "Shows de Mumuzinho em Niterói são adiados devido à chuva - Folha do Leste",
+      "fonte": "Notícias de Niterói (Icaraí, Região Oceânica e Centro)",
+      "categoria_id": "Niteroi",
+      "categoria_rotulo": "Niterói",
+      "icone": "🏙️",
+      "cor": "#0ea5e9",
+      "subtopico": "Cidade",
+      "tipo_artefato": "RN",
+      "data_fato_formatada": "07/11/2026 às 14h03",
+      "resenha_texto": "Shows de Mumuzinho em Niterói são adiados devido à chuva Folha do Leste",
+      "pontos_chave": [
+        "Fato Central: Shows de Mumuzinho em Niterói são adiados devido à chuva - Folha do Leste",
+        "Contexto: Shows de Mumuzinho em Niterói são adiados devido à chuva Folha do Leste",
+        "Apuração publicada por Notícias de Niterói (Icaraí, Região Oceânica e Centro)."
+      ],
+      "arquivo_r": "20261107-140341_R_Niteroi_Cidade.html",
+      "arquivo_n": "20261107-140341_N_Niteroi_Cidade.html",
+      "url_original": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPQmtzcGNRWGRGanBtdE5Odk5MSXB1aTcySkdVSnVEZ2dGeDgzLVk2Uk5tdmttelJ1ckdXeWtFT29PelpYcW5hS1dqU3dwbEdGX0pJbjZUQ2stMkFlVE91a05QTFdqRlNablhsZklGOUJpOFF0S0pRenNUaFJRRWNFemVWT3RKNlU?oc=5",
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlYTVlOSIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfj5nvuI88L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIE5JVEVSw5NJPC90ZXh0Pgo8L3N2Zz4="
     },
     {
       "carimbo_ts": "20261107-135508",
@@ -3276,6 +3320,50 @@
       "arquivo_r": "20261107-020224_R_Niteroi_Cidade.html",
       "arquivo_n": "20261107-020224_N_Niteroi_Cidade.html",
       "url_original": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNODd0YUsxWVV2ZlRsQWUzZ0hrbUNrR0RJWmhGS1kwejBtaUxhTFZhQ2U4SEJBUURDajBzbUdwR2dOcnZlNkdFYTdFVnRrTXZhal9kbXB0S2JVc2xBajh4a2R4QjQ5SnNBTjhmWGU2MkdQNWNsSjBCWExFbnBkX3hqNl9mNHM3cnc0Nng0OUt1S1hjc3pLMHV3OGo3dE1kYldpUmp1TWhfc1AzcjQwekE?oc=5",
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlYTVlOSIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfj5nvuI88L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIE5JVEVSw5NJPC90ZXh0Pgo8L3N2Zz4="
+    },
+    {
+      "carimbo_ts": "20261107-015054",
+      "titulo": "Niterói terá reforço nas viagens de ônibus para atender estudantes nos dias do Enem – Prefeitura Municipal de Niterói - Prensa Mercosur",
+      "fonte": "Notícias de Niterói (Icaraí, Região Oceânica e Centro)",
+      "categoria_id": "Niteroi",
+      "categoria_rotulo": "Niterói",
+      "icone": "🏙️",
+      "cor": "#0ea5e9",
+      "subtopico": "Cidade",
+      "tipo_artefato": "RN",
+      "data_fato_formatada": "07/11/2026 às 01h50",
+      "resenha_texto": "Niterói terá reforço nas viagens de ônibus para atender estudantes nos dias do Enem – Prefeitura Municipal de Niterói Prensa Mercosur",
+      "pontos_chave": [
+        "Fato Central: Niterói terá reforço nas viagens de ônibus para atender estudantes nos dias do Enem – Prefeitura Municipal de Niterói - Prensa Mercosur",
+        "Contexto: Niterói terá reforço nas viagens de ônibus para atender estudantes nos dias do Enem – Prefeitura Municipal de Niterói Prensa Mercosur",
+        "Apuração publicada por Notícias de Niterói (Icaraí, Região Oceânica e Centro)."
+      ],
+      "arquivo_r": "20261107-015054_R_Niteroi_Cidade.html",
+      "arquivo_n": "20261107-015054_N_Niteroi_Cidade.html",
+      "url_original": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNMERleXdvOHdwdTFRekczSnZTOVBCSWlXQm5QNVFXV3pzRVFPbXotTmRLTGJ0NnZJUmdXUlJ2blYtWEZTbEJqd0pFajBDT21adWJ4X01ZY0hnZ1VqeVZGYW8yR2E4Zkh3dEFCcjhsbUl3U1g3eDlLdWxOSDRLUURXMnk4Ti1veWJBTWxMbFhJRkpXUkpkbFJZdDVKa1djeERvM3pfU05HYTNVWnNsUUFLVlN6SllFbFFIM01pWW5fVV8zUEFVbGVMX21FTWVKTUdwZFRfU2ttT2JkaXdnemIxTnFNZnYyY2VOcmc?oc=5",
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlYTVlOSIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfj5nvuI88L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIE5JVEVSw5NJPC90ZXh0Pgo8L3N2Zz4="
+    },
+    {
+      "carimbo_ts": "20261107-013253",
+      "titulo": "Músico e compositor Roger Henri morre aos 71 anos - Itamaraju Notícias",
+      "fonte": "Notícias de Niterói (Icaraí, Região Oceânica e Centro)",
+      "categoria_id": "Niteroi",
+      "categoria_rotulo": "Niterói",
+      "icone": "🏙️",
+      "cor": "#0ea5e9",
+      "subtopico": "Cidade",
+      "tipo_artefato": "RN",
+      "data_fato_formatada": "07/11/2026 às 01h32",
+      "resenha_texto": "Músico e compositor Roger Henri morre aos 71 anos Itamaraju Notícias",
+      "pontos_chave": [
+        "Fato Central: Músico e compositor Roger Henri morre aos 71 anos - Itamaraju Notícias",
+        "Contexto: Músico e compositor Roger Henri morre aos 71 anos Itamaraju Notícias",
+        "Apuração publicada por Notícias de Niterói (Icaraí, Região Oceânica e Centro)."
+      ],
+      "arquivo_r": "20261107-013253_R_Niteroi_Cidade.html",
+      "arquivo_n": "20261107-013253_N_Niteroi_Cidade.html",
+      "url_original": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOVjd6c1JoaVBTaXgxcWVtTlRJdEwyYXB5RVdQSUkwRGtmSnExVzMzakhSajhjZEhCbWdWczNlazYwSW9jSF9Ya2xhT0JabmE4Y1YyWE9acFBPcVRJbGNiSDFqVFBqVUZ3Q1BBN0RycHVjenBEZ3ZwUG9zS0xJQlBKU09KNnc5MVZ3cVRKRk9tRDdDZzJDU3pBT0hGM2t0a1dxcnlRdUNHRXRkY2RDTmlN?oc=5",
       "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlYTVlOSIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfj5nvuI88L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIE5JVEVSw5NJPC90ZXh0Pgo8L3N2Zz4="
     },
     {
