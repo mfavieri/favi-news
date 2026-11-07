@@ -160,6 +160,8 @@ async function carregarDadosBase(apenasStatus = false) {
 
         renderizarAbasCategorias();
         renderizarListaNoticias();
+        // Atualiza em tempo real o Clima de Niterói e o Banner da Defesa Civil direto no navegador/celular
+        atualizarClimaEDefesaCivilAoVivoNoCelular();
       }
       return;
     } else {
@@ -173,6 +175,77 @@ async function carregarDadosBase(apenasStatus = false) {
   if (!apenasStatus) {
     renderizarAbasCategorias();
     renderizarListaNoticias();
+  }
+}
+
+const MAPA_WMO_MOBILE = {
+  0: ["☀️", "Sol e Céu Limpo"],
+  1: ["🌤️", "Sol com Poucas Nuvens"],
+  2: ["⛅", "Sol entre Nuvens"],
+  3: ["☁️", "Céu Encoberto"],
+  45: ["🌫️", "Nevoeiro"],
+  48: ["🌫️", "Nevoeiro Úmido"],
+  51: ["🌦️", "Garoa Leve"],
+  53: ["🌦️", "Chuvisco Moderado"],
+  55: ["🌧️", "Chuvisco Intenso"],
+  61: ["🌧️", "Chuva Fraca"],
+  63: ["🌧️", "Chuva Moderada"],
+  65: ["⛈️", "Chuva Forte"],
+  80: ["🌦️", "Pancadas de Chuva Isoladas"],
+  81: ["🌧️", "Pancadas de Chuva"],
+  82: ["⛈️", "Temporal / Chuva Intensa"],
+  95: ["⛈️", "Tempestade com Raios"]
+};
+
+/**
+ * Consulta direto do celular a estação de Niterói (Open-Meteo) e os avisos do INMET
+ * para atualizar temperatura, precipitação (mm) e Banner da Defesa Civil em tempo real,
+ * mesmo quando o PC estiver desligado.
+ */
+async function atualizarClimaEDefesaCivilAoVivoNoCelular() {
+  try {
+    const urlOm =
+      "https://api.open-meteo.com/v1/forecast?latitude=-22.8833&longitude=-43.1036&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=America%2FSao_Paulo&forecast_days=1";
+    const respOm = await fetch(urlOm, { cache: "no-store" });
+    if (!respOm.ok) return;
+    const dadosOm = await respOm.json();
+    const atual = dadosOm.current || {};
+    const diario = dadosOm.daily || {};
+
+    const temp = Number(atual.temperature_2m ?? 26);
+    const sens = Number(atual.apparent_temperature ?? temp);
+    const umid = Number(atual.relative_humidity_2m ?? 80);
+    const precip = Number(atual.precipitation ?? 0);
+    const vento = Number(atual.wind_speed_10m ?? 6);
+    const wcode = Number(atual.weather_code ?? 3);
+    const [icone, txtBase] = MAPA_WMO_MOBILE[wcode] || ["⛅", "Tempo Variável"];
+
+    const estacaoComChuvaOuVentoForte = precip >= 0.3 || wcode >= 51 || vento >= 35;
+    const condTexto = !estacaoComChuvaOuVentoForte && precip === 0 && wcode <= 3 ? `${txtBase} • Sem Chuva (0 mm)` : txtBase;
+    const tMin = Number((diario.temperature_2m_min || [22])[0]);
+    const tMax = Number((diario.temperature_2m_max || [32])[0]);
+
+    // Atualiza o item de Clima Niterói na memória do celular
+    const itemNit = estado.itensCatalogo.find(
+      (it) => it.categoria_id === "Clima" && it.subtopico === "Niteroi"
+    );
+    if (itemNit) {
+      const agora = new Date();
+      const hhmm = `${String(agora.getHours()).padStart(2, "0")}h${String(agora.getMinutes()).padStart(2, "0")}`;
+      const ddmm = `${String(agora.getDate()).padStart(2, "0")}/${String(agora.getMonth() + 1).padStart(2, "0")}/${agora.getFullYear()}`;
+      itemNit.data_fato_formatada = `${ddmm} às ${hhmm}`;
+
+      if (!estacaoComChuvaOuVentoForte) {
+        itemNit.alerta_defesa_civil = "";
+        itemNit.titulo = `Niterói - RJ Agora: ${Math.round(temp)}°C (${condTexto}) • Vento ${Math.round(vento)} km/h | Máx ${Math.round(tMax)}°C / Mín ${Math.round(tMin)}°C`;
+        if (elBannerDefesaCivil) {
+          elBannerDefesaCivil.classList.add("hidden");
+        }
+      }
+      renderizarListaNoticias();
+    }
+  } catch (_) {
+    // Em modo offline mantém os dados do JSON local
   }
 }
 

@@ -2,8 +2,8 @@ name: "FaviNews Crawler (A cada 15 min)"
 
 on:
   schedule:
-    # Executa automaticamente a cada 15 minutos ("Em 15 minutos tudo pode mudar !!")
-    - cron: "*/15 * * * *"
+    # Executa automaticamente a cada 15 minutos com 3 min de folga (:03, :18, :33, :48) para evitar fila de pico do GitHub
+    - cron: "3,18,33,48 * * * *"
   workflow_dispatch: # Permite disparo manual com 1 clique
 
 permissions:
@@ -50,7 +50,13 @@ jobs:
           git config user.name "FaviNews Bot"
           git config user.email "bot@favinews.local"
           git add base_conhecimento/
-          git diff --staged --quiet || (git commit -m "chore(noticias): giro automatico 15min" && git push origin HEAD:main HEAD:frontend HEAD:backend)
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(noticias): giro automatico nuvem GitHub Actions"
+            git pull --rebase -X theirs origin main || true
+            git push origin HEAD:main
+            git push origin HEAD:frontend --force
+            git push origin HEAD:backend --force
+          fi
 
       - name: "🌐 Configurar GitHub Pages"
         uses: actions/configure-pages@v5
