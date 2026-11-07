@@ -256,20 +256,34 @@ def gerar_boletim_clima_niteroi(
             condicao_texto=texto_cond,
         )
 
+        # Detecta alertas severos de clima em Niterói (estilo MSN Clima)
+        alerta_msn = ""
+        if sensacao >= 36.0:
+            alerta_msn = f"⚠️ ALERTA DE CALOR: Sensação térmica de {sensacao:.0f}°C em Niterói! Hidrate-se e evite sol forte."
+        elif prob_hoje >= 60 or wcode in (65, 81, 82, 95):
+            alerta_msn = f"⚠️ ALERTA DE CHUVA/TEMPO SEVERO: {prob_hoje}% de probabilidade de chuva em Niterói hoje."
+        elif len(prob_lista) > 1 and int(prob_lista[1]) >= 65:
+            alerta_msn = f"⚠️ ALERTA DE VIRADA NO TEMPO: Previsão de {prob_lista[1]}% de chuva amanhã em Niterói."
+
+        prefixo_alerta = "⚠️ [ALERTA CLIMA] " if alerta_msn else ""
         titulo = (
-            f"Niterói - RJ Agora: {temp:.0f}°C ({texto_cond}) • "
+            f"{prefixo_alerta}Niterói - RJ Agora: {temp:.0f}°C ({texto_cond}) • "
             f"Sensação de {sensacao:.0f}°C | Máx {t_max_hoje:.0f}°C / Mín {t_min_hoje:.0f}°C"
         )
         resenha_texto = (
+            f"{alerta_msn + ' ' if alerta_msn else ''}"
             f"Boletim atualizado de Niterói (Icaraí / Centro / Região Oceânica): faz {temp:.1f}°C "
             f"neste momento com sensação térmica de {sensacao:.1f}°C, umidade em {umidade}% e "
             f"probabilidade de chuva de {prob_hoje}% hoje."
         )
 
-        pontos_chave = [
+        pontos_chave = []
+        if alerta_msn:
+            pontos_chave.append(alerta_msn)
+        pontos_chave.extend([
             f"Agora em Niterói: {icone_cond} {temp:.1f}°C ({texto_cond}) — Sensação térmica de {sensacao:.1f}°C.",
             f"Hoje em Niterói: Mínima de {t_min_hoje:.0f}°C e Máxima de {t_max_hoje:.0f}°C | Chance de chuva: {prob_hoje}%.",
-        ]
+        ])
 
         paragrafos = [
             resenha_texto,
@@ -291,7 +305,7 @@ def gerar_boletim_clima_niteroi(
                 pontos_chave.append(linha_prev)
 
         paragrafos.append(
-            "Fonte de Referência: Climatempo Niterói - RJ & Monitoramento Meteorológico Local."
+            "Fonte de Referência: Climatempo Niterói - RJ & Alertas MSN Clima (msn.com/pt-br/clima)."
         )
 
         url_climatempo_niteroi = "https://www.climatempo.com.br/previsao-do-tempo/cidade/315/niteroi-rj"
