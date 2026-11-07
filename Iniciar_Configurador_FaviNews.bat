@@ -6,7 +6,7 @@ cd /d "d:\Projetos_Antigravity\favi-news"
 echo =================================================================
 echo ⚙️  FAVINEWS — INICIANDO SERVIDOR LOCAL E CONFIGURADOR PC
 echo    Slogan: "Em 15 minutos tudo pode mudar !!"
-echo    Login do Configurador: usr: FaviNews  ^|  psw: NewsFavi
+echo    Modo Exclusivo PC (Sem senha — autenticado pela maquina local)
 echo =================================================================
 echo.
 
@@ -21,3 +21,4 @@ echo (Mantenha esta janela aberta enquanto estiver configurando; feche quando te
 echo.
 python "d:\Projetos_Antigravity\favi-news\server.py" 8090
 pause
+

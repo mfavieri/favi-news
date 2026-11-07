@@ -889,7 +889,16 @@ if (elBtnSalvarConfig) {
   });
 }
 
-if (elBtnAbrirConfig) elBtnAbrirConfig.addEventListener("click", abrirModalConfigurador);
+if (elBtnAbrirConfig) {
+  const ehLocalPC =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1" ||
+    window.location.search.includes("config=1");
+  if (!ehLocalPC) {
+    elBtnAbrirConfig.classList.add("hidden");
+  }
+  elBtnAbrirConfig.addEventListener("click", abrirModalConfigurador);
+}
 if (elBtnFecharConfig) elBtnFecharConfig.addEventListener("click", fecharModalConfigurador);
 if (elConfigBackdrop) elConfigBackdrop.addEventListener("click", fecharModalConfigurador);
 if (elBtnEntrarConfig) elBtnEntrarConfig.addEventListener("click", autenticarConfigurador);
