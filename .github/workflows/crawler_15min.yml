@@ -52,8 +52,7 @@ jobs:
           git add base_conhecimento/
           if ! git diff --staged --quiet; then
             git commit -m "chore(noticias): giro automatico nuvem GitHub Actions"
-            git pull --rebase -X theirs origin main || true
-            git push origin HEAD:main
+            git push origin HEAD:main --force
             git push origin HEAD:frontend --force
             git push origin HEAD:backend --force
           fi

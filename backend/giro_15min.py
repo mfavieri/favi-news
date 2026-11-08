@@ -4,6 +4,7 @@ Roda um giro completo do Crawler (atualizando o `status_ciclo` no `catalogo_3dia
 mesmo quando não há novas páginas) e publica automaticamente no GitHub Pages.
 """
 
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -16,7 +17,23 @@ from backend.crawler import executar_crawler
 from backend.drive_service import agora_brasilia
 
 
+def limpar_rebase_travado():
+    """Remove eventual estado de rebase travado e garante que estamos na branch main sincronizada."""
+    git_dir = RAIZ_PROJETO / ".git"
+    for pasta_trava in ("rebase-merge", "rebase-apply"):
+        alvo = git_dir / pasta_trava
+        if alvo.exists():
+            shutil.rmtree(alvo, ignore_errors=True)
+    subprocess.run(["git", "checkout", "-B", "main"], cwd=str(RAIZ_PROJETO), timeout=15)
+    subprocess.run(["git", "fetch", "origin", "main"], cwd=str(RAIZ_PROJETO), timeout=25)
+
+
 def executar_giro_e_publicar():
+    try:
+        limpar_rebase_travado()
+    except Exception:
+        pass
+
     resumo = executar_crawler()
     hora = agora_brasilia().strftime("%H:%M:%S")
     try:
@@ -27,11 +44,6 @@ def executar_giro_e_publicar():
                 ["git", "commit", "-m", f"chore(noticias): giro automatico 15min ({hora})"],
                 cwd=str(RAIZ_PROJETO),
                 timeout=20,
-            )
-            subprocess.run(
-                ["git", "pull", "--rebase", "-X", "theirs", "origin", "main"],
-                cwd=str(RAIZ_PROJETO),
-                timeout=30,
             )
             subprocess.run(
                 ["git", "push", "origin", "HEAD:main", "HEAD:frontend", "HEAD:backend", "--force"],
