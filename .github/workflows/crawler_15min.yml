@@ -3,7 +3,7 @@ name: "FaviNews Crawler (A cada 15 min)"
 on:
   schedule:
     # Executa automaticamente a cada 15 minutos com 3 min de folga (:03, :18, :33, :48) para evitar fila de pico do GitHub
-    - cron: "3,18,33,48 * * * *"
+    - cron: "0,15,30,45,* * * *"
   workflow_dispatch: # Permite disparo manual com 1 clique
 
 permissions:
