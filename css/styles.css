@@ -971,5 +971,25 @@ body {
   background: rgba(56, 189, 248, 0.3);
 }
 
+/* Ícone 🆘 de Falha de Sincronização */
+.btn-sync-sos {
+  background: rgba(239, 68, 68, 0.22) !important;
+  border: 1.5px solid #ef4444 !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.55);
+  animation: sos-pulse 1.4s infinite ease-in-out;
+}
+
+@keyframes sos-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.45);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.85);
+  }
+}
+
+
 
 

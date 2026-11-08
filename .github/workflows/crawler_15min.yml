@@ -1,10 +1,9 @@
 name: "FaviNews Crawler (A cada 15 min)"
 
 on:
-  schedule:
-    # Executa automaticamente nos intervalos 0, 15, 30 e 45 de cada hora
-    - cron: "0,15,30,45 * * * *"
-  workflow_dispatch: # Permite disparo manual com 1 clique
+  workflow_dispatch: # Acionado externamente pelo cron-job.org nos minutos 0, 15, 30, 45 (ou manual com 1 clique)
+  repository_dispatch:
+    types: [cronjob_giro_15min]
 
 permissions:
   contents: write

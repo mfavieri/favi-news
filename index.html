@@ -57,8 +57,11 @@
       </div>
 
       <div class="header-actions">
+        <button id="btn-alerta-sync" class="btn-icon btn-sync-sos hidden" title="Falha de sincronização detectada — toque para detalhes">
+          🆘
+        </button>
         <div class="status-pill" id="status-atualizacao" title="Última sincronização da Base de Conhecimento">
-          <span class="pulse-dot"></span>
+          <span class="pulse-dot" id="dot-status-sync"></span>
           <span id="label-atualizado">Sincronizando...</span>
         </div>
         <button id="btn-abrir-config" class="btn-icon btn-config-pc" title="Configurador FaviNews (Versão PC)">

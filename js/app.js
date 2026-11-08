@@ -33,6 +33,93 @@ const elSelectDia = document.getElementById("select-janela-dia");
 const elBtnCrawler = document.getElementById("btn-forcar-crawler");
 const elBtnShareApp = document.getElementById("btn-compartilhar-app");
 const elBtnReplaySplash = document.getElementById("btn-replay-splash");
+const elBtnAlertaSync = document.getElementById("btn-alerta-sync");
+const elDotStatusSync = document.getElementById("dot-status-sync");
+
+let ultimoMotivoFalhaSync = "";
+let ultimaChecagemActionsMs = 0;
+let falhaActionsCache = "";
+
+function atualizarIconeFalhaSync(motivo) {
+  ultimoMotivoFalhaSync = motivo || "";
+  if (!elBtnAlertaSync) return;
+  if (ultimoMotivoFalhaSync) {
+    elBtnAlertaSync.classList.remove("hidden");
+    elBtnAlertaSync.title = `🆘 ${ultimoMotivoFalhaSync}`;
+    if (elDotStatusSync) elDotStatusSync.style.background = "#ef4444";
+  } else {
+    elBtnAlertaSync.classList.add("hidden");
+    if (elDotStatusSync) elDotStatusSync.style.background = "";
+  }
+}
+
+if (elBtnAlertaSync) {
+  elBtnAlertaSync.addEventListener("click", () => {
+    if (ultimoMotivoFalhaSync) {
+      mostrarToast(`🆘 ${ultimoMotivoFalhaSync}`);
+    }
+  });
+}
+
+async function verificarSaudeSincronizacao(cat) {
+  const motivos = [];
+  const sc = (cat && cat.status_ciclo) || {};
+
+  // 1. Falha explícita gravada pelo giro/git no status_ciclo
+  if (sc.falha_sync) {
+    motivos.push(sc.falha_sync);
+  }
+
+  // 2. Atraso no ciclo de 15 minutos (> 22 min sem giro novo)
+  if (cat && cat.atualizado_iso) {
+    const dtUlt = new Date(cat.atualizado_iso).getTime();
+    if (!isNaN(dtUlt)) {
+      const minPassados = Math.floor((Date.now() - dtUlt) / 60000);
+      if (minPassados > 22) {
+        motivos.push(`Giro atrasado há ${minPassados} min (último: ${sc.hora_curta || cat.atualizado_em})`);
+      }
+    }
+  }
+
+  // 3. Consulta status da última execução do workflow no GitHub Actions (a cada 60s)
+  if (Date.now() - ultimaChecagemActionsMs > 60000) {
+    ultimaChecagemActionsMs = Date.now();
+    try {
+      const respWf = await fetch(
+        "https://api.github.com/repos/mfavieri/favi-news/actions/workflows/crawler_15min.yml/runs?per_page=1",
+        { cache: "no-store" }
+      );
+      if (respWf.ok) {
+        const dadosWf = await respWf.json();
+        const ultimoRun = (dadosWf.workflow_runs || [])[0];
+        if (
+          ultimoRun &&
+          ultimoRun.status === "completed" &&
+          ["failure", "cancelled", "timed_out"].includes(ultimoRun.conclusion)
+        ) {
+          // Só considera falha ativa se o run falhou depois do último giro bem-sucedido do catálogo
+          const dtRun = new Date(ultimoRun.updated_at || ultimoRun.created_at).getTime();
+          const dtCat = cat && cat.atualizado_iso ? new Date(cat.atualizado_iso).getTime() : 0;
+          if (dtRun > dtCat) {
+            falhaActionsCache = `Falha no GitHub Actions (${ultimoRun.conclusion})`;
+          } else {
+            falhaActionsCache = "";
+          }
+        } else {
+          falhaActionsCache = "";
+        }
+      }
+    } catch (_) {
+      // Sem internet para consultar API do GitHub
+    }
+  }
+
+  if (falhaActionsCache) {
+    motivos.push(falhaActionsCache);
+  }
+
+  atualizarIconeFalhaSync(motivos.join(" • "));
+}
 
 // Modal Leitor
 const elModalLeitor = document.getElementById("modal-leitor");
@@ -114,6 +201,7 @@ async function carregarDadosBase(apenasStatus = false) {
 
     if (cat && cat.itens) {
       const sc = cat.status_ciclo || {};
+      verificarSaudeSincronizacao(cat);
 
       // Atualiza o relógio do topo e o banner de andamento vindo do JSON
       if (sc.estado === "em_andamento") {
@@ -168,10 +256,12 @@ async function carregarDadosBase(apenasStatus = false) {
       return;
     } else {
       elLabelAtualizado.textContent = "Base aguardando 1º giro";
+      atualizarIconeFalhaSync("Catálogo indisponível ou aguardando 1º giro");
     }
   } catch (erro) {
     console.warn("Aviso ao carregar dados da base:", erro);
     elLabelAtualizado.textContent = "Modo Offline Ativo";
+    atualizarIconeFalhaSync("Sem conexão com o servidor/GitHub Pages (Modo Offline)");
   }
 
   if (!apenasStatus) {
