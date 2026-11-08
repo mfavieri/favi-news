@@ -33,8 +33,10 @@ const elSelectDia = document.getElementById("select-janela-dia");
 const elBtnCrawler = document.getElementById("btn-forcar-crawler");
 const elBtnShareApp = document.getElementById("btn-compartilhar-app");
 const elBtnReplaySplash = document.getElementById("btn-replay-splash");
-const elBtnAlertaSync = document.getElementById("btn-alerta-sync");
+const elStatusAtualizacao = document.getElementById("status-atualizacao");
+const elBarraStatusCiclo = document.getElementById("barra-status-ciclo");
 const elDotStatusSync = document.getElementById("dot-status-sync");
+const elDotCicloSync = document.getElementById("dot-ciclo-sync");
 
 let ultimoMotivoFalhaSync = "";
 let ultimaChecagemActionsMs = 0;
@@ -42,23 +44,35 @@ let falhaActionsCache = "";
 
 function atualizarIconeFalhaSync(motivo) {
   ultimoMotivoFalhaSync = motivo || "";
-  if (!elBtnAlertaSync) return;
+  const temFalha = Boolean(ultimoMotivoFalhaSync);
+
+  [elDotStatusSync, elDotCicloSync].forEach((dot) => {
+    if (!dot) return;
+    dot.classList.toggle("falha", temFalha);
+  });
+
+  [elStatusAtualizacao, elBarraStatusCiclo].forEach((box) => {
+    if (!box) return;
+    box.classList.toggle("falha-borda", temFalha);
+    box.title = temFalha
+      ? `🔴 Falha de sincronização: ${ultimoMotivoFalhaSync} (toque para ver)`
+      : `🟢 Sincronização em dia (toque para detalhes)`;
+  });
+}
+
+function mostrarMotivoAoTocarBolinha() {
   if (ultimoMotivoFalhaSync) {
-    elBtnAlertaSync.classList.remove("hidden");
-    elBtnAlertaSync.title = `🆘 ${ultimoMotivoFalhaSync}`;
-    if (elDotStatusSync) elDotStatusSync.style.background = "#ef4444";
+    mostrarToast(`🔴 Falha na sincronização: ${ultimoMotivoFalhaSync}`);
   } else {
-    elBtnAlertaSync.classList.add("hidden");
-    if (elDotStatusSync) elDotStatusSync.style.background = "";
+    mostrarToast(`🟢 Sincronização 100% em dia! (${elLabelAtualizado?.textContent || "OK"})`);
   }
 }
 
-if (elBtnAlertaSync) {
-  elBtnAlertaSync.addEventListener("click", () => {
-    if (ultimoMotivoFalhaSync) {
-      mostrarToast(`🆘 ${ultimoMotivoFalhaSync}`);
-    }
-  });
+if (elStatusAtualizacao) {
+  elStatusAtualizacao.addEventListener("click", mostrarMotivoAoTocarBolinha);
+}
+if (elBarraStatusCiclo) {
+  elBarraStatusCiclo.addEventListener("click", mostrarMotivoAoTocarBolinha);
 }
 
 async function verificarSaudeSincronizacao(cat) {

@@ -57,10 +57,7 @@
       </div>
 
       <div class="header-actions">
-        <button id="btn-alerta-sync" class="btn-icon btn-sync-sos hidden" title="Falha de sincronização detectada — toque para detalhes">
-          🆘
-        </button>
-        <div class="status-pill" id="status-atualizacao" title="Última sincronização da Base de Conhecimento">
+        <div class="status-pill" id="status-atualizacao" title="Toque para ver o status da sincronização" style="cursor:pointer;">
           <span class="pulse-dot" id="dot-status-sync"></span>
           <span id="label-atualizado">Sincronizando...</span>
         </div>
@@ -107,8 +104,8 @@
        ========================================================================= -->
   <main class="app-main">
     <!-- Barra de Status do Ciclo de 15 Minutos (Alimentada pelo JSON) -->
-    <div id="barra-status-ciclo" class="cycle-status-banner">
-      <span class="pulse-dot"></span>
+    <div id="barra-status-ciclo" class="cycle-status-banner" style="cursor:pointer;" title="Toque para ver detalhes da sincronização">
+      <span class="pulse-dot" id="dot-ciclo-sync"></span>
       <span id="texto-status-ciclo">Verificando andamento do giro de 15 minutos no JSON...</span>
     </div>
 

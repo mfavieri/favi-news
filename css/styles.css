@@ -971,22 +971,26 @@ body {
   background: rgba(56, 189, 248, 0.3);
 }
 
-/* Ícone 🆘 de Falha de Sincronização */
-.btn-sync-sos {
-  background: rgba(239, 68, 68, 0.22) !important;
-  border: 1.5px solid #ef4444 !important;
-  box-shadow: 0 0 12px rgba(239, 68, 68, 0.55);
-  animation: sos-pulse 1.4s infinite ease-in-out;
+/* Bolinha Vermelha de Falha de Sincronização (sem poluir a tela) */
+.pulse-dot.falha {
+  background: #ef4444 !important;
+  box-shadow: 0 0 10px #ef4444, 0 0 18px rgba(239, 68, 68, 0.85) !important;
+  animation: dot-sos-pulse 1.1s infinite ease-in-out !important;
 }
 
-@keyframes sos-pulse {
+.status-pill.falha-borda,
+.cycle-status-banner.falha-borda {
+  border-color: rgba(239, 68, 68, 0.65) !important;
+}
+
+@keyframes dot-sos-pulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 0 8px rgba(239, 68, 68, 0.45);
+    opacity: 1;
   }
   50% {
-    transform: scale(1.1);
-    box-shadow: 0 0 16px rgba(239, 68, 68, 0.85);
+    transform: scale(1.45);
+    opacity: 0.75;
   }
 }
 
