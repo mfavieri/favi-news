@@ -1,5 +1,5 @@
 {
-  "atualizado_iso": "2026-11-15T11:25:00-03:00",
+  "atualizado_iso": "2026-11-15T12:03:10.919354",
   "janela_retencao_dias": 7,
   "intervalo_crawler_minutos": 15,
   "max_noticias_por_fonte": 6,
@@ -211,6 +211,15 @@
           "rss_url": "https://agenciabrasil.ebc.com.br/rss/economia/feed.xml",
           "sazonalidade": "3d",
           "filtro": "primeira_pagina"
+        },
+        {
+          "nome": "O Dia - Mundo e Ciências",
+          "subtopico": "ODiaMundoeCien",
+          "site_url": "https://odia.ig.com.br/mundo-e-ciencia",
+          "rss_url": "https://odia.ig.com.br/mundo-e-ciencia",
+          "sazonalidade": "1d",
+          "filtro": "primeira_pagina",
+          "regras_busca": ""
         }
       ]
     },
@@ -294,6 +303,45 @@
           "filtro": "primeira_pagina"
         }
       ]
+    },
+    {
+      "id": "RIO",
+      "rotulo": "RIO",
+      "icone": "📰",
+      "cor": "#0ea5e9",
+      "subtopico_padrao": "RIO",
+      "sazonalidade": "1d",
+      "filtro_padrao": "primeira_pagina",
+      "fontes": [
+        {
+          "nome": "G1 - RIO",
+          "subtopico": "G1RIO",
+          "site_url": "https://g1.globo.com/rj/rio-de-janeiro/",
+          "rss_url": "https://g1.globo.com/rj/rio-de-janeiro/",
+          "sazonalidade": "1d",
+          "filtro": "primeira_pagina",
+          "regras_busca": ""
+        },
+        {
+          "nome": "O DIA - RIO",
+          "subtopico": "ODIARIO",
+          "site_url": "https://odia.ig.com.br/rio-de-janeiro",
+          "rss_url": "https://odia.ig.com.br/rio-de-janeiro",
+          "sazonalidade": "1d",
+          "filtro": "primeira_pagina",
+          "regras_busca": ""
+        },
+        {
+          "nome": "O DIA - Ultimas Noticias",
+          "subtopico": "ODIAUltimasNot",
+          "site_url": "https://odia.ig.com.br/ultimas-noticias",
+          "rss_url": "https://odia.ig.com.br/ultimas-noticias",
+          "sazonalidade": "1d",
+          "filtro": "primeira_pagina",
+          "regras_busca": ""
+        }
+      ]
     }
-  ]
+  ],
+  "atualizado_em": "15/11/2026 às 12h03"
 }
