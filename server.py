@@ -62,32 +62,22 @@ def rodar_crawler_seguro(origem: str = "agendador-15min") -> dict:
         _lock_crawler.release()
 
 
-def loop_agendador_15min():
+def sincronizar_ao_iniciar_pc():
     """
-    Thread em background que verifica se o catálogo tem mais de 15 minutos
-    ao iniciar e depois executa o Crawler automaticamente a cada 15 minutos.
+    Executa a sincronização única no momento em que a aplicação entra no ar no PC.
+    Puxa do GitHub as últimas novidades e executa uma rodada inicial para garantir
+    que a base local e o catálogo estejam 100% frescos.
+    O PC NÃO fica em loop de 15 minutos em background (responsabilidade da nuvem).
     """
-    pasta_base = RAIZ_PROJETO / "base_conhecimento"
-    while True:
-        try:
-            cat = carregar_catalogo(pasta_base)
-            iso_str = cat.get("atualizado_iso", "")
-            precisa_rodar = True
-            if iso_str:
-                dt_ult = datetime.fromisoformat(iso_str)
-                segundos_passados = (agora_brasilia() - dt_ult).total_seconds()
-                if segundos_passados < INTERVALO_SEGUNDOS:
-                    precisa_rodar = False
-                    espera = max(10, int(INTERVALO_SEGUNDOS - segundos_passados))
-                    time.sleep(espera)
-                    continue
+    try:
+        print("\n🚀 [FaviNews PC] Aplicação entrando no ar! Sincronizando com o GitHub...")
+        subprocess.run(["git", "pull", "--rebase", "-X", "theirs", "origin", "main"], cwd=str(RAIZ_PROJETO), timeout=25)
+    except Exception as exc:
+        print(f"[!] Aviso ao puxar do GitHub: {exc}")
 
-            if precisa_rodar:
-                rodar_crawler_seguro("auto-15min")
-        except Exception as exc:
-            print(f"[!] Aviso no agendador de 15 min: {exc}")
-
-        time.sleep(30)
+    # Giro inicial único ao subir o servidor
+    rodar_crawler_seguro("inicializacao-ao-entrar-no-ar")
+    print("✅ [FaviNews PC] Sincronização inicial concluída! Servidor pronto (loop de 15 min desativado no PC).\n")
 
 
 class FaviNewsRequestHandler(SimpleHTTPRequestHandler):
@@ -127,6 +117,10 @@ class FaviNewsRequestHandler(SimpleHTTPRequestHandler):
                 nova_cfg = payload.get("config")
                 if not isinstance(nova_cfg, dict) or "categorias" not in nova_cfg:
                     raise ValueError("Estrutura de configuração inválida.")
+
+                agora = agora_brasilia()
+                nova_cfg["atualizado_iso"] = agora.isoformat()
+                nova_cfg["atualizado_em"] = agora.strftime("%d/%m/%Y às %Hh%M")
 
                 caminho_cfg = RAIZ_PROJETO / "config" / "fontes.config.json"
                 with open(caminho_cfg, "w", encoding="utf-8") as f:
@@ -194,15 +188,15 @@ def liberar_porta_windows(porta: int):
 
 def iniciar_servidor(porta: int = PORTA_PADRAO):
     liberar_porta_windows(porta)
-    # Inicia a thread autônoma de 15 em 15 minutos em background
-    t_cron = threading.Thread(target=loop_agendador_15min, daemon=True)
-    t_cron.start()
+    # Sincronização única no momento em que a aplicação entra no ar (não roda a cada 15 min no PC)
+    t_inicio = threading.Thread(target=sincronizar_ao_iniciar_pc, daemon=True)
+    t_inicio.start()
 
     servidor = HTTPServer(("0.0.0.0", porta), FaviNewsRequestHandler)
     print("=================================================================")
     print(f"🚀 FaviNews PWA no ar em: http://localhost:{porta}")
-    print("⏱️  Relógio Interno de 15 minutos: ATIVO")
-    print("🎙️  Slogan: 'Em 15 minutos tudo pode mudar !!'")
+    print("⚡ Sincronização PC: ÚNICA AO ENTRAR NO AR (Loop de 15 min desativado no PC)")
+    print("🎙️ Slogan: 'Em 15 minutos tudo pode mudar !!'")
     print("=================================================================")
     try:
         servidor.serve_forever()

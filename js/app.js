@@ -194,7 +194,10 @@ async function buscarJsonMaisRecente(caminhoRelativo) {
   if (dadosRaw && dadosPages) {
     const isoRaw = dadosRaw.atualizado_iso || "";
     const isoPages = dadosPages.atualizado_iso || "";
-    return isoRaw >= isoPages ? dadosRaw : dadosPages;
+    if (isoRaw || isoPages) {
+      return isoRaw >= isoPages ? dadosRaw : dadosPages;
+    }
+    return dadosRaw;
   }
   return dadosRaw || dadosPages;
 }
@@ -233,14 +236,6 @@ async function carregarDadosBase(apenasStatus = false) {
         elTextoStatusCiclo.textContent =
           sc.mensagem ||
           `Última verificação em ${cat.atualizado_em} • ${(cat.itens || []).length} páginas ativas na base`;
-      }
-
-      // Verifica se já passou o horário do próximo giro de 15 min (quando no servidor local)
-      if (cat.proximo_giro_iso && sc.estado !== "em_andamento") {
-        const dtProx = new Date(cat.proximo_giro_iso).getTime();
-        if (!isNaN(dtProx) && Date.now() > dtProx + 15000) {
-          fetch("/api/atualizar-agora", { method: "POST" }).catch(() => null);
-        }
       }
 
       const novoHash = `${cat.atualizado_em}_${(cat.itens || []).length}`;
@@ -867,6 +862,7 @@ function renderizarEstudioConfig() {
                 </div>
                 <button class="cfg-btn-mini" data-move-cat="${idx}:-1" ${idx === 0 ? "disabled" : ""} title="Subir Aba">⬆️</button>
                 <button class="cfg-btn-mini" data-move-cat="${idx}:1" ${idx === cats.length - 1 ? "disabled" : ""} title="Descer Aba">⬇️</button>
+                <button class="cfg-btn-mini cfg-btn-del" data-del-cat="${idx}" title="Excluir Aba Inteira">🗑️</button>
               </div>
             </div>
             <div>${fontesHtml || '<div style="color:#64748b;font-size:0.8rem;">(Apenas boletim automático da editoria)</div>'}</div>
@@ -888,6 +884,21 @@ function renderizarEstudioConfig() {
           estado.categoriasConfig = cats;
           renderizarAbasCategorias();
           renderizarEstudioConfig();
+        }
+      });
+    });
+
+    // Evento de remover aba inteira
+    elCfgListaAbas.querySelectorAll("[data-del-cat]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const i = Number(btn.getAttribute("data-del-cat"));
+        const catAlvo = cats[i];
+        if (catAlvo && confirm(`Deseja realmente excluir a aba "${catAlvo.rotulo}"?`)) {
+          cats.splice(i, 1);
+          estado.categoriasConfig = cats;
+          renderizarAbasCategorias();
+          renderizarEstudioConfig();
+          mostrarToast(`🗑️ Aba "${catAlvo.rotulo}" removida.`);
         }
       });
     });
@@ -946,6 +957,50 @@ if (elCfgAbaSelect) {
   elCfgAbaSelect.addEventListener("change", () => {
     if (elCfgNovaAbaWrap) {
       elCfgNovaAbaWrap.classList.toggle("hidden", elCfgAbaSelect.value !== "__nova__");
+    }
+  });
+}
+
+const elBtnCriarSoAba = document.getElementById("btn-criar-so-aba");
+if (elBtnCriarSoAba) {
+  elBtnCriarSoAba.addEventListener("click", () => {
+    const nomeNova = (elCfgNovaAbaNome?.value || "").trim();
+    if (!nomeNova) {
+      mostrarToast("⚠️ Digite um nome para a nova aba!");
+      return;
+    }
+    const iconeNova = (elCfgNovaAbaIcone?.value || "📰").trim();
+    const idNova =
+      nomeNova
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-zA-Z0-9]/g, "") || "Custom";
+
+    const cats = estado.configCompleta.categorias || [];
+    if (cats.some((c) => c.id.toLowerCase() === idNova.toLowerCase())) {
+      mostrarToast("⚠️ Já existe uma aba com esse nome!");
+      return;
+    }
+
+    const novaAba = {
+      id: idNova,
+      rotulo: nomeNova,
+      icone: iconeNova,
+      cor: "#0ea5e9",
+      subtopico_padrao: idNova,
+      sazonalidade: "3d",
+      filtro_padrao: "primeira_pagina",
+      fontes: []
+    };
+    cats.push(novaAba);
+    estado.categoriasConfig = cats;
+    elCfgNovaAbaNome.value = "";
+    mostrarToast(`✅ Aba "${nomeNova}" criada com sucesso!`);
+    renderizarAbasCategorias();
+    renderizarEstudioConfig();
+    if (elCfgAbaSelect) {
+      elCfgAbaSelect.value = idNova;
+      if (elCfgNovaAbaWrap) elCfgNovaAbaWrap.classList.add("hidden");
     }
   });
 }
@@ -1011,6 +1066,33 @@ if (elBtnAddFonte) {
 if (elBtnSalvarConfig) {
   elBtnSalvarConfig.addEventListener("click", async () => {
     const cfg = estado.configCompleta;
+
+    // Se o usuário digitou o nome de uma nova aba mas não clicou em criar antes de salvar, cria agora
+    if (elCfgAbaSelect && elCfgAbaSelect.value === "__nova__" && elCfgNovaAbaNome && elCfgNovaAbaNome.value.trim()) {
+      const nomeNova = elCfgNovaAbaNome.value.trim();
+      const iconeNova = (elCfgNovaAbaIcone?.value || "📰").trim();
+      const idNova =
+        nomeNova
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-zA-Z0-9]/g, "") || "Custom";
+      const cats = cfg.categorias || [];
+      if (!cats.some((c) => c.id.toLowerCase() === idNova.toLowerCase())) {
+        cats.push({
+          id: idNova,
+          rotulo: nomeNova,
+          icone: iconeNova,
+          cor: "#0ea5e9",
+          subtopico_padrao: idNova,
+          sazonalidade: "3d",
+          filtro_padrao: "primeira_pagina",
+          fontes: []
+        });
+        estado.categoriasConfig = cats;
+        elCfgNovaAbaNome.value = "";
+      }
+    }
+
     cfg.max_noticias_por_fonte = Number(elCfgMaxPorFonte?.value || 4);
     cfg.regras_crawler = cfg.regras_crawler || {};
     cfg.regras_crawler.max_noticias_por_fonte = cfg.max_noticias_por_fonte;
@@ -1019,6 +1101,8 @@ if (elBtnSalvarConfig) {
       .split(",")
       .map((s) => s.trim().toLowerCase())
       .filter(Boolean);
+
+    cfg.atualizado_iso = new Date().toISOString();
 
     elCfgStatusMsg.textContent = "⏳ Salvando em config/fontes.config.json e sincronizando com GitHub...";
     try {
