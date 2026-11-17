@@ -1,25 +1,25 @@
 {
-  "atualizado_em": "17/11/2026 03:16:02",
-  "atualizado_iso": "2026-11-17T03:16:02.992632",
-  "proximo_giro_em": "17/11/2026 03:31:02",
-  "proximo_giro_iso": "2026-11-17T03:31:02.992632",
+  "atualizado_em": "17/11/2026 03:30:55",
+  "atualizado_iso": "2026-11-17T03:30:55.983905",
+  "proximo_giro_em": "17/11/2026 03:45:55",
+  "proximo_giro_iso": "2026-11-17T03:45:55.983905",
   "janela_dias": 7,
-  "total_itens": 676,
+  "total_itens": 675,
   "status_ciclo": {
     "estado": "concluido",
-    "verificado_em": "17/11/2026 03:16:02",
-    "hora_curta": "03:16",
-    "proximo_giro": "03:31",
-    "novas_paginas": 1,
+    "verificado_em": "17/11/2026 03:30:55",
+    "hora_curta": "03:30",
+    "proximo_giro": "03:45",
+    "novas_paginas": 0,
     "fontes_verificadas": 25,
-    "expurgados_ciclo": 0,
-    "total_ativas_3dias": 676,
-    "mensagem": "Giro 03:16 OK • +1 nova(s) página(s) coletada(s) • Próximo às 03:31"
+    "expurgados_ciclo": 2,
+    "total_ativas_3dias": 675,
+    "mensagem": "Giro 03:30 OK • sem novas páginas (25 fontes varridas) • Próximo às 03:45"
   },
   "itens": [
     {
-      "carimbo_ts": "20261117-031544",
-      "titulo": "Niterói - RJ Agora: 22°C (Sol com Poucas Nuvens • Sem Chuva (0 mm)) • Vento 7 km/h | Máx 27°C / Mín 22°C",
+      "carimbo_ts": "20261117-033040",
+      "titulo": "Niterói - RJ Agora: 22°C (Sol entre Nuvens • Sem Chuva (0 mm)) • Vento 6 km/h | Máx 27°C / Mín 22°C",
       "fonte": "Climatempo & Defesa Civil • Niterói - RJ",
       "categoria_id": "Clima",
       "categoria_rotulo": "Clima Niterói",
@@ -27,20 +27,20 @@
       "cor": "#0284c7",
       "subtopico": "Niteroi",
       "tipo_artefato": "R",
-      "data_fato_formatada": "17/11/2026 às 03h15",
-      "resenha_texto": "Estação Niterói registra agora 22°C (Sol com Poucas Nuvens • Sem Chuva (0 mm)), sensação de 25°C, vento de 7 km/h e umidade de 96%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 7 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-17 23:59.",
+      "data_fato_formatada": "17/11/2026 às 03h30",
+      "resenha_texto": "Estação Niterói registra agora 22°C (Sol entre Nuvens • Sem Chuva (0 mm)), sensação de 25°C, vento de 6 km/h e umidade de 96%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 6 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-17 23:59.",
       "pontos_chave": [
-        "Agora na Estação Niterói: 🌤️ 22°C (Sol com Poucas Nuvens • Sem Chuva (0 mm)) — Vento 7 km/h, sensação 25°C e umidade 96%.",
+        "Agora na Estação Niterói: ⛅ 22°C (Sol entre Nuvens • Sem Chuva (0 mm)) — Vento 6 km/h, sensação 25°C e umidade 96%.",
         "Temperaturas Hoje em Niterói: Mínima de 22°C e Máxima de 27°C | Probabilidade residual de chuva: 76%.",
-        "ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 7 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-17 23:59.",
+        "ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 6 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-17 23:59.",
         "📅 Previsão Amanhã (2026-11-18) em Niterói: 🌫️ Nevoeiro — Mínima 21°C / Máxima 29°C (Chance de chuva: 22%)."
       ],
       "alerta_defesa_civil": "",
-      "arquivo_r": "20261117-031544_R_Clima_Niteroi.html",
-      "arquivo_n": "20261117-031544_N_Clima_Niteroi.html",
+      "arquivo_r": "20261117-033040_R_Clima_Niteroi.html",
+      "arquivo_n": "20261117-033040_N_Clima_Niteroi.html",
       "arquivo_a": "",
       "url_original": "https://www.climatempo.com.br/previsao-do-tempo/cidade/315/niteroi-rj",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yMsKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+8J+MpO+4jzwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjEyMCIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyNSI+U29sIGNvbSBQb3VjYXMgTnV2ZW5zIOKAoiBTZTwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjE1OCIgZmlsbD0iI2ZkZTA0NyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiI+U2Vuc2HDp8OjbyB0w6lybWljYTogMjXCsEM8L3RleHQ+CiAgPHJlY3QgeD0iNDgiIHk9IjIzNiIgd2lkdGg9IjcwNCIgaGVpZ2h0PSIxMDQiIHJ4PSIxNiIgZmlsbD0iIzBmMTcyYSIgZmlsbC1vcGFjaXR5PSIwLjY4IiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS1vcGFjaXR5PSIwLjM1Ii8+CiAgPHRleHQgeD0iODYiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+TcONTiAvIE3DgVggSE9KRTwvdGV4dD4KICA8dGV4dCB4PSI4NiIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7irIcgMjLCsEMgIC8gIOKshiAyN8KwQzwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+Q0hBTkNFIERFIENIVVZBPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMzE0IiBmaWxsPSIjMzhiZGY4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7imJQgNzYlPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5VTUlEQURFIEFSPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7wn5KnIDk2JTwvdGV4dD4KPC9zdmc+"
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yMsKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4puFPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5Tb2wgZW50cmUgTnV2ZW5zIOKAoiBTZW0gQ2h1PC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTU4IiBmaWxsPSIjZmRlMDQ3IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjIyIj5TZW5zYcOnw6NvIHTDqXJtaWNhOiAyNcKwQzwvdGV4dD4KICA8cmVjdCB4PSI0OCIgeT0iMjM2IiB3aWR0aD0iNzA0IiBoZWlnaHQ9IjEwNCIgcng9IjE2IiBmaWxsPSIjMGYxNzJhIiBmaWxsLW9wYWNpdHk9IjAuNjgiIHN0cm9rZT0iIzM4YmRmOCIgc3Ryb2tlLW9wYWNpdHk9IjAuMzUiLz4KICA8dGV4dCB4PSI4NiIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5Nw41OIC8gTcOBWCBIT0pFPC90ZXh0PgogIDx0ZXh0IHg9Ijg2IiB5PSIzMTQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjYiPuKshyAyMsKwQyAgLyAg4qyGIDI3wrBDPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5DSEFOQ0UgREUgQ0hVVkE8L3RleHQ+CiAgPHRleHQgeD0iMzYwIiB5PSIzMTQiIGZpbGw9IiMzOGJkZjgiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjYiPuKYlCA3NiU8L3RleHQ+CiAgPHRleHQgeD0iNTk1IiB5PSIyNzQiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMTciPlVNSURBREUgQVI8L3RleHQ+CiAgPHRleHQgeD0iNTk1IiB5PSIzMTQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjYiPvCfkqcgOTYlPC90ZXh0Pgo8L3N2Zz4="
     },
     {
       "carimbo_ts": "20261117-021625",
@@ -10863,28 +10863,6 @@
       "arquivo_n": "20261116-040000_N_Variedades_GastronomiaFestas.html",
       "url_original": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQRjFNNWZOeENuVmRPcFQ5LUNEaENRd2ttelZjUjQycE9PWENmTGpJWGEzX0FFVGVkczJNamhOLUVmUU0wQkFkSzZ6Z19QSENVdUpmYURjNXl3S2VKOXZwNl9fb25OZDlLYkFhcERtU1B2LUR5RzNkQ1JRcU9kUXlsbHl4SUp5cGVlV0xEcEV2dGhYczFUNEN5bHFwSkpxamdUdjE4VFM0cHZOUVR5NlpJMTdzckpJMXBId043dy1mXzVLVC03emlFY19MZVk5bEJVN3phd2NpaU00LUxQN3NGNnktYjRJSUxoZ2pfa0JZTEtzWTJtMWxMaXhB0gGIAkFVX3lxTE9ZSEZUVjRvemk3UjRoWlFqQWRUOEgxb1BYY2cxVUhCQ2pSV3F0WDRFSko0ejlrTzZ3Vm5JbXZnUEJOWmxXbHpoZlNQOGNCNk1uVVQxNDVxUjlSeDExVnUxWHBybE43ZUJuaTl1eUhWZkhSRzhLZjkwOHptVXNmbjVjWFdHMlAxM1R1NHJFUUVOZXhRMmlkVF93VW9tZUhRb1FIVzRWWEhVV2ZRYjBGVjAxa2ZaUGhTczZFaGc5c2lEaTB1RzZkVUY4VU9nSHBxSFpVRW12UUFSNGZsOEIyTG9wYXczN0NESGlKcjZ4TWxYdXh1b3kzUW9IQWxEc1BUakJVVkFfZDROUg?oc=5",
       "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
-    },
-    {
-      "carimbo_ts": "20261116-032700",
-      "titulo": "Concursos 2026: mais de 160 mil vagas; salários de até R$ 30 mil! - Estratégia Concursos",
-      "fonte": "Notícias de Niterói (Icaraí, Região Oceânica e Centro)",
-      "categoria_id": "Niteroi",
-      "categoria_rotulo": "Niterói",
-      "icone": "🏙️",
-      "cor": "#0ea5e9",
-      "subtopico": "Cidade",
-      "tipo_artefato": "RN",
-      "data_fato_formatada": "16/11/2026 às 03h27",
-      "resenha_texto": "Concursos 2026: mais de 160 mil vagas; salários de até R$ 30 mil! Estratégia Concursos",
-      "pontos_chave": [
-        "Fato Central: Concursos 2026: mais de 160 mil vagas; salários de até R$ 30 mil! - Estratégia Concursos",
-        "Contexto: Concursos 2026: mais de 160 mil vagas; salários de até R$ 30 mil! Estratégia Concursos",
-        "Apuração publicada por Notícias de Niterói (Icaraí, Região Oceânica e Centro)."
-      ],
-      "arquivo_r": "20261116-032700_R_Niteroi_Cidade.html",
-      "arquivo_n": "20261116-032700_N_Niteroi_Cidade.html",
-      "url_original": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBOd1dtNVFEdTFNMEtiM3JKNFBSMm96VHdIanZoaVcxbUdibzBBV0psdWxTbXh6NDFCdW9IZWlESXVMSjR1OFotUGFPNFgwV2FmT2RXRVlnZmo4QnJoZFRPUWp5RFgwUdIBa0FVX3lxTFAyeHFhdXNQdDZ5eFFmcEhoOVVmYU1DY3RwZmRFWHZHUlA3eGZoS0pybEMxOHJSd0NuN18wdTltSkRCdlNCV0FOcUdycDBSTjJEelVad1plcl9xZDJuQ3FIcWZOOVNUUVZxOHA0?oc=5",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlYTVlOSIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfj5nvuI88L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIE5JVEVSw5NJPC90ZXh0Pgo8L3N2Zz4="
     },
     {
       "carimbo_ts": "20261116-022854",
