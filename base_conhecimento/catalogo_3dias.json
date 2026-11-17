@@ -1,24 +1,24 @@
 {
-  "atualizado_em": "16/11/2026 23:31:00",
-  "atualizado_iso": "2026-11-16T23:31:00.727839",
-  "proximo_giro_em": "16/11/2026 23:46:00",
-  "proximo_giro_iso": "2026-11-16T23:46:00.727839",
+  "atualizado_em": "16/11/2026 23:45:51",
+  "atualizado_iso": "2026-11-16T23:45:51.973515",
+  "proximo_giro_em": "17/11/2026 00:00:51",
+  "proximo_giro_iso": "2026-11-17T00:00:51.973515",
   "janela_dias": 7,
-  "total_itens": 670,
+  "total_itens": 669,
   "status_ciclo": {
     "estado": "concluido",
-    "verificado_em": "16/11/2026 23:31:00",
-    "hora_curta": "23:31",
-    "proximo_giro": "23:46",
-    "novas_paginas": 2,
+    "verificado_em": "16/11/2026 23:45:51",
+    "hora_curta": "23:45",
+    "proximo_giro": "00:00",
+    "novas_paginas": 0,
     "fontes_verificadas": 25,
-    "expurgados_ciclo": 2,
-    "total_ativas_3dias": 670,
-    "mensagem": "Giro 23:31 OK • +2 nova(s) página(s) coletada(s) • Próximo às 23:46"
+    "expurgados_ciclo": 4,
+    "total_ativas_3dias": 669,
+    "mensagem": "Giro 23:45 OK • sem novas páginas (25 fontes varridas) • Próximo às 00:00"
   },
   "itens": [
     {
-      "carimbo_ts": "20261116-233039",
+      "carimbo_ts": "20261116-234536",
       "titulo": "Niterói - RJ Agora: 22°C (Sol entre Nuvens • Sem Chuva (0 mm)) • Vento 9 km/h | Máx 29°C / Mín 22°C",
       "fonte": "Climatempo & Defesa Civil • Niterói - RJ",
       "categoria_id": "Clima",
@@ -27,20 +27,20 @@
       "cor": "#0284c7",
       "subtopico": "Niteroi",
       "tipo_artefato": "R",
-      "data_fato_formatada": "16/11/2026 às 23h30",
-      "resenha_texto": "Estação Niterói registra agora 22°C (Sol entre Nuvens • Sem Chuva (0 mm)), sensação de 25°C, vento de 9 km/h e umidade de 97%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 9 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-16 23:59.",
+      "data_fato_formatada": "16/11/2026 às 23h45",
+      "resenha_texto": "Estação Niterói registra agora 22°C (Sol entre Nuvens • Sem Chuva (0 mm)), sensação de 25°C, vento de 9 km/h e umidade de 96%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 9 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-16 23:59.",
       "pontos_chave": [
-        "Agora na Estação Niterói: ⛅ 22°C (Sol entre Nuvens • Sem Chuva (0 mm)) — Vento 9 km/h, sensação 25°C e umidade 97%.",
+        "Agora na Estação Niterói: ⛅ 22°C (Sol entre Nuvens • Sem Chuva (0 mm)) — Vento 9 km/h, sensação 25°C e umidade 96%.",
         "Temperaturas Hoje em Niterói: Mínima de 22°C e Máxima de 29°C | Probabilidade residual de chuva: 100%.",
         "ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 9 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-16 23:59.",
         "📅 Previsão Amanhã (2026-11-17) em Niterói: 🌦️ Chuvisco Moderado — Mínima 22°C / Máxima 27°C (Chance de chuva: 74%)."
       ],
       "alerta_defesa_civil": "",
-      "arquivo_r": "20261116-233039_R_Clima_Niteroi.html",
-      "arquivo_n": "20261116-233039_N_Clima_Niteroi.html",
+      "arquivo_r": "20261116-234536_R_Clima_Niteroi.html",
+      "arquivo_n": "20261116-234536_N_Clima_Niteroi.html",
       "arquivo_a": "",
       "url_original": "https://www.climatempo.com.br/previsao-do-tempo/cidade/315/niteroi-rj",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yMsKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4puFPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5Tb2wgZW50cmUgTnV2ZW5zIOKAoiBTZW0gQ2h1PC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTU4IiBmaWxsPSIjZmRlMDQ3IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjIyIj5TZW5zYcOnw6NvIHTDqXJtaWNhOiAyNcKwQzwvdGV4dD4KICA8cmVjdCB4PSI0OCIgeT0iMjM2IiB3aWR0aD0iNzA0IiBoZWlnaHQ9IjEwNCIgcng9IjE2IiBmaWxsPSIjMGYxNzJhIiBmaWxsLW9wYWNpdHk9IjAuNjgiIHN0cm9rZT0iIzM4YmRmOCIgc3Ryb2tlLW9wYWNpdHk9IjAuMzUiLz4KICA8dGV4dCB4PSI4NiIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5Nw41OIC8gTcOBWCBIT0pFPC90ZXh0PgogIDx0ZXh0IHg9Ijg2IiB5PSIzMTQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjYiPuKshyAyMsKwQyAgLyAg4qyGIDI5wrBDPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5DSEFOQ0UgREUgQ0hVVkE8L3RleHQ+CiAgPHRleHQgeD0iMzYwIiB5PSIzMTQiIGZpbGw9IiMzOGJkZjgiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjYiPuKYlCAxMDAlPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5VTUlEQURFIEFSPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7wn5KnIDk3JTwvdGV4dD4KPC9zdmc+"
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yMsKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4puFPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5Tb2wgZW50cmUgTnV2ZW5zIOKAoiBTZW0gQ2h1PC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTU4IiBmaWxsPSIjZmRlMDQ3IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjIyIj5TZW5zYcOnw6NvIHTDqXJtaWNhOiAyNcKwQzwvdGV4dD4KICA8cmVjdCB4PSI0OCIgeT0iMjM2IiB3aWR0aD0iNzA0IiBoZWlnaHQ9IjEwNCIgcng9IjE2IiBmaWxsPSIjMGYxNzJhIiBmaWxsLW9wYWNpdHk9IjAuNjgiIHN0cm9rZT0iIzM4YmRmOCIgc3Ryb2tlLW9wYWNpdHk9IjAuMzUiLz4KICA8dGV4dCB4PSI4NiIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5Nw41OIC8gTcOBWCBIT0pFPC90ZXh0PgogIDx0ZXh0IHg9Ijg2IiB5PSIzMTQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjYiPuKshyAyMsKwQyAgLyAg4qyGIDI5wrBDPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5DSEFOQ0UgREUgQ0hVVkE8L3RleHQ+CiAgPHRleHQgeD0iMzYwIiB5PSIzMTQiIGZpbGw9IiMzOGJkZjgiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjYiPuKYlCAxMDAlPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5VTUlEQURFIEFSPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7wn5KnIDk2JTwvdGV4dD4KPC9zdmc+"
     },
     {
       "carimbo_ts": "20261116-230106",
@@ -10973,28 +10973,6 @@
       "arquivo_n": "20261115-234650_N_Variedades_Famosos.html",
       "url_original": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOTjFXeWwzblRQSWY0bm5GSU90MURGQS13cVVlX2ZuSDY1Wks4NXhTM1ZxQTZtOGdTZjNGTTBlSHRzR0FuUlZMMXhlbVFSR0JSWlM1d1JEMERjajVYTldQWTlWek1YMzQ5T3FKdF9GQWxpYzhOSHB3NUJBV1RTZVVOS2R2NThYbWo2M1hpUmM3RDNXZEJsMHV4c2Izcy1UdWZZME14N1Jua013QTUyM3k3SkprNXFDRlVMaUVvN1dyVkZiRUR2T2VfbGowTVdHRU1xbkRJUEpDMVBIUQ?oc=5",
       "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
-    },
-    {
-      "carimbo_ts": "20261115-233600",
-      "titulo": "Cid diz que viver em Brasília ficou caro e pede a Moraes para voltar ao RJ - Metrópoles",
-      "fonte": "Notícias de Niterói (Icaraí, Região Oceânica e Centro)",
-      "categoria_id": "Niteroi",
-      "categoria_rotulo": "Niterói",
-      "icone": "🏙️",
-      "cor": "#0ea5e9",
-      "subtopico": "Cidade",
-      "tipo_artefato": "RN",
-      "data_fato_formatada": "15/11/2026 às 23h36",
-      "resenha_texto": "Cid diz que viver em Brasília ficou caro e pede a Moraes para voltar ao RJ Metrópoles",
-      "pontos_chave": [
-        "Fato Central: Cid diz que viver em Brasília ficou caro e pede a Moraes para voltar ao RJ - Metrópoles",
-        "Contexto: Cid diz que viver em Brasília ficou caro e pede a Moraes para voltar ao RJ Metrópoles",
-        "Apuração publicada por Notícias de Niterói (Icaraí, Região Oceânica e Centro)."
-      ],
-      "arquivo_r": "20261115-233600_R_Niteroi_Cidade.html",
-      "arquivo_n": "20261115-233600_N_Niteroi_Cidade.html",
-      "url_original": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQeXVnTng0SEZVcjNhUW9hQUVnZ19sdjkteGNhRVNnMGtZX0xxbUVkM1Q0YW1FcnBIR0llZFVRTFpqeWstMVZfbEw5dm5lbHBwNndybHQ4RmVIOTJCYUdJS3JtZ1pSdjZkS2JkZmNhZ3JXWTR1ZEFLZnB4UUZBQ3BZdnpOTlczMWhuc1ZyZHJhOEM1V25hRXgzVnV3MU5xaVk2c252eUJTNHFZMTRPQXVoOTUtMVFOOHV4OHgya3pjeVQ4a3Z3LVE?oc=5",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlYTVlOSIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfj5nvuI88L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIE5JVEVSw5NJPC90ZXh0Pgo8L3N2Zz4="
     },
     {
       "carimbo_ts": "20261115-233048",
