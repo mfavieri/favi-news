@@ -1,24 +1,24 @@
 {
-  "atualizado_em": "22/11/2026 02:46:06",
-  "atualizado_iso": "2026-11-22T02:46:06.012868",
-  "proximo_giro_em": "22/11/2026 03:01:06",
-  "proximo_giro_iso": "2026-11-22T03:01:06.012868",
+  "atualizado_em": "22/11/2026 03:01:08",
+  "atualizado_iso": "2026-11-22T03:01:08.932068",
+  "proximo_giro_em": "22/11/2026 03:16:08",
+  "proximo_giro_iso": "2026-11-22T03:16:08.932068",
   "janela_dias": 7,
-  "total_itens": 711,
+  "total_itens": 710,
   "status_ciclo": {
     "estado": "concluido",
-    "verificado_em": "22/11/2026 02:46:06",
-    "hora_curta": "02:46",
-    "proximo_giro": "03:01",
+    "verificado_em": "22/11/2026 03:01:08",
+    "hora_curta": "03:01",
+    "proximo_giro": "03:16",
     "novas_paginas": 0,
     "fontes_verificadas": 25,
-    "expurgados_ciclo": 0,
-    "total_ativas_3dias": 711,
-    "mensagem": "Giro 02:46 OK • sem novas páginas (25 fontes varridas) • Próximo às 03:01"
+    "expurgados_ciclo": 2,
+    "total_ativas_3dias": 710,
+    "mensagem": "Giro 03:01 OK • sem novas páginas (25 fontes varridas) • Próximo às 03:16"
   },
   "itens": [
     {
-      "carimbo_ts": "20261122-024549",
+      "carimbo_ts": "20261122-030051",
       "titulo": "Niterói - RJ Agora: 25°C (Céu Encoberto • Sem Chuva (0 mm)) • Vento 4 km/h | Máx 31°C / Mín 25°C",
       "fonte": "Climatempo & Defesa Civil • Niterói - RJ",
       "categoria_id": "Clima",
@@ -27,7 +27,7 @@
       "cor": "#0284c7",
       "subtopico": "Niteroi",
       "tipo_artefato": "R",
-      "data_fato_formatada": "22/11/2026 às 02h45",
+      "data_fato_formatada": "22/11/2026 às 03h00",
       "resenha_texto": "Estação Niterói registra agora 25°C (Céu Encoberto • Sem Chuva (0 mm)), sensação de 30°C, vento de 4 km/h e umidade de 88%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 4 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-22 23:59.",
       "pontos_chave": [
         "Agora na Estação Niterói: ☁️ 25°C (Céu Encoberto • Sem Chuva (0 mm)) — Vento 4 km/h, sensação 30°C e umidade 88%.",
@@ -36,8 +36,8 @@
         "📅 Previsão Amanhã (2026-11-23) em Niterói: ⛈️ Tempestade com Raios — Mínima 24°C / Máxima 33°C (Chance de chuva: 73%)."
       ],
       "alerta_defesa_civil": "",
-      "arquivo_r": "20261122-024549_R_Clima_Niteroi.html",
-      "arquivo_n": "20261122-024549_N_Clima_Niteroi.html",
+      "arquivo_r": "20261122-030051_R_Clima_Niteroi.html",
+      "arquivo_n": "20261122-030051_N_Clima_Niteroi.html",
       "arquivo_a": "",
       "url_original": "https://www.climatempo.com.br/previsao-do-tempo/cidade/315/niteroi-rj",
       "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yNcKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4piB77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5Dw6l1IEVuY29iZXJ0byDigKIgU2VtIENodXZhIDwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjE1OCIgZmlsbD0iI2ZkZTA0NyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiI+U2Vuc2HDp8OjbyB0w6lybWljYTogMzDCsEM8L3RleHQ+CiAgPHJlY3QgeD0iNDgiIHk9IjIzNiIgd2lkdGg9IjcwNCIgaGVpZ2h0PSIxMDQiIHJ4PSIxNiIgZmlsbD0iIzBmMTcyYSIgZmlsbC1vcGFjaXR5PSIwLjY4IiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS1vcGFjaXR5PSIwLjM1Ii8+CiAgPHRleHQgeD0iODYiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+TcONTiAvIE3DgVggSE9KRTwvdGV4dD4KICA8dGV4dCB4PSI4NiIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7irIcgMjXCsEMgIC8gIOKshiAzMcKwQzwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+Q0hBTkNFIERFIENIVVZBPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMzE0IiBmaWxsPSIjMzhiZGY4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7imJQgNjclPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5VTUlEQURFIEFSPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7wn5KnIDg4JTwvdGV4dD4KPC9zdmc+"
@@ -15198,28 +15198,6 @@
       "arquivo_r": "20261119-040002_R_Saude_BemEstar.html",
       "arquivo_n": "20261119-040002_N_Saude_BemEstar.html",
       "url_original": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQMmxqMm16RnNkbVVSRl8yOC1ydFNTYVUyVTF0UEk3VklSbzJLR1hYS285THNUZm5NcG9henU0Tmx4eGo1RDFoaHNhc2FKaUJIV2M3ek5sVmQtc1prMTgzaU1saFB0bjYzYXZRelJlUFZXT0FSWV83SG5XQkUxZlpHOUNoYWdORmRwdE01VW1hak5RVjhSQ3lYUjlrTU5CZEpHM3lkOGFaRERnNDk0bnhzUUNiekZ6V3NrRkV3OXNKWTjSAc8BQVVfeXFMTnBpTi04NnZyOUIxd2Q1djdMM0o5ZzhMSkdKQk02bVlQblkzQTY1MkJ1a1c4WnZZVnJyNFQzRDI3Uk84Z0VtS25VTmc2cHl2VzV3TDJISTFnUkhvY0Z3ZWo4bjR5SXdkb29qQUtaR0tzc0hDNEJNb0x3UFRUdTA1S2lfbzF1Z1ZUSUhxNXNOX1drSXVuNzM1dG50cTZPT1N3MXR3a21pTWpzbmpXMThqS0hoX3QxUnh2cEJnWWFrdGQzSzlqOG8xbGllSVg2N0Y4?oc=5",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2UxMWQ0OCIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfqbo8L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFNBw5pERTwvdGV4dD4KPC9zdmc+"
-    },
-    {
-      "carimbo_ts": "20261119-025751",
-      "titulo": "Sofrimento no fim da vida é a principal preocupação de tutores de pets - PAIPEE -",
-      "fonte": "CNN & Portais Saúde",
-      "categoria_id": "Saude",
-      "categoria_rotulo": "Saúde",
-      "icone": "🩺",
-      "cor": "#e11d48",
-      "subtopico": "BemEstar",
-      "tipo_artefato": "RN",
-      "data_fato_formatada": "19/11/2026 às 02h57",
-      "resenha_texto": "Sofrimento no fim da vida é a principal preocupação de tutores de pets PAIPEE -",
-      "pontos_chave": [
-        "Fato Central: Sofrimento no fim da vida é a principal preocupação de tutores de pets - PAIPEE -",
-        "Contexto: Sofrimento no fim da vida é a principal preocupação de tutores de pets PAIPEE -",
-        "Apuração publicada por CNN & Portais Saúde."
-      ],
-      "arquivo_r": "20261119-025751_R_Saude_BemEstar.html",
-      "arquivo_n": "20261119-025751_N_Saude_BemEstar.html",
-      "url_original": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOaHpMb2l0cENzaWxjdndwbWhwMjJhR29hWXVYbDdGV1dXT1ZHQmd0T0VWSDdCNEtEOXpUWDRKZFV3SHZzbGQ5b3JIc2RkQTRzdzRyc2piSnljTDFGa3JPdENweWdHakRnTi0tOG9NakoxbW5xRm83cGg2ZGZ4SERBTUY0dEhlLXd2d281SFFOZF9qM3NRM3laTEFMbFV0YWVCZFpuZ054VQ?oc=5",
       "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2UxMWQ0OCIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfqbo8L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFNBw5pERTwvdGV4dD4KPC9zdmc+"
     },
     {
