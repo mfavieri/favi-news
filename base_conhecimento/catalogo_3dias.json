@@ -1,25 +1,25 @@
 {
-  "atualizado_em": "22/11/2026 01:01:12",
-  "atualizado_iso": "2026-11-22T01:01:12.586472",
-  "proximo_giro_em": "22/11/2026 01:16:12",
-  "proximo_giro_iso": "2026-11-22T01:16:12.586472",
+  "atualizado_em": "22/11/2026 01:16:30",
+  "atualizado_iso": "2026-11-22T01:16:30.137575",
+  "proximo_giro_em": "22/11/2026 01:31:30",
+  "proximo_giro_iso": "2026-11-22T01:31:30.137575",
   "janela_dias": 7,
-  "total_itens": 716,
+  "total_itens": 713,
   "status_ciclo": {
     "estado": "concluido",
-    "verificado_em": "22/11/2026 01:01:12",
-    "hora_curta": "01:01",
-    "proximo_giro": "01:16",
-    "novas_paginas": 2,
+    "verificado_em": "22/11/2026 01:16:30",
+    "hora_curta": "01:16",
+    "proximo_giro": "01:31",
+    "novas_paginas": 1,
     "fontes_verificadas": 25,
-    "expurgados_ciclo": 2,
-    "total_ativas_3dias": 716,
-    "mensagem": "Giro 01:01 OK • +2 nova(s) página(s) coletada(s) • Próximo às 01:16"
+    "expurgados_ciclo": 6,
+    "total_ativas_3dias": 713,
+    "mensagem": "Giro 01:16 OK • +1 nova(s) página(s) coletada(s) • Próximo às 01:31"
   },
   "itens": [
     {
-      "carimbo_ts": "20261122-010052",
-      "titulo": "Niterói - RJ Agora: 25°C (Céu Encoberto • Sem Chuva (0 mm)) • Vento 5 km/h | Máx 31°C / Mín 25°C",
+      "carimbo_ts": "20261122-011608",
+      "titulo": "Niterói - RJ Agora: 24°C (Céu Encoberto • Sem Chuva (0 mm)) • Vento 8 km/h | Máx 31°C / Mín 22°C",
       "fonte": "Climatempo & Defesa Civil • Niterói - RJ",
       "categoria_id": "Clima",
       "categoria_rotulo": "Clima Niterói",
@@ -27,20 +27,20 @@
       "cor": "#0284c7",
       "subtopico": "Niteroi",
       "tipo_artefato": "R",
-      "data_fato_formatada": "22/11/2026 às 01h00",
-      "resenha_texto": "Estação Niterói registra agora 25°C (Céu Encoberto • Sem Chuva (0 mm)), sensação de 30°C, vento de 5 km/h e umidade de 88%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 5 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-22 23:59.",
+      "data_fato_formatada": "22/11/2026 às 01h16",
+      "resenha_texto": "Estação Niterói registra agora 24°C (Céu Encoberto • Sem Chuva (0 mm)), sensação de 29°C, vento de 8 km/h e umidade de 96%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 8 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-22 23:59.",
       "pontos_chave": [
-        "Agora na Estação Niterói: ☁️ 25°C (Céu Encoberto • Sem Chuva (0 mm)) — Vento 5 km/h, sensação 30°C e umidade 88%.",
-        "Temperaturas Hoje em Niterói: Mínima de 25°C e Máxima de 31°C | Probabilidade residual de chuva: 67%.",
-        "ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 5 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-22 23:59.",
-        "📅 Previsão Amanhã (2026-11-23) em Niterói: ⛈️ Tempestade com Raios — Mínima 24°C / Máxima 33°C (Chance de chuva: 73%)."
+        "Agora na Estação Niterói: ☁️ 24°C (Céu Encoberto • Sem Chuva (0 mm)) — Vento 8 km/h, sensação 29°C e umidade 96%.",
+        "Temperaturas Hoje em Niterói: Mínima de 22°C e Máxima de 31°C | Probabilidade residual de chuva: 40%.",
+        "ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 8 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-22 23:59.",
+        "📅 Previsão Amanhã (Amanhã) em Niterói: ☁️ Céu Encoberto — Mínima 21°C / Máxima 29°C (Chance de chuva: 35%)."
       ],
       "alerta_defesa_civil": "",
-      "arquivo_r": "20261122-010052_R_Clima_Niteroi.html",
-      "arquivo_n": "20261122-010052_N_Clima_Niteroi.html",
+      "arquivo_r": "20261122-011608_R_Clima_Niteroi.html",
+      "arquivo_n": "20261122-011608_N_Clima_Niteroi.html",
       "arquivo_a": "",
       "url_original": "https://www.climatempo.com.br/previsao-do-tempo/cidade/315/niteroi-rj",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yNcKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4piB77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5Dw6l1IEVuY29iZXJ0byDigKIgU2VtIENodXZhIDwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjE1OCIgZmlsbD0iI2ZkZTA0NyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiI+U2Vuc2HDp8OjbyB0w6lybWljYTogMzDCsEM8L3RleHQ+CiAgPHJlY3QgeD0iNDgiIHk9IjIzNiIgd2lkdGg9IjcwNCIgaGVpZ2h0PSIxMDQiIHJ4PSIxNiIgZmlsbD0iIzBmMTcyYSIgZmlsbC1vcGFjaXR5PSIwLjY4IiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS1vcGFjaXR5PSIwLjM1Ii8+CiAgPHRleHQgeD0iODYiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+TcONTiAvIE3DgVggSE9KRTwvdGV4dD4KICA8dGV4dCB4PSI4NiIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7irIcgMjXCsEMgIC8gIOKshiAzMcKwQzwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+Q0hBTkNFIERFIENIVVZBPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMzE0IiBmaWxsPSIjMzhiZGY4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7imJQgNjclPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5VTUlEQURFIEFSPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7wn5KnIDg4JTwvdGV4dD4KPC9zdmc+"
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yNMKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4piB77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5Dw6l1IEVuY29iZXJ0byDigKIgU2VtIENodXZhIDwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjE1OCIgZmlsbD0iI2ZkZTA0NyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiI+U2Vuc2HDp8OjbyB0w6lybWljYTogMjnCsEM8L3RleHQ+CiAgPHJlY3QgeD0iNDgiIHk9IjIzNiIgd2lkdGg9IjcwNCIgaGVpZ2h0PSIxMDQiIHJ4PSIxNiIgZmlsbD0iIzBmMTcyYSIgZmlsbC1vcGFjaXR5PSIwLjY4IiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS1vcGFjaXR5PSIwLjM1Ii8+CiAgPHRleHQgeD0iODYiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+TcONTiAvIE3DgVggSE9KRTwvdGV4dD4KICA8dGV4dCB4PSI4NiIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7irIcgMjLCsEMgIC8gIOKshiAzMcKwQzwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+Q0hBTkNFIERFIENIVVZBPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMzE0IiBmaWxsPSIjMzhiZGY4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7imJQgNDAlPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5VTUlEQURFIEFSPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7wn5KnIDk2JTwvdGV4dD4KPC9zdmc+"
     },
     {
       "carimbo_ts": "20261122-004602",
@@ -7282,28 +7282,6 @@
       "thumbnail_base64": "data:image/jpeg;base64,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"
     },
     {
-      "carimbo_ts": "20261121-010937",
-      "titulo": "Previsão do tempo hoje para Niterói (RJ): sol com muitas nuvens e períodos de céu nublado; noite com pancadas de chuva - G1",
-      "fonte": "Notícias de Niterói (Icaraí, Região Oceânica e Centro)",
-      "categoria_id": "Niteroi",
-      "categoria_rotulo": "Niterói",
-      "icone": "🏙️",
-      "cor": "#0ea5e9",
-      "subtopico": "Cidade",
-      "tipo_artefato": "RN",
-      "data_fato_formatada": "21/11/2026 às 01h09",
-      "resenha_texto": "Previsão do tempo hoje para Niterói (RJ): sol com muitas nuvens e períodos de céu nublado; noite com pancadas de chuva G1",
-      "pontos_chave": [
-        "Fato Central: Previsão do tempo hoje para Niterói (RJ): sol com muitas nuvens e períodos de céu nublado; noite com pancadas de chuva - G1",
-        "Contexto: Previsão do tempo hoje para Niterói (RJ): sol com muitas nuvens e períodos de céu nublado; noite com pancadas de chuva G1",
-        "Apuração publicada por Notícias de Niterói (Icaraí, Região Oceânica e Centro)."
-      ],
-      "arquivo_r": "20261121-010937_R_Niteroi_Cidade.html",
-      "arquivo_n": "20261121-010937_N_Niteroi_Cidade.html",
-      "url_original": "https://news.google.com/rss/articles/CBMisAJBVV95cUxQXzRmb0NxYTdDZHMtcXVYaTZzcGUtbHJaUVRTbTFGTXB2OGVNXzFyQ0VuLVZRQ0hsSElId3N4b204YWxYZHQyTmYxSVFkTXFxaHdGUXZVNVdSd0ZwcXJfMnQ1aHZuUEVLaERPSGpxTE54aTh2R0FJbnNiQVJRbG1XMl9QUUt0UWNVcWFvRDhCSVRCX010V1VOM241eG9vd1ZmdWEwSkRUS3NLS3liMWd0V19UWTFoMVM5dHZ2eHV1WTBkRjFaYlY0Y3FEekVRSk9XWUxzS0ZXeDU5RzladmZOTHp1Z2txVW1oNl8waDVETDlyc3ZZTENhZXVBTDV6bWIyaC1FaVBWQ0hpcVlUY1FkQ2dnWTRyd1Q3YVhBSkNucVd6TERsZ2R5RDJLbmR2MUFG0gGwAkFVX3lxTFBfNGZvQ3FhN0Nkcy1xdVhpNnNwZS1sclpRVFNtMUZNcHY4ZU1fMXJDRW4tVlFDSGxISUh3c3hvbThhbFhkdDJOZjFJUWRNcXFod0ZRdlU1V1J3RnBxcl8ydDVodm5QRUtoRE9IanFMTnhpOHZHQUluc2JBUlFsbVcyX1BRS3RRY1VxYW9EOEJJVEJfTXRXVU4zbjV4b293VmZ1YTBKRFRLc0tLeWIxZ3RXX1RZMWgxUzl0dnZ4dXVZMGRGMVpiVjRjcUR6RVFKT1dZTHNLRld4NTlHOVp2Zk5MenVna3FVbWg2XzBoNURMOXJzdllMQ2FldUFMNXptYjJoLUVpUFZDSGlxWVRjUWRDZ2dZNHJ3VDdhWEFKQ25xV3pMRGxnZHlEMktuZHYxQUY?oc=5",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlYTVlOSIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfj5nvuI88L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIE5JVEVSw5NJPC90ZXh0Pgo8L3N2Zz4="
-    },
-    {
       "carimbo_ts": "20261120-223000",
       "titulo": "Dave Matthews Band abrirá turnê mundial no Brasil em 2027; banda toca em três cidades - Terra",
       "fonte": "Gastronomia, Festas & Eventos (Rio & Niterói)",
@@ -11107,50 +11085,6 @@
       "arquivo_r": "20261120-021841_R_Variedades_Famosos.html",
       "arquivo_n": "20261120-021841_N_Variedades_Famosos.html",
       "url_original": "https://news.google.com/rss/articles/CBMingFBVV95cUxNbmxSVmZXZllWVWg5aUREc2RDcUs4d0VZVHY2b3pxeXB3OTY2OHNzdGVCRVFIa0pUS3JFV2F3eGpRU045VGtNeGY0S0dwYWxlYUlvMGdsdEsyR1lfeS1PV21JWXVrSGFRNmktVEFEbm53LXUwTklRMHBIMDZvbHVDYk5nRDZENDVGUVo3SHB4LTVhLVZ4dWJsX01DdFRRZw?oc=5",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
-    },
-    {
-      "carimbo_ts": "20261120-011427",
-      "titulo": "Virou coach? César Tralli posta vídeo inusitado na web: 'Pega uma energia' - Terra",
-      "fonte": "Fofocas, Famosos & Entretenimento",
-      "categoria_id": "Variedades",
-      "categoria_rotulo": "Variedades",
-      "icone": "🎭",
-      "cor": "#d946ef",
-      "subtopico": "Famosos",
-      "tipo_artefato": "RN",
-      "data_fato_formatada": "20/11/2026 às 01h14",
-      "resenha_texto": "Virou coach? César Tralli posta vídeo inusitado na web: 'Pega uma energia' Terra",
-      "pontos_chave": [
-        "Fato Central: Virou coach? César Tralli posta vídeo inusitado na web: 'Pega uma energia' - Terra",
-        "Contexto: Virou coach? César Tralli posta vídeo inusitado na web: 'Pega uma energia' Terra",
-        "Apuração publicada por Fofocas, Famosos & Entretenimento."
-      ],
-      "arquivo_r": "20261120-011427_R_Variedades_Famosos.html",
-      "arquivo_n": "20261120-011427_N_Variedades_Famosos.html",
-      "url_original": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPN2N1dWN3MndOR2lkRmsxUndnZTZDWFg5dkxfM2c2amRwWDVWV0tyZnc1SG14Q1I1SlkyVVRmWDNwb0swckRrd09GaTNjR1hrSUVucXl4eTF6dE1ybjA3cG16eGVGOU95YVFSYWtPVUVHbDZ2M1g5RWZZeTU4b0FFY0pTWnBQMy1udll5SGZBcnFZSmJUaHp1cFdxMk51eERXc21ZZmprT1FpMUxDTFhoZkpOU3NyV296blptQ2hMalhJYzVEQjhScEJoVkRjRnQ4OFVWaDdKMFBtOHJCb2pXNVhVajNQbkRiWDZBZ3ZHNzdMUdIB8gFBVV95cUxPN2N1dWN3MndOR2lkRmsxUndnZTZDWFg5dkxfM2c2amRwWDVWV0tyZnc1SG14Q1I1SlkyVVRmWDNwb0swckRrd09GaTNjR1hrSUVucXl4eTF6dE1ybjA3cG16eGVGOU95YVFSYWtPVUVHbDZ2M1g5RWZZeTU4b0FFY0pTWnBQMy1udll5SGZBcnFZSmJUaHp1cFdxMk51eERXc21ZZmprT1FpMUxDTFhoZkpOU3NyV296blptQ2hMalhJYzVEQjhScEJoVkRjRnQ4OFVWaDdKMFBtOHJCb2pXNVhVajNQbkRiWDZBZ3ZHNzdMUQ?oc=5",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
-    },
-    {
-      "carimbo_ts": "20261120-011342",
-      "titulo": "Virou coach? César Tralli posta vídeo inusitado na web: ‘Pega uma energia’ - contigo.com.br",
-      "fonte": "Fofocas, Famosos & Entretenimento",
-      "categoria_id": "Variedades",
-      "categoria_rotulo": "Variedades",
-      "icone": "🎭",
-      "cor": "#d946ef",
-      "subtopico": "Famosos",
-      "tipo_artefato": "RN",
-      "data_fato_formatada": "20/11/2026 às 01h13",
-      "resenha_texto": "Virou coach? César Tralli posta vídeo inusitado na web: ‘Pega uma energia’ contigo.com.br",
-      "pontos_chave": [
-        "Fato Central: Virou coach? César Tralli posta vídeo inusitado na web: ‘Pega uma energia’ - contigo.com.br",
-        "Contexto: Virou coach? César Tralli posta vídeo inusitado na web: ‘Pega uma energia’ contigo.com.br",
-        "Apuração publicada por Fofocas, Famosos & Entretenimento."
-      ],
-      "arquivo_r": "20261120-011342_R_Variedades_Famosos.html",
-      "arquivo_n": "20261120-011342_N_Variedades_Famosos.html",
-      "url_original": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOLUZTTkdZVG1pLUF1NkcyR1Y3Mms2S19QOHN5OThHVDRxUGFtdm5ZRVVVWG1DYVA2TTVCWlM5RVZ1a25VbWRWZXVpdzEyZ0ZPdkhuTEcxb053R2FXYnB1dTlkOTBySkpVNkc2NlpKT21TSG5DQXItUjZDa3c4RjlFaTh0TmRuMUkyLXk5T3k3bjh5OEF6R3VqcWt4eGlYMU1SRE1YbG1nYmxiV0RkWU1SSnNxZ1haREU?oc=5",
       "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
     },
     {
