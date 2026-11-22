@@ -1,25 +1,25 @@
 {
-  "atualizado_em": "22/11/2026 04:16:29",
-  "atualizado_iso": "2026-11-22T04:16:29.450161",
-  "proximo_giro_em": "22/11/2026 04:31:29",
-  "proximo_giro_iso": "2026-11-22T04:31:29.450161",
+  "atualizado_em": "22/11/2026 04:31:14",
+  "atualizado_iso": "2026-11-22T04:31:14.754113",
+  "proximo_giro_em": "22/11/2026 04:46:14",
+  "proximo_giro_iso": "2026-11-22T04:46:14.754113",
   "janela_dias": 7,
-  "total_itens": 711,
+  "total_itens": 707,
   "status_ciclo": {
     "estado": "concluido",
-    "verificado_em": "22/11/2026 04:16:29",
-    "hora_curta": "04:16",
-    "proximo_giro": "04:31",
-    "novas_paginas": 2,
+    "verificado_em": "22/11/2026 04:31:14",
+    "hora_curta": "04:31",
+    "proximo_giro": "04:46",
+    "novas_paginas": 0,
     "fontes_verificadas": 25,
-    "expurgados_ciclo": 0,
-    "total_ativas_3dias": 711,
-    "mensagem": "Giro 04:16 OK • +2 nova(s) página(s) coletada(s) • Próximo às 04:31"
+    "expurgados_ciclo": 4,
+    "total_ativas_3dias": 707,
+    "mensagem": "Giro 04:31 OK • sem novas páginas (25 fontes varridas) • Próximo às 04:46"
   },
   "itens": [
     {
-      "carimbo_ts": "20261122-041606",
-      "titulo": "Niterói - RJ Agora: 24°C (Céu Encoberto • Sem Chuva (0 mm)) • Vento 8 km/h | Máx 31°C / Mín 22°C",
+      "carimbo_ts": "20261122-043056",
+      "titulo": "Niterói - RJ Agora: 25°C (Céu Encoberto • Sem Chuva (0 mm)) • Vento 5 km/h | Máx 32°C / Mín 24°C",
       "fonte": "Climatempo & Defesa Civil • Niterói - RJ",
       "categoria_id": "Clima",
       "categoria_rotulo": "Clima Niterói",
@@ -27,66 +27,20 @@
       "cor": "#0284c7",
       "subtopico": "Niteroi",
       "tipo_artefato": "R",
-      "data_fato_formatada": "22/11/2026 às 04h16",
-      "resenha_texto": "Estação Niterói registra agora 24°C (Céu Encoberto • Sem Chuva (0 mm)), sensação de 29°C, vento de 8 km/h e umidade de 97%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 8 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-22 23:59.",
+      "data_fato_formatada": "22/11/2026 às 04h30",
+      "resenha_texto": "Estação Niterói registra agora 25°C (Céu Encoberto • Sem Chuva (0 mm)), sensação de 30°C, vento de 5 km/h e umidade de 91%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 5 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-22 23:59.",
       "pontos_chave": [
-        "Agora na Estação Niterói: ☁️ 24°C (Céu Encoberto • Sem Chuva (0 mm)) — Vento 8 km/h, sensação 29°C e umidade 97%.",
-        "Temperaturas Hoje em Niterói: Mínima de 22°C e Máxima de 31°C | Probabilidade residual de chuva: 40%.",
-        "ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 8 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-22 23:59.",
-        "📅 Previsão Amanhã (Amanhã) em Niterói: ☁️ Céu Encoberto — Mínima 21°C / Máxima 29°C (Chance de chuva: 35%)."
+        "Agora na Estação Niterói: ☁️ 25°C (Céu Encoberto • Sem Chuva (0 mm)) — Vento 5 km/h, sensação 30°C e umidade 91%.",
+        "Temperaturas Hoje em Niterói: Mínima de 24°C e Máxima de 32°C | Probabilidade residual de chuva: 67%.",
+        "ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 5 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-22 23:59.",
+        "📅 Previsão Amanhã (2026-11-23) em Niterói: 🌦️ Garoa Leve — Mínima 24°C / Máxima 34°C (Chance de chuva: 73%)."
       ],
       "alerta_defesa_civil": "",
-      "arquivo_r": "20261122-041606_R_Clima_Niteroi.html",
-      "arquivo_n": "20261122-041606_N_Clima_Niteroi.html",
+      "arquivo_r": "20261122-043056_R_Clima_Niteroi.html",
+      "arquivo_n": "20261122-043056_N_Clima_Niteroi.html",
       "arquivo_a": "",
       "url_original": "https://www.climatempo.com.br/previsao-do-tempo/cidade/315/niteroi-rj",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yNMKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4piB77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5Dw6l1IEVuY29iZXJ0byDigKIgU2VtIENodXZhIDwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjE1OCIgZmlsbD0iI2ZkZTA0NyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiI+U2Vuc2HDp8OjbyB0w6lybWljYTogMjnCsEM8L3RleHQ+CiAgPHJlY3QgeD0iNDgiIHk9IjIzNiIgd2lkdGg9IjcwNCIgaGVpZ2h0PSIxMDQiIHJ4PSIxNiIgZmlsbD0iIzBmMTcyYSIgZmlsbC1vcGFjaXR5PSIwLjY4IiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS1vcGFjaXR5PSIwLjM1Ii8+CiAgPHRleHQgeD0iODYiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+TcONTiAvIE3DgVggSE9KRTwvdGV4dD4KICA8dGV4dCB4PSI4NiIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7irIcgMjLCsEMgIC8gIOKshiAzMcKwQzwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+Q0hBTkNFIERFIENIVVZBPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMzE0IiBmaWxsPSIjMzhiZGY4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7imJQgNDAlPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5VTUlEQURFIEFSPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7wn5KnIDk3JTwvdGV4dD4KPC9zdmc+"
-    },
-    {
-      "carimbo_ts": "20261122-040926",
-      "titulo": "Previsão do tempo no Rio de Janeiro hoje: alerta amarelo de tempestade do INMET - tmc.com.br",
-      "fonte": "Alertas de Clima (MSN Clima & INMET RJ/Niterói)",
-      "categoria_id": "Clima",
-      "categoria_rotulo": "Clima Niterói",
-      "icone": "🚨",
-      "cor": "#ef4444",
-      "subtopico": "AlertaRJ",
-      "tipo_artefato": "A",
-      "data_fato_formatada": "22/11/2026 às 04h09",
-      "resenha_texto": "Previsão do tempo no Rio de Janeiro hoje: alerta amarelo de tempestade do INMET tmc.com.br",
-      "pontos_chave": [
-        "Fato Central: Previsão do tempo no Rio de Janeiro hoje: alerta amarelo de tempestade do INMET - tmc.com.br",
-        "Contexto: Previsão do tempo no Rio de Janeiro hoje: alerta amarelo de tempestade do INMET tmc.com.br",
-        "Apuração publicada por Alertas de Clima (MSN Clima & INMET RJ/Niterói)."
-      ],
-      "arquivo_a": "20261122-040926_A_Clima_AlertaRJ.html",
-      "arquivo_r": "20261122-040926_A_Clima_AlertaRJ.html",
-      "arquivo_n": "20261122-040926_A_Clima_AlertaRJ.html",
-      "url_original": "https://news.google.com/rss/articles/CBMiekFVX3lxTE45X01UQ0xLbndKUXJ3MTd4RzNFdm9TYUY3OFJ2WE1jQm4wNHN4RFNXcjllTHltcVJJQkwwMVJhZTVQUG42LVZ2bnFELWlWT1FJV2paSkMyYlFFTm43Wk5BempaVmlKWS1UOEhnWHpSNkNnZEQyTUFuRFdB?oc=5",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAyODRjNyIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPuKbhTwvdGV4dD4KICA8dGV4dCB4PSI1MCUiIHk9IjcyJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiIgbGV0dGVyLXNwYWNpbmc9IjEiPkZBVkkgTkVXUyDigKIgQ0xJTUEgTklURVLDk0k8L3RleHQ+Cjwvc3ZnPg=="
-    },
-    {
-      "carimbo_ts": "20261122-040354",
-      "titulo": "Previsão do tempo em Curitiba hoje: alerta amarelo de tempestade do INMET - tmc.com.br",
-      "fonte": "Alertas de Clima (MSN Clima & INMET RJ/Niterói)",
-      "categoria_id": "Clima",
-      "categoria_rotulo": "Clima Niterói",
-      "icone": "🚨",
-      "cor": "#ef4444",
-      "subtopico": "AlertaRJ",
-      "tipo_artefato": "A",
-      "data_fato_formatada": "22/11/2026 às 04h03",
-      "resenha_texto": "Previsão do tempo em Curitiba hoje: alerta amarelo de tempestade do INMET tmc.com.br",
-      "pontos_chave": [
-        "Fato Central: Previsão do tempo em Curitiba hoje: alerta amarelo de tempestade do INMET - tmc.com.br",
-        "Contexto: Previsão do tempo em Curitiba hoje: alerta amarelo de tempestade do INMET tmc.com.br",
-        "Apuração publicada por Alertas de Clima (MSN Clima & INMET RJ/Niterói)."
-      ],
-      "arquivo_a": "20261122-040354_A_Clima_AlertaRJ.html",
-      "arquivo_r": "20261122-040354_A_Clima_AlertaRJ.html",
-      "arquivo_n": "20261122-040354_A_Clima_AlertaRJ.html",
-      "url_original": "https://news.google.com/rss/articles/CBMickFVX3lxTE8ybXZXOVliUXpmV2pHVmFBdDdaWDJRelBmN3hETVhvRkxYc19CWkJPbF9pZTFfT2JJSnZUMThtd3otX0xqbDhpZHIwcXJOMVVKNkhhMDhkY0daSFRwdGNRbExNWDJrUFNtdFBMWVI0Nkh0dw?oc=5",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAyODRjNyIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPuKbhTwvdGV4dD4KICA8dGV4dCB4PSI1MCUiIHk9IjcyJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiIgbGV0dGVyLXNwYWNpbmc9IjEiPkZBVkkgTkVXUyDigKIgQ0xJTUEgTklURVLDk0k8L3RleHQ+Cjwvc3ZnPg=="
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yNcKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4piB77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5Dw6l1IEVuY29iZXJ0byDigKIgU2VtIENodXZhIDwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjE1OCIgZmlsbD0iI2ZkZTA0NyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiI+U2Vuc2HDp8OjbyB0w6lybWljYTogMzDCsEM8L3RleHQ+CiAgPHJlY3QgeD0iNDgiIHk9IjIzNiIgd2lkdGg9IjcwNCIgaGVpZ2h0PSIxMDQiIHJ4PSIxNiIgZmlsbD0iIzBmMTcyYSIgZmlsbC1vcGFjaXR5PSIwLjY4IiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS1vcGFjaXR5PSIwLjM1Ii8+CiAgPHRleHQgeD0iODYiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+TcONTiAvIE3DgVggSE9KRTwvdGV4dD4KICA8dGV4dCB4PSI4NiIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7irIcgMjTCsEMgIC8gIOKshiAzMsKwQzwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+Q0hBTkNFIERFIENIVVZBPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMzE0IiBmaWxsPSIjMzhiZGY4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7imJQgNjclPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5VTUlEQURFIEFSPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7wn5KnIDkxJTwvdGV4dD4KPC9zdmc+"
     },
     {
       "carimbo_ts": "20261122-014622",
@@ -11065,50 +11019,6 @@
       "arquivo_n": "20261120-050000_N_Economia_Mercados.html",
       "url_original": "https://www.infomoney.com.br/mundo/cop31-entra-na-reta-final-sem-consenso-sobre-combustiveis-fosseis-e-financiamento/",
       "thumbnail_base64": "data:image/jpeg;base64,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"
-    },
-    {
-      "carimbo_ts": "20261120-041602",
-      "titulo": "Cinema | Primetime - Os Bastidores de uma Verdade ― Opinião - Jornal de Leiria",
-      "fonte": "Fofocas, Famosos & Entretenimento",
-      "categoria_id": "Variedades",
-      "categoria_rotulo": "Variedades",
-      "icone": "🎭",
-      "cor": "#d946ef",
-      "subtopico": "Famosos",
-      "tipo_artefato": "RN",
-      "data_fato_formatada": "20/11/2026 às 04h16",
-      "resenha_texto": "Cinema | Primetime - Os Bastidores de uma Verdade ― Opinião Jornal de Leiria",
-      "pontos_chave": [
-        "Fato Central: Cinema | Primetime - Os Bastidores de uma Verdade ― Opinião - Jornal de Leiria",
-        "Contexto: Cinema | Primetime - Os Bastidores de uma Verdade ― Opinião Jornal de Leiria",
-        "Apuração publicada por Fofocas, Famosos & Entretenimento."
-      ],
-      "arquivo_r": "20261120-041602_R_Variedades_Famosos.html",
-      "arquivo_n": "20261120-041602_N_Variedades_Famosos.html",
-      "url_original": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNZlUwamJ2V0YxNHp0ckg4dE1tQldGbnlNZmdfSUxXLUNXX3FPb2dRaF8zUG5mLVI3NmUyREdxY3ppRGQxYVR4SHlxRjdBRnRKVDQ3UTUzSGgtaExwa3phMnRpeHF3UHpjMzBhSXJ4bVVOWW1HREhqd3RCOFN5R0E3Zm9OQlpuYzN2bEE?oc=5",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
-    },
-    {
-      "carimbo_ts": "20261120-041600",
-      "titulo": "Cinema | Primetime - Os Bastidores de uma Verdade ― Opinião - Jornal de Leiria",
-      "fonte": "Fofocas, Famosos & Entretenimento",
-      "categoria_id": "Variedades",
-      "categoria_rotulo": "Variedades",
-      "icone": "🎭",
-      "cor": "#d946ef",
-      "subtopico": "Famosos",
-      "tipo_artefato": "RN",
-      "data_fato_formatada": "20/11/2026 às 04h16",
-      "resenha_texto": "Cinema | Primetime - Os Bastidores de uma Verdade ― Opinião Jornal de Leiria",
-      "pontos_chave": [
-        "Fato Central: Cinema | Primetime - Os Bastidores de uma Verdade ― Opinião - Jornal de Leiria",
-        "Contexto: Cinema | Primetime - Os Bastidores de uma Verdade ― Opinião Jornal de Leiria",
-        "Apuração publicada por Fofocas, Famosos & Entretenimento."
-      ],
-      "arquivo_r": "20261120-041600_R_Variedades_Famosos.html",
-      "arquivo_n": "20261120-041600_N_Variedades_Famosos.html",
-      "url_original": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNMzhJYTFlVFRXSzhTRXZiSlpHN04wZEZVYjMtOWUxVzVEX1o0d2JDWkpsZm03RGc5S3VLWGtOQ0pDQ2k3RUpRbGxfU3gtN0tKYVlzVk9yYnhITTdRT3EyNFJhaWYyU2x4OXVsZlhab1JrVzNDVElKOG1UTUkwdHoyU2hyWWh2RXE0ZFphNzVBcw?oc=5",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
     },
     {
       "carimbo_ts": "20261119-234727",
