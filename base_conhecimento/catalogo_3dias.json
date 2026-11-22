@@ -1,25 +1,25 @@
 {
-  "atualizado_em": "21/11/2026 23:31:14",
-  "atualizado_iso": "2026-11-21T23:31:14.320366",
-  "proximo_giro_em": "21/11/2026 23:46:14",
-  "proximo_giro_iso": "2026-11-21T23:46:14.320366",
+  "atualizado_em": "21/11/2026 23:46:23",
+  "atualizado_iso": "2026-11-21T23:46:23.579619",
+  "proximo_giro_em": "22/11/2026 00:01:23",
+  "proximo_giro_iso": "2026-11-22T00:01:23.579619",
   "janela_dias": 7,
-  "total_itens": 710,
+  "total_itens": 714,
   "status_ciclo": {
     "estado": "concluido",
-    "verificado_em": "21/11/2026 23:31:14",
-    "hora_curta": "23:31",
-    "proximo_giro": "23:46",
-    "novas_paginas": 0,
+    "verificado_em": "21/11/2026 23:46:23",
+    "hora_curta": "23:46",
+    "proximo_giro": "00:01",
+    "novas_paginas": 4,
     "fontes_verificadas": 25,
     "expurgados_ciclo": 0,
-    "total_ativas_3dias": 710,
-    "mensagem": "Giro 23:31 OK • sem novas páginas (25 fontes varridas) • Próximo às 23:46"
+    "total_ativas_3dias": 714,
+    "mensagem": "Giro 23:46 OK • +4 nova(s) página(s) coletada(s) • Próximo às 00:01"
   },
   "itens": [
     {
-      "carimbo_ts": "20261121-233055",
-      "titulo": "Niterói - RJ Agora: 25°C (Céu Encoberto • Sem Chuva (0 mm)) • Vento 5 km/h | Máx 34°C / Mín 24°C",
+      "carimbo_ts": "20261121-234603",
+      "titulo": "Niterói - RJ Agora: 25°C (Céu Encoberto • Sem Chuva (0 mm)) • Vento 8 km/h | Máx 31°C / Mín 22°C",
       "fonte": "Climatempo & Defesa Civil • Niterói - RJ",
       "categoria_id": "Clima",
       "categoria_rotulo": "Clima Niterói",
@@ -27,20 +27,65 @@
       "cor": "#0284c7",
       "subtopico": "Niteroi",
       "tipo_artefato": "R",
-      "data_fato_formatada": "21/11/2026 às 23h30",
-      "resenha_texto": "Estação Niterói registra agora 25°C (Céu Encoberto • Sem Chuva (0 mm)), sensação de 31°C, vento de 5 km/h e umidade de 91%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 5 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-22 23:59.",
+      "data_fato_formatada": "21/11/2026 às 23h46",
+      "resenha_texto": "Estação Niterói registra agora 25°C (Céu Encoberto • Sem Chuva (0 mm)), sensação de 30°C, vento de 8 km/h e umidade de 91%. ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 8 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-22 23:59.",
       "pontos_chave": [
-        "Agora na Estação Niterói: ☁️ 25°C (Céu Encoberto • Sem Chuva (0 mm)) — Vento 5 km/h, sensação 31°C e umidade 91%.",
-        "Temperaturas Hoje em Niterói: Mínima de 24°C e Máxima de 34°C | Probabilidade residual de chuva: 73%.",
-        "ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 5 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-22 23:59.",
-        "📅 Previsão Amanhã (2026-11-22) em Niterói: ⛈️ Tempestade com Raios — Mínima 25°C / Máxima 31°C (Chance de chuva: 54%)."
+        "Agora na Estação Niterói: ☁️ 25°C (Céu Encoberto • Sem Chuva (0 mm)) — Vento 8 km/h, sensação 30°C e umidade 91%.",
+        "Temperaturas Hoje em Niterói: Mínima de 22°C e Máxima de 31°C | Probabilidade residual de chuva: 40%.",
+        "ℹ️ Tempestade passou em Niterói (estação registra 0 mm de chuva e vento de 8 km/h). Aviso preventivo do INMET (Tempestade) segue em observação regional até 2026-11-22 23:59.",
+        "📅 Previsão Amanhã (Amanhã) em Niterói: ☁️ Céu Encoberto — Mínima 21°C / Máxima 29°C (Chance de chuva: 35%)."
       ],
       "alerta_defesa_civil": "",
-      "arquivo_r": "20261121-233055_R_Clima_Niteroi.html",
-      "arquivo_n": "20261121-233055_N_Clima_Niteroi.html",
+      "arquivo_r": "20261121-234603_R_Clima_Niteroi.html",
+      "arquivo_n": "20261121-234603_N_Clima_Niteroi.html",
       "arquivo_a": "",
       "url_original": "https://www.climatempo.com.br/previsao-do-tempo/cidade/315/niteroi-rj",
-      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yNcKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4piB77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5Dw6l1IEVuY29iZXJ0byDigKIgU2VtIENodXZhIDwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjE1OCIgZmlsbD0iI2ZkZTA0NyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiI+U2Vuc2HDp8OjbyB0w6lybWljYTogMzHCsEM8L3RleHQ+CiAgPHJlY3QgeD0iNDgiIHk9IjIzNiIgd2lkdGg9IjcwNCIgaGVpZ2h0PSIxMDQiIHJ4PSIxNiIgZmlsbD0iIzBmMTcyYSIgZmlsbC1vcGFjaXR5PSIwLjY4IiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS1vcGFjaXR5PSIwLjM1Ii8+CiAgPHRleHQgeD0iODYiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+TcONTiAvIE3DgVggSE9KRTwvdGV4dD4KICA8dGV4dCB4PSI4NiIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7irIcgMjTCsEMgIC8gIOKshiAzNMKwQzwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+Q0hBTkNFIERFIENIVVZBPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMzE0IiBmaWxsPSIjMzhiZGY4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7imJQgNzMlPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5VTUlEQURFIEFSPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7wn5KnIDkxJTwvdGV4dD4KPC9zdmc+"
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0idXJsKCNza3kpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2ODAiIGN5PSI5MCIgcj0iMTEwIiBmaWxsPSIjMzhiZGY4IiBmaWxsLW9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSI3NTIiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjYmFlNmZkIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE5IiBsZXR0ZXItc3BhY2luZz0iMS4yIj7wn5ONIEVTVEHDh8ODTyBPRklDSUFMIOKAoiBOSVRFUsOTSSAtIFJKPC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSIxNjQiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTAwIj4yNcKwQzwvdGV4dD4KICA8dGV4dCB4PSIzMzAiIHk9IjEyNCIgZm9udC1zaXplPSI2MiI+4piB77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iMTIwIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI1Ij5Dw6l1IEVuY29iZXJ0byDigKIgU2VtIENodXZhIDwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjE1OCIgZmlsbD0iI2ZkZTA0NyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiI+U2Vuc2HDp8OjbyB0w6lybWljYTogMzDCsEM8L3RleHQ+CiAgPHJlY3QgeD0iNDgiIHk9IjIzNiIgd2lkdGg9IjcwNCIgaGVpZ2h0PSIxMDQiIHJ4PSIxNiIgZmlsbD0iIzBmMTcyYSIgZmlsbC1vcGFjaXR5PSIwLjY4IiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS1vcGFjaXR5PSIwLjM1Ii8+CiAgPHRleHQgeD0iODYiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+TcONTiAvIE3DgVggSE9KRTwvdGV4dD4KICA8dGV4dCB4PSI4NiIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7irIcgMjLCsEMgIC8gIOKshiAzMcKwQzwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjI3NCIgZmlsbD0iIzk0YTNiOCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxNyI+Q0hBTkNFIERFIENIVVZBPC90ZXh0PgogIDx0ZXh0IHg9IjM2MCIgeT0iMzE0IiBmaWxsPSIjMzhiZGY4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7imJQgNDAlPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMjc0IiBmaWxsPSIjOTRhM2I4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjE3Ij5VTUlEQURFIEFSPC90ZXh0PgogIDx0ZXh0IHg9IjU5NSIgeT0iMzE0IiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjI2Ij7wn5KnIDkxJTwvdGV4dD4KPC9zdmc+"
+    },
+    {
+      "carimbo_ts": "20261121-232434",
+      "titulo": "Fiscalização de motos barulhentas em Niterói identifica motocicleta com suspeita de clonagem - Prensa Mercosur",
+      "fonte": "Notícias de Niterói (Icaraí, Região Oceânica e Centro)",
+      "categoria_id": "Niteroi",
+      "categoria_rotulo": "Niterói",
+      "icone": "🏙️",
+      "cor": "#0ea5e9",
+      "subtopico": "Cidade",
+      "tipo_artefato": "RN",
+      "data_fato_formatada": "21/11/2026 às 23h24",
+      "resenha_texto": "Fiscalização de motos barulhentas em Niterói identifica motocicleta com suspeita de clonagem Prensa Mercosur",
+      "pontos_chave": [
+        "Fato Central: Fiscalização de motos barulhentas em Niterói identifica motocicleta com suspeita de clonagem - Prensa Mercosur",
+        "Contexto: Fiscalização de motos barulhentas em Niterói identifica motocicleta com suspeita de clonagem Prensa Mercosur",
+        "Apuração publicada por Notícias de Niterói (Icaraí, Região Oceânica e Centro)."
+      ],
+      "arquivo_r": "20261121-232434_R_Niteroi_Cidade.html",
+      "arquivo_n": "20261121-232434_N_Niteroi_Cidade.html",
+      "url_original": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPUGc2eVRUbTIxZmJEQVR5NnBlVzdyUngwODRIb0ZoeTJVMkRKN0ZCZjNDTWI5bXdweDg5WG5keVZ6M2M2ZUhYYTcyeDdwZndRbko2TXR1RzBURWlnY2k2enNNTjNERGtPWlFTbWZLblhYSzRsRFlPRGF0MElGSDhnTS1MOUZRcTR0TXRqMzdrYWZ3bHhMTUJfdXQwbVZJT25Ka0FKMEs3NnBxLUpiX1JBVUtSS1gxTTRVcnJlY1VJejZ3VnNfMXl6bUN3Zw?oc=5",
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlYTVlOSIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfj5nvuI88L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIE5JVEVSw5NJPC90ZXh0Pgo8L3N2Zz4="
+    },
+    {
+      "carimbo_ts": "20261121-232317",
+      "titulo": "Sul do Brasil enfrenta novo alerta de temporais severos com ventos acima de 80 km/h - Sobral Online",
+      "fonte": "Alertas de Clima (MSN Clima & INMET RJ/Niterói)",
+      "categoria_id": "Clima",
+      "categoria_rotulo": "Clima Niterói",
+      "icone": "🚨",
+      "cor": "#ef4444",
+      "subtopico": "AlertaRJ",
+      "tipo_artefato": "A",
+      "data_fato_formatada": "21/11/2026 às 23h23",
+      "resenha_texto": "Sul do Brasil enfrenta novo alerta de temporais severos com ventos acima de 80 km/h Sobral Online",
+      "pontos_chave": [
+        "Fato Central: Sul do Brasil enfrenta novo alerta de temporais severos com ventos acima de 80 km/h - Sobral Online",
+        "Contexto: Sul do Brasil enfrenta novo alerta de temporais severos com ventos acima de 80 km/h Sobral Online",
+        "Apuração publicada por Alertas de Clima (MSN Clima & INMET RJ/Niterói)."
+      ],
+      "arquivo_a": "20261121-232317_A_Clima_AlertaRJ.html",
+      "arquivo_r": "20261121-232317_A_Clima_AlertaRJ.html",
+      "arquivo_n": "20261121-232317_A_Clima_AlertaRJ.html",
+      "url_original": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5KTTZ4NEhCZGJMcTBIVjFFUTlPMENLUUFqYzR2UGp1akRaUHVqb21MeDhFeHhQNnZUN3NveVBKdkxCYXRwVjl5RVctVllZOG9GblVRellscUNzbGs2VjQ2bS1pdExDRjhKVmFPLUVBVlA?oc=5",
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAyODRjNyIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPuKbhTwvdGV4dD4KICA8dGV4dCB4PSI1MCUiIHk9IjcyJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiIgbGV0dGVyLXNwYWNpbmc9IjEiPkZBVkkgTkVXUyDigKIgQ0xJTUEgTklURVLDk0k8L3RleHQ+Cjwvc3ZnPg=="
     },
     {
       "carimbo_ts": "20261121-223407",
@@ -6181,6 +6226,28 @@
       "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlYTVlOSIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfj5nvuI88L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIE5JVEVSw5NJPC90ZXh0Pgo8L3N2Zz4="
     },
     {
+      "carimbo_ts": "20261121-064401",
+      "titulo": "Nasce filho de Tati Machado; veja fotos - Portal do Holanda",
+      "fonte": "Fofocas, Famosos & Entretenimento",
+      "categoria_id": "Variedades",
+      "categoria_rotulo": "Variedades",
+      "icone": "🎭",
+      "cor": "#d946ef",
+      "subtopico": "Famosos",
+      "tipo_artefato": "RN",
+      "data_fato_formatada": "21/11/2026 às 06h44",
+      "resenha_texto": "Nasce filho de Tati Machado; veja fotos Portal do Holanda",
+      "pontos_chave": [
+        "Fato Central: Nasce filho de Tati Machado; veja fotos - Portal do Holanda",
+        "Contexto: Nasce filho de Tati Machado; veja fotos Portal do Holanda",
+        "Apuração publicada por Fofocas, Famosos & Entretenimento."
+      ],
+      "arquivo_r": "20261121-064401_R_Variedades_Famosos.html",
+      "arquivo_n": "20261121-064401_N_Variedades_Famosos.html",
+      "url_original": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOZ1JTVWdzdXdQTElvV3c2V0U0Y195cExBTW1EXzBibmh3cmNORTdtX2pzYUYzaE9kMHM0TXdISzdvLVlYSVZ4Q2xSaXFMZjROaGhCaE52WGhhNEJEeG1hZElrX3JaLWh1OURJaDN3RWNhVzV3dHY3NEV5LXgycHJNYWJLQmkxX2p4TUpGZFZfOGpya3ZsQTBScEJB?oc=5",
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
+    },
+    {
       "carimbo_ts": "20261121-064400",
       "titulo": "Nasce filho de Tati Machado; veja fotos - Portal do Holanda",
       "fonte": "Fofocas, Famosos & Entretenimento",
@@ -7301,6 +7368,28 @@
       "arquivo_n": "20261120-194700_N_Economia_Mercados.html",
       "url_original": "https://www.infomoney.com.br/mundo/patrick-stewart-causa-da-morte-do-astro-de-star-trek-e-x-men-e-revelada/",
       "thumbnail_base64": "data:image/jpeg;base64,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"
+    },
+    {
+      "carimbo_ts": "20261120-194601",
+      "titulo": "Caixa Cultural Rio de Janeiro recebe Festival Repique do Tambor | Radioagência Nacional - Agência Brasil",
+      "fonte": "Gastronomia, Festas & Eventos (Rio & Niterói)",
+      "categoria_id": "Variedades",
+      "categoria_rotulo": "Variedades",
+      "icone": "🎭",
+      "cor": "#d946ef",
+      "subtopico": "GastronomiaFestas",
+      "tipo_artefato": "RN",
+      "data_fato_formatada": "20/11/2026 às 19h46",
+      "resenha_texto": "Caixa Cultural Rio de Janeiro recebe Festival Repique do Tambor | Radioagência Nacional Agência Brasil",
+      "pontos_chave": [
+        "Fato Central: Caixa Cultural Rio de Janeiro recebe Festival Repique do Tambor | Radioagência Nacional - Agência Brasil",
+        "Contexto: Caixa Cultural Rio de Janeiro recebe Festival Repique do Tambor | Radioagência Nacional Agência Brasil",
+        "Apuração publicada por Gastronomia, Festas & Eventos (Rio & Niterói)."
+      ],
+      "arquivo_r": "20261120-194601_R_Variedades_GastronomiaFestas.html",
+      "arquivo_n": "20261120-194601_N_Variedades_GastronomiaFestas.html",
+      "url_original": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQeGFxTjV2aktqS3NlWERXVklsOEdGZVh5aGl0VXdMQlRMVEVMSnRuRXEyczBJM0tSTVlLbG9idjVmeEN3M1FSWXFCdFh0RUgtT0kzejdlcGh6UDI3dWxjNTFyblk5djlGQXhuMHc3S3hXbHQ1QW1RM0tNbDB6TzVXUWhtaFhRTHhSVDNxVEJZLW5sOXNmVVFxSktPeTJpT25aOHZGejhQTjloRjYxbzlfdUFPTlI0T3ZBOWl4ZXluNm12WUdGd3pBWjdoOHJ4UnFjalZXa3BSTQ?oc=5",
+      "thumbnail_base64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5NDZlZiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIgc3RvcC1vcGFjaXR5PSIwLjk4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2JnKSIgcng9IjEyIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI0NCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNTQiPvCfjq08L3RleHQ+CiAgPHRleHQgeD0iNTAlIiB5PSI3MiUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGxldHRlci1zcGFjaW5nPSIxIj5GQVZJIE5FV1Mg4oCiIFZBUklFREFERVM8L3RleHQ+Cjwvc3ZnPg=="
     },
     {
       "carimbo_ts": "20261120-194600",
